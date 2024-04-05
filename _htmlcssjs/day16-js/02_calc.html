@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="areatop">
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button value="+">+</button>
+            <button value="c">c</button><br>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button value="-">-</button><br>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button value="*">*</button><br>
+            <button value=".">.</button>
+            <button value="0">0</button>
+            <button value="=">=</button>
+            <button value="/">/</button><br>
+        </div>
+        <h1 id="result"></h1>
+    </div>
+    <script>
+        let cal = "";
+        let num = "";
+        let num1;
+        let num2;
+        let num3;
+        let val;
+        let point = false;
+        let count = 0;
+        document.querySelector('.container').addEventListener('click', (e)=>{
+            val = e.target.value;
+            if(val != undefined){
+                document.getElementById('result').innerText += val;
+            if(val == '+' || val == '-' || val == '*' || val == '/'){
+                if(count>=1){
+                    cal = val;
+                    document.getElementById('result').innerText = num3;
+                    document.getElementById('result').innerText += val;
+                    num = "";
+                    num2 = "";
+                    count = 0;
+                    num1 = num3;
+                }else{
+                    cal = val;
+                    num1 = num;
+                    num = "";
+                }
+            }else if(val == '.'){
+                point = true;
+            }else if(val == 'c'){
+                num1 = 0;
+                num2 = 0;
+                num3 = 0;
+                document.getElementById('result').innerText = null;
+                val = "";
+            }else if(val == '='){
+                num2 = num;
+                num3 = calculator(num1, cal, num2);
+                count++;
+                document.getElementById('result').innerHTML += num3;
+            }else {
+                if(point==true){
+                    let temp = Number(num);
+                    num = "";
+                    num = parseFloat(val/10);
+                    num = temp+num;
+                    point = false;
+                }else{
+                    num += val;
+                    val = "";
+                }
+            }
+            }
+        })
+        function calculator(num1, cal, num2){
+            let num1Val = parseFloat(num1);
+            let num2Val = parseFloat(num2);
+            let result = "";
+            switch(cal){
+                case '+' : result = num1Val+num2Val; break;
+                case '-' : result = num1Val-num2Val; break;
+                case '*' : result = num1Val*num2Val; break;
+                case '/' : result = num1Val/num2Val; break;
+            }
+            num1 = "";
+            num2 = "";
+            let reVal ;
+            if(Number.isInteger(result)){
+                reVal = parseInt(result);
+            }else{
+                reVal = result.toFixed(2);
+            }
+            return reVal;
+        }
+    </script>
+</body>
+</html>

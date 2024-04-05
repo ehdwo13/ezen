@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            min-width: 650px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .container {
+            color: rgb(99, 99, 99);
+            box-shadow: 1px 2px 3px gray;
+            border-radius: 20px;
+            margin-top: 150px;
+            padding-top: 80px;
+            width: 800px;
+            height: 500px;
+            text-align: center;
+            padding-left: 20px;
+        }
+        .innerdiv {
+            width: 100%;
+        }
+        .textbox {
+            padding: 14px;
+            margin-right: 20px;
+        }
+        #c1,
+        #c2,
+        #c3 {
+            margin-left: 10px;
+            line-height: 60px;
+        }
+        #userID,
+        #userPW,
+        #name {
+            padding: 14px;
+            margin: 10px;
+            border-radius: 14px;
+            border: none;
+            background-color: rgb(6, 18, 255);
+            outline: none;
+            color: white;
+        }
+        #userID,
+        #userPW,
+        #name::placeholder {
+            color: rgb(255, 255, 255);
+        }
+        #userBtn, #idOverLapCheck {
+            margin-top: 20px;
+            width: 150px;
+            height: 30px;
+            font-family: "Noto Sans KR", sans-serif;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px gray;
+            margin: 15px 20px 0 20px;
+            
+        }
+        #userBtn:hover {
+            cursor: pointer;
+        }
+        #idOverLapCheck:hover{
+            cursor: pointer;
+        }
+        .inputbox {
+            display: flex;
+            justify-content: space-around;
+        }
+        .inputbox input {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="innerdiv">
+            <img src="./image/logo.png" width="150px" height="85px" alt="">
+            <h1>회원가입</h1>
+            <!-- 아이디 입력 필드 -->
+            <div class="inputbox">
+                <div class="textbox"> 아 이 디 </div>
+                <input type="text" id="userID" placeholder="5자리 이상"> <span id="c1"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg></span><br>
+            </div>
+            <!-- 패스워드 입력 필드 -->
+            <div class="inputbox">
+                <div class="textbox"> 비밀번호 </div>
+                <input type="password" id="userPW" placeholder="숫자+알파벳 6~8자리"> <span id="c2"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg></span><br>
+            </div>
+            <!-- 이름 입력 필드 -->
+            <div class="inputbox">
+                <div class="textbox"> 이ㅤㅤ름 </div>
+                <input type="text" id="name"> <span id="c3"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg></span> <br>
+            </div>
+        </div>
+        <!-- 아이디 중복체크 버튼 -->
+        <button type="button" id="idOverLapCheck">ID 중복체크</button>
+        <!-- 본인확인 버튼 -->
+        <button type="button" disabled="true" id="userBtn">본인확인</button>
+    </div>
+    <script>
+        // const popupWidth = 200;
+        // const popupHeight = 300;
+        // const popupX = (window.screen.width / 2) - (popupWidth / 2);
+        // const popupY = (window.screen.height / 2) - (popupHeight / 2);
+        const id = document.querySelector("#userID");
+        const pw = document.querySelector("#userPW");
+        const name = document.querySelector("#name");
+        let userBtn = document.getElementById('userBtn');
+        let idCheck = document.getElementById('idOverLapCheck');
+        let c1 = document.getElementById('c1');
+        let c2 = document.getElementById('c2');
+        let c3 = document.getElementById('c3');
+        idCheck.addEventListener('click', () => {
+        const loginID = id.value;
+        let isDuplicate = false;
+        for (let a in localStorage) {
+            if (a === loginID) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (isDuplicate) {
+            alert('중복된 아이디입니다!');
+            id.value = ''; 
+            id.focus();
+        } else {
+            if(id.value.length >= 5){
+                //아이디가 5글자 이상이면서 중복확인에 통과되어야 c1.style.color가 green으로 바뀌어야 함
+                alert('해당 아이디는 사용 가능합니다.');
+                c1.style.color = "green";
+                enableButton();
+                startStorage();
+                const regEx = /^(?=.*\d).{6,8}$/;
+                pw.addEventListener('input', () => {
+                    if (regEx.test(pw.value)) {
+                        c2.style.color = "green";
+                    } else {
+                        c2.style.color = "";
+                    }
+                    enableButton();
+                });
+                name.addEventListener('input', () => {
+                if (name.value !== '') {
+                    c3.style.color = "green";
+                } else {
+                    c3.style.color = "";
+                }
+                enableButton();
+                });
+                function enableButton() {
+                if (c1.style.color === "green" && c2.style.color === "green" && c3.style.color === "green") {
+                    userBtn.disabled = false;
+                } else {
+                    userBtn.disabled = true;
+                }
+            }
+                }else{
+                    alert('아이디는 5글자 이상 입력해야 합니다.');
+                    return;
+                }
+            }
+        });
+        let memberListArr = new Array();
+        let memberListObj = {
+            id : "",
+            pw : "",
+            name : ""
+        }
+        function userInfo(event) {
+            console.log("user 정보 저장 시작");
+            let currentID = id.value;
+            let currentPW = pw.value;
+            let currentName = name.value;
+            localStorage.setItem(currentID, currentPW);
+            if(localStorage.getItem('memberList') !=null){
+                let tempStorageData = localStorage.getItem('memberList');
+                let parseTempStorageData = JSON.parse(tempStorageData);
+                memberListObj.id = currentID;
+                memberListObj.pw = currentPW;
+                memberListObj.name = currentName;
+                parseTempStorageData.push(memberListObj);
+                let tempJsonStrinfy = JSON.stringify(parseTempStorageData);
+                localStorage.setItem('memberList', tempJsonStrinfy);
+            }else{
+                memberListObj.id = currentID;
+                memberListObj.pw = currentPW;
+                memberListObj.name = currentName;
+                memberListArr.push(memberListObj);
+                let jsonStrinfy = JSON.stringify(memberListArr);
+                localStorage.setItem('memberList', jsonStrinfy);
+            }
+        }
+        function startStorage() {
+                userBtn.addEventListener('click', userInfo);
+        }
+        // 본인확인 버튼 클릭 시 본인확인 페이지 열기
+        userBtn.addEventListener('click', () => {
+            openWindow();
+            gotoMain();
+        });
+        function gotoMain(){
+            location.href = "./메인.html";
+        }
+        // 새 창 열기 함수
+        let myWindow;
+        function openWindow() {
+            let _width = '520';
+            let _height = '600';
+            let _left = Math.ceil((window.screen.width - _width) / 2);
+            let _top = Math.ceil((window.screen.height - _height) / 2);
+            myWindow = window.open('./본인확인.html', "myWindow",
+                'width=' + _width + 'px,height=' + _height + 'px,left=' + _left + ',top=' + _top, "resizable=false",);
+        }
+    </script>
+</body>
+</html>

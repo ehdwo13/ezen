@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="all">li 한번에 추가</button>
+    <button type="button" id="one">li 하나씩 추가</button>
+    <button type="button" id="btn3">li 한번에 추가</button>
+    <button type="button" id="btn4">li 하나씩 추가</button>
+    <ul id="ul"></ul>
+    <hr>
+    <ol id="ol"></ol>
+    <hr>
+    <ul id="ul1"></ul>
+    <hr>
+    <ol id="ol1"></ol>
+    <hr>
+    <script>
+        const datas = ['HTML','CSS','JavaScript','SQL'];
+        const ul = document.getElementById('ul');
+        const ol = document.getElementById('ol');
+        const ul1 = document.getElementById('ul1');
+        const ol1 = document.getElementById('ol1');
+        let count = 0;
+        let index = 0;
+        //CreateElement : element를 생성
+        //appendChild : 다른 엘리먼트를 자식으로 추가
+        document.getElementById('btn3').addEventListener('click',()=>{
+            datas.forEach((e)=>{
+                let li = document.createElement('li'); // <li></li>
+                li.innerText = e;   //<li>${e}</li>
+                ul1.appendChild(li);    //ul의 자식으로 추가
+            })
+        })
+        document.getElementById('btn4').addEventListener('click',()=>{
+            if(index<datas.length){
+                let li1 = document.createElement('li')
+                li1.innerText = datas[index];
+                ol1.appendChild(li1);
+                index++;
+            }
+        })
+
+        document.getElementById('all').addEventListener('click', ()=>{
+            for(let a=0; a<datas.length; a++){
+                    ul.innerHTML += `<li>${datas[a]}</li>`;
+            }
+        })
+        document.getElementById('one').addEventListener('click', ()=>{
+            if(count==4){
+                count = 0;
+                ol.innerHTML = null;
+            }
+            count++;
+            ol.innerHTML += `<li>${datas[count-1]} </li>`
+        })
+        
+        
+    </script>
+</body>
+</html>

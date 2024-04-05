@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>변수나 상수에 할당할 수있는 값의 종류</h1>
+    <ul>
+        <li>
+            숫자 : Number => 정수,실수,Nan(not a Number : 숫자 아님)
+        </li>
+        <li>
+            문자 : String => " ",' ',` `으로 감싼 문자
+        </li>
+        <li>
+            boolean : true / false
+        </li>
+        <li>
+            객체 : Object : 한개 이상의 데이터가 특정 구조를 가지고 있는 형태
+            {키 : 값} {}: 아무것도 없는 사실도 1개의 객체로 취급
+        </li>
+        <li>
+            배열(array): [1,2,3,4] 형태의 집합
+            (java의 list와 비슷 순서와 길이(length)가 있음)
+        </li>
+        <li>
+            알 수 없는 값 : null => 인지가 안됨
+        </li>
+        <li>
+            미지정된 값 : undefined => 값이 할당되지 않음
+        </li>
+    </ul>
+    <script>
+        let num = 12345;
+        let str = 'string';
+        let bool = true;
+        let obj = { name: 'hong' };
+        let obj1 = new Object(); // 자바 스크립트에서 제공하는 내장 객체
+        let arr = [1, 2, 3, 'hong'];
+        let arr2 = new Array();
+        let undi = undefined;
+        let nu = null;
+        let undiz;
+
+        console.log(`num:${num}/${typeof num}`);
+        console.log(`str:${str}/${typeof str}`);
+        console.log(`bool:${bool}/${typeof bool}`);
+        console.log(`obj:${obj}/${typeof obj}`);
+        console.log(obj);
+        console.log(`obj1:${obj1}/${typeof obj1}`);
+        console.log(`arr:${arr}/${typeof arr}`);
+        console.log(arr);
+        console.log(`arr1:${arr2}/${typeof arr2}`);
+        // console.log(`undi:${undi}/${typeof undi}`);
+        console.log(`nu:${nu}/${typeof nu}`);
+        // console.log(`undiz:${undiz}/${typeof undiz}`);
+    </script>
+
+    <ol>
+        <li>
+            기본자료형: 값이 메모리의 주소값을 가르키는 곳에 직접할당이 되어있는 값
+            number, boolean, string(참조 자료형이지만 기본자료형과 같이 사용)
+        </li>
+        <li>
+            참조자료형: 값이 저장되어있는 주소를 할당
+            string, array, object, function, null, undifined
+        </li>
+        <li>
+            == 같다 (값만 비교) != (같지 않다)
+            === 같다 (값과 타입이 같은지 비교)
+            !== 같지 않다 (값과 타입이 같지않은지 비교)
+        </li>
+    </ol>
+    <script>
+        let num1 = 10;
+        let num2 = '10';
+
+        console.log(`num1:${num1} / ${typeof num1}`);
+        console.log(`num2:${num2} / ${typeof num2}`);
+
+        if (num1 === num2) {
+            console.log("true");
+        } else {
+            console.log("false");
+        }
+    </script>
+</body>
+
+</html>

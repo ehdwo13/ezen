@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        성적확인
+        이름 : 홍길동
+        국어 : 80
+        영어 : 90
+        수학 : 80
+        성적계산 버튼
+        ----------------
+        합계 : 00
+        평균 : 00
+    -->
+    <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름 : <input type="text" id="name"><br>
+            국어 : <input type="text" id="kor"><br>
+            영어 : <input type="text" id="eng"><br>
+            수학 : <input type="text" id="math"><br>
+            <button type="button" onclick="print()">성적계산</button>
+    </form>
+    <ol id="ol"></ol>
+    <script>
+        const ol = document.getElementById('ol');
+        function print(){
+            let userName = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+            let korVar = parseInt(kor);
+            let engVar = parseInt(eng);
+            let mathVar = parseInt(math);
+            let sum = korVar + engVar + mathVar ;
+            let avg = Math.round(sum / 3);  //정수로 반올림
+            //.toFixed(2) : 소수점 자리 표현
+            avg = (sum/3).toFixed(2);
+            ol.innerHTML=`<li> 이름 : ${userName}</li>`+`<li> 국어 : ${kor} 점</li>`+`<li> 영어 : ${eng} 점</li>`+`<li> 수학 : ${math} 점</li>`;
+            ol.innerHTML+= `<li> 합계 : ${sum} 점</li>` + `<li> 평균 : ${avg} 점</li>`;
+        }
+    </script>
+</body>
+</html>

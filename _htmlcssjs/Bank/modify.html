@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h2{
+            text-align: center;
+            font-weight: 690;
+            padding: 20px;
+            font-size: 32px;
+            margin-left:50px;
+        }
+        div{
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .input-title{
+            width: 600px;
+            height: 40px;
+            font-size: 17px;
+        }
+        .input-pw{
+            width: 600px;
+            height: 40px;
+            font-size: 17px;
+        }
+        .input-writer{
+            width: 600px;
+            height: 40px;
+            font-size: 17px;
+        }
+        .input-story{
+            width: 600px;
+            height: 200px;
+            display: flex;
+            font-size: 17px;
+        }
+        .wri{
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 370px;
+            background-color: rgb(142, 166, 197);
+            border-radius: 5px;
+            border: none;
+            color: white;
+        }
+        #box{
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            width: 800px;
+            margin-left: 200px;
+            font-size: 25px;
+            line-height: 50px;
+            border-radius: 10px;
+            color: blue;
+        }
+        #title{
+            width: 300px;
+            margin: auto;
+            height: 50px;
+            line-height: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">
+    <h2>게시글 수정</h2>
+</div>
+    <form id="modifyFrm">
+        <div id="box"> 제목<input class="input-title" type="text" name="subject" /></div>
+        <div id="box">작성자 <input class="input-writer" type="text" name="writer" /></div>
+        <div id="box">비밀번호 <input class="input-pw" type="text" name="password" /></div>
+        <div id="box">내용<textarea class="input-story" name="content"></textarea></div>
+        <input class="wri" type="submit" value="수정완료" />
+    </form>
+    <script>
+        const modifyFrm = document.querySelector("#modifyFrm");
+        const modifyFrmList = document.querySelectorAll("#modifyFrm > div");
+        const idx = location.search;
+        const index = location.search.split("=")[1];
+        const boardsObj = JSON.parse(localStorage.getItem("boards"));
+        const board = boardsObj[index];
+        for (let i = 0; i < modifyFrmList.length; i++) {
+            const element = modifyFrmList[i].childNodes[1];
+            const id = element.name;
+            element.value = board[id];
+        }
+        const isEmpty = (subject, writer, content) => {
+            if (subject.length === 0) throw new Error("제목을 입력해주세요");
+            if (writer.length === 0) throw new Error("작성자를 입력해주세요");
+            if (content.length === 0) throw new Error("내용을 입력해주세요");
+        };
+        const modifyHandler = (e) => {
+            e.preventDefault();
+            const subject = e.target.subject.value;
+            const writer = e.target.writer.value;
+            const content = e.target.content.value;
+            try {
+                isEmpty(subject, writer, content);
+                board.subject = subject;
+                board.writer = writer;
+                board.content = content;
+                const boardsStr = JSON.stringify(boardsObj);
+                localStorage.setItem("boards", boardsStr);
+                location.href = "/Bank/view.html" + idx;
+            } catch (e) {
+                alert(e.message);
+                console.error(e);
+            }
+        };
+        modifyFrm.addEventListener("submit", modifyHandler);
+    </script>
+</body>
+</html>

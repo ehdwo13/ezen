@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Black+Han+Sans&family=East+Sea+Dokdo&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @keyframes picture {
+            0% {
+                transform: translate(0%);
+            }
+
+            10% {
+                transform: rotate(0deg);
+            }
+
+            20% {
+                transform: rotate(10deg);
+            }
+
+            25% {
+                transform: rotate(-10deg);
+            }
+
+            30% {
+                transform: rotate(10deg);
+            }
+
+            35% {
+                transform: rotate(-10deg);
+            }
+
+            40% {
+                transform: rotate(10deg);
+            }
+
+            45% {
+                transform: rotate(-10deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            55% {
+                transform: rotate(-10deg);
+            }
+
+            60% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-600px);
+            }
+
+        }
+
+
+        .image0 {
+            animation: picture 5s infinite;
+        }
+
+        h1 {
+            font-family: "East Sea Dokdo", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        h3 {
+            font-family: "Black Han Sans", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        p {
+            font-family: "Bagel Fat One", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 5px;
+        }
+        body {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+            background-color: #48D1cc;
+        }
+    
+
+        .image1 {
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/초밥.jpg);
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            background-position: center center;
+        }
+
+        .image2 {
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/치킨.jpg);
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            background-position: center center;
+        }
+
+        .image3 {
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/족발.jpg);
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            background-position: center center;
+        }
+
+        .image4 {
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/돈까스.jpg);
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            background-position: center center;
+        }
+
+        .image5 {
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/피자.jpg);
+            background-size: cover;
+            border-radius: 10px 10px 0 0;
+            background-position: center center;
+        }
+
+        .menu {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .menu:hover{
+            transform: rotate(-5deg) skew(-1deg);
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 가로 300px -->
+    <header>
+        <div class="image0"><img src="../image/배달의 민족.jpg" alt="사진이 없어요"></div>
+        <h1>배달의 민족</h1>
+        <h3>넌 배달할 때가 제일 멋있어</h3>
+    </header>
+    <!-- 여기서 메뉴 -->
+    <div class="menu">
+        <div class="image1"></div>
+        <div>
+            <h3>맛있는 초밥</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!!</p>
+            <p><del>25,000원 </del>15,000원</p>
+            <p>바로결제</p>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image2"></div>
+        <div>
+            <h3>맛있는 치킨</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!!</p>
+            <p><del>25,000원 </del>15,000원</p>
+            <p>바로결제</p>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image3"></div>
+        <div>
+            <h3>맛있는 족발</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!!</p>
+            <p><del>25,000원 </del>15,000원</p>
+            <p>바로결제</p>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image4"></div>
+        <div>
+            <h3>맛있는 돈까스</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!!</p>
+            <p><del>25,000원 </del>15,000원</p>
+            <p>바로결제</p>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image5"></div>
+        <div>
+            <h3>맛있는 피자</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 착한 가격!!</p>
+            <p><del>25,000원 </del>15,000원</p>
+            <p>바로결제</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
