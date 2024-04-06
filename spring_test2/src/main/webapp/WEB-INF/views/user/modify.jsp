@@ -25,5 +25,8 @@
 		<a href="/user/remove?email=${authEmail }"><button type="button" class="btn btn-danger">DELETE</button></a>
 	</form>
 </div>
+<script type="text/javascript">
+	
+</script>
 
 <jsp:include page="../layout/footer.jsp" />

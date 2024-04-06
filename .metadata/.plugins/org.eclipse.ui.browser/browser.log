@@ -274,3 +274,19 @@
 5월 09, 2024 14:33:15.354 [16920:864:0509/143315.353:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 09, 2024 14:33:15.354 [16920:864:0509/143315.353:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 09, 2024 14:33:16.381 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 09, 2024 14:44:09.222 NEW SESSION
+5월 09, 2024 14:44:09.222 [5032:18028:0509/144409.221:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 14:44:09.223 [5032:18028:0509/144409.221:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 14:44:10.388 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 09, 2024 14:47:18.521 NEW SESSION
+5월 09, 2024 14:47:18.521 [18388:592:0509/144718.519:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 14:47:18.521 [18388:592:0509/144718.520:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 14:47:19.668 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 14:49:21.245 [11488:16684:0509/144921.244:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 14:49:21.245 [11488:16684:0509/144921.245:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 14:49:22.612 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 15:13:42.871 [18520:17772:0509/151342.871:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 15:13:42.872 [18520:17772:0509/151342.871:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 15:13:44.333 Created TensorFlow Lite XNNPACK delegate for CPU.

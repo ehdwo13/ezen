@@ -78,7 +78,7 @@ public class UserController {
 	public String modify(UserVO uvo, HttpServletRequest request, HttpServletResponse response) {
 		log.info("객체 로그 {}",uvo);
 		String pwd = uvo.getPwd();
-		if(pwd == null || pwd == "") {
+		if(pwd.isEmpty() || pwd.length() == 0) {
 			usv.updateUser(uvo);
 		}else {
 			uvo.setPwd(bcEncoder.encode(pwd));
@@ -91,6 +91,7 @@ public class UserController {
 	public String remove(@RequestParam("email")String email) {
 		log.info("email확인 {}",email);
 		usv.delete(email);
+		//principal 객체에 데이터 있음 principal.getName();
 		return "redirect:/user/logout";
 	}
 	@ResponseBody

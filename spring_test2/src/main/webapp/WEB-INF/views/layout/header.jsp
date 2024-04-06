@@ -22,9 +22,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/board/list">게시판 보기</a>
-        </li>
         <sec:authorize access="isAnonymous()">
         <li class="nav-item">
           <a class="nav-link" href="/user/register">회원가입</a>
@@ -40,6 +37,9 @@
         <sec:authentication property="principal.uvo.nickName" var="authNick"/>
         <sec:authentication property="principal.uvo.authList" var="auths"/>
         <sec:authentication property="principal.uvo.lastLogin" var="time"/>
+        <li class="nav-item">
+          <a class="nav-link" href="/board/list">게시판 보기</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/board/register">게시판 글쓰기</a>
         </li>
