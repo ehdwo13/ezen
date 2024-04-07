@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        table : 표를 나타내는 태그 (표 전체 박스)
+        tr : 행 (한 행을 의미)
+        th/td : 열 (한 칸을 의미)
+        th : 제목열 (가운데 정령 , 굵은 글씨)
+        td : 일반열 (왼쪽 정렬, 일반글씨)
+
+        -3행 4열
+        tr*3 td=>3*4 =12
+        css 에서 모양 색 바꿈
+        boarder : 테두리 두꼐
+        boardercolor : 테두리 색
+
+        colspan / rowspan 칸 병합
+        병합된 라인의 셀은 지워줘야 함
+    -->
+
+    <table border="1">
+        <tr>
+            <td width = 100px>첫째칸</td>
+            <td>둘째칸</td>
+            <td colspan="2">셋째칸</td>
+        </tr>
+        <tr>
+            <td>첫째칸</td>
+            <td>둘째칸</td>
+            <td>셋째칸</td>
+            <td rowspan="2">넷째칸</td>
+        </tr>
+        <tr>
+            <td>첫째칸</td>
+            <td>둘째칸</td>
+            <td>셋째칸</td>
+            
+        </tr>
+    </table>
+
+    <table border="1">
+        <caption>제목</caption>
+        <thead>
+            <tr>
+                <th>제목열1</th>
+                <th>제목열2</th>
+                <th>제목열3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>푸터1</td>
+                <td>푸터2</td>
+                <td>푸터3</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

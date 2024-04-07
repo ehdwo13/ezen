@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>오늘은?</h1>
+    <button type="button" onclick="date()">Today</button>
+    <h3 id="result"></h3>
+    <!-- 오늘날짜와 요일 출력 -->
+    <!-- 2024. 03. 19. (화) -->
+    <script>
+        function date(){
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth();
+            let printMonth = "";
+            if(true){
+                printMonth = String(month+1).padStart(2, '0');
+            }
+            let todayDate = date.getDate();
+            let day = date.getDay();
+            let printDay = "";
+            switch(day){
+                case 0 : printDay = "일"; break;
+                case 1 : printDay = "월"; break;
+                case 2 : printDay = "화"; break;
+                case 3 : printDay = "수"; break;
+                case 4 : printDay = "목"; break;
+                case 5 : printDay = "금"; break;
+                case 6 : printDay = "토"; break;
+                default : printDay = "error"; break;
+            }
+            document.getElementById("result").innerText = `${year}. ${printMonth}. ${todayDate}.(${printDay})`;
+        }
+    </script>
+</body>
+</html>

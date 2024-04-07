@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set을 이용한 로또 만들기</title>
+</head>
+<body>
+    <h1>
+        1~45까지 중복되지 않게 숫자 6개를 랜덤으로 추출 => 출력
+        set 객체를 이용하여 생성
+    </h1>
+    <button id="makeRan">랜덤번호 6자리 생성(출력)</button>
+    <h1 id="printLotto">로또번호출력</h1>
+    <button id="makeRanBonus">당첨번호 7자리(마지막번호는 보너스번호) 생성 (출력)</button>
+    <h1 id="winLotto">당첨번호출력</h1>
+    <button id="printRes">결과확인</button>
+    <h1 id="result"></h1>
+    <script>
+        const makeRan = document.getElementById('makeRan');
+        const makeRanBonus = document.getElementById('makeRanBonus');
+        const printRes = document.getElementById('printRes');
+        let myLotto = new Set();
+        let myLottoArr = new Array();
+        let comLotto = new Set();
+        let comLottoArr = new Array();
+        let count = 0;      //맞은 개수
+        let bonusNum = "";  //보너스넘버저장
+        let bonusCount = 0; //보너스넘버맞았는지 체크
+        //랜덤수 생성
+        function ran(){
+            return Math.floor(Math.random()*45)+1;
+        }
+        //내 랜덤번호 생성
+        makeRan.addEventListener('click', ()=>{
+            document.getElementById('printLotto').innerText = null;   //누를때 마다 번호뽑기
+            myLottoArr.splice(0,6);
+            while(myLotto.size<6){
+                myLotto.add(ran());
+            }
+            let str = "";
+            //array 로 push
+            myLotto.values().forEach(function (v){
+                myLottoArr.push(v);
+            })
+            myLotto.clear();
+            //출력 구문
+            myLottoArr.forEach(function (v,i){
+                if(i==myLottoArr.length-1){
+                    str += `${v}`;
+                }else{
+                    str += `${v}, `;
+                }
+            })
+            document.getElementById('printLotto').innerText = str;
+        })
+        //당첨번호 생성
+        makeRanBonus.addEventListener('click', ()=>{
+            document.getElementById('winLotto').innerText = null; 
+            comLottoArr.splice(0,7);  
+            while(comLotto.size<7){
+                comLotto.add(ran());
+            }
+            comLotto.values().forEach(function (v){
+                comLottoArr.push(v);
+            })
+            comLotto.clear();
+            let str = "";
+            comLottoArr.forEach(function (v,i){
+                if(i==comLottoArr.length-1){
+                    str += `[${v}]`;
+                    bonusNum = v;
+                }else{
+                    str += `${v}, `;
+                }
+            })
+            document.getElementById('winLotto').innerText = str;
+        })
+        //내번호와 당첨번호 비교
+        printRes.addEventListener('click', ()=>{
+            document.getElementById('result').innerText = null;
+            myLottoArr.forEach(function (v){
+                comLottoArr.forEach(function (cv){
+                    if(v==cv){
+                        count++;
+                    }
+                    if(v==bonusNum){
+                        bonusCount = 1;
+                    }
+                })
+            })
+            //includes() : 하나의 문자열이 다른 문자열에 있는지 확인 true/false 리턴
+            if(count==6){
+                str = `1등 당첨!!`;
+            }else if(count==5 && bonusCount==1){
+                str = `2등 당첨!!`;
+            }else if(count==5){
+                str = `3등 당첨!!`;
+            }else if(count==4){
+                str = `4등 당첨!!`;
+            }else if(count==3){
+                str = `5등 당첨!!`;
+            }else {
+                str = `꽝~!!`;
+            }
+        document.getElementById('result').innerHTML = `(${count}) ${str}`;
+        count = 0;          //매번당첨결과 보기위한 초기화
+        bonusCount = 0;
+        })
+    </script>
+</body>
+</html>

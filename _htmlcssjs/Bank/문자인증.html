@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 20px;
+            position: relative;
+            width: 500px;
+            height: 600px;
+        }
+        .name, .nameInput, .rNum, .rNumInput, .phone, .phoneInput, .ranNum{
+            font-size: 18px;
+            width:  100%;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #name, #rNum1, #rNum2, #phone{
+            padding: 13px;
+        }
+        
+        #rNum2{
+            width: 13px;
+        }
+        #result{
+            background-color: black;
+            color: white;
+            padding-top: 5px;
+            padding-left: 12px;
+            margin: 0;
+            width: 25%;
+            height: 45.5px;
+            border: 1px solid black;
+            float: left;
+        }
+        #check{
+            margin-left: 20px;
+            padding: 13px;
+        }
+        .footbox{
+            padding-top: 40px;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .fbtn{
+            width: 47%;
+        }
+    </style>
+</head>
+<body>
+    <div class="name">
+        이름 
+    </div>
+    <div class="nameInput">
+        <input type="text" placeholder="성명입력" id="name"> 
+    </div>
+    <div class="rNum">
+        주민등록번호 7자리 (생년월일/성별)
+    </div>
+    <div class="rNumInput">
+        <input type="password" id="rNum1" placeholder="● ● ● ● ● ●" maxlength="6"> ㅡ <input type="text" placeholder="●" id="rNum2" maxlength="1"> ● ● ● ● ● ●
+    </div>
+    <div class="phone">
+        휴대폰번호
+    </div>
+    <div class="phoneInput">
+        <input type="text" placeholder="숫자만 입력" id="phone" maxlength="11">
+    </div>
+    <div class="ranNum">
+        보안문자
+    </div>
+    <div class="ranNum">
+        <h1 id="result"></h1><input type="text" id="check">
+    </div>
+    <div class="footbox">
+        <button type="button" class="fbtn" id="cancel">취소</button>
+        <button type="button" class="fbtn" id="submit" >확인</button>
+    </div>
+    <script>
+        let ran = Math.floor(Math.random()*99999)+10000;
+        let result = document.getElementById('result');
+        let check = document.getElementById('check');
+        let name = document.getElementById('name');
+        let rNum1 = document.getElementById('rNum1');
+        let rNum2 = document.getElementById('rNum2');
+        let phone = document.getElementById('phone');
+        let cancelBtn = document.getElementById('cancel'); 
+        let submitBtn = document.getElementById('submit');
+        let user = {}; // 회원가입하는 user의 정보 객체
+        document.addEventListener('DOMContentLoaded', ()=>{
+            result.innerText = ran;
+            // submitBtn 클릭 이벤트 리스너 추가
+            submitBtn.addEventListener('click',()=>{
+                // 이름 입력 확인
+                if(name.value === ''){
+                    alert('이름을 입력하세요.');
+                    return; // 빈 값이면 함수 종료
+                }
+                user.name = name.value;
+                // 주민등록번호 첫 번째 칸 입력 확인
+                if(rNum1.value === ''){
+                    alert('주민등록번호를 입력하세요.');
+                    return;
+                }
+                user.birth = rNum1.value;
+                // 주민등록번호 두 번째 칸 입력 확인 및 성별 설정
+                if(rNum2.value === ''){
+                    alert('주민등록번호를 입력하세요.');
+                    return;
+                }
+                let gender = '';
+                if(rNum2.value === '2' || rNum2.value === '4'){
+                    gender = '여';
+                }else{
+                    gender = '남';
+                }
+                user.gender = gender;
+                // 휴대폰번호 입력 확인
+                if(phone.value === ''){
+                    alert('휴대폰번호를 입력하세요.');
+                    return;
+                }
+                user.phoneNum = phone.value;
+                // 보안문자 입력 확인
+                if(check.value !== ran.toString()){
+                    alert('보안문자를 올바르게 입력하세요.');
+                    return;
+                }
+                // 모든 정보가 정확히 입력되었을 때 실행될 코드
+                console.log(user);
+                alert((`${user.name}님 회원가입을 환영합니다!`));
+                window.opener.close();
+            
+            });
+            // 취소 버튼 클릭 시 창 닫기
+            cancelBtn.addEventListener('click', ()=>{
+                window.close();
+            });
+            function targetClose(id){
+            }
+        });
+    </script>
+</body>
+</html>

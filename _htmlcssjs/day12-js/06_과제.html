@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        이름 : <input type="text" id="name"><br>
+        주민번호 : <input type="text" id="rNum"><br>
+        <button type="button" onclick="print()">확인</button>
+    </form>
+    <h3 id="h3"></h3>
+    <script>
+        function print(){
+            let name = document.getElementById('name').value;
+            let rNum = document.getElementById('rNum').value;
+            let birth = rNum.slice(0, rNum.indexOf("-"));
+            let countAge = rNum.slice(0, 2);    //년생 2자리
+            let date = new Date();
+            let changeDate = date.getFullYear().toString().slice(-2);   //올해년도 2자리
+            let age = '';
+            let gender = rNum.charAt(rNum.indexOf("-")+1);
+            let printGender = '';
+            ((gender == 1 || gender == 2) ? 
+            age = 100-Number(countAge)+Number(changeDate) : age = Number(changeDate)-Number(countAge));
+            ((gender%2==1) ? printGender="남" : printGender="여");
+            document.getElementById('h3').innerText = `이름 : ${name}, 생년월일 : ${birth}, 나이 : ${age}, 성별 : ${printGender}`;
+        }
+    </script>
+</body>
+</html>

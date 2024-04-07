@@ -1,0 +1,546 @@
+.body {
+    color: black;
+}
+
+/* 모든 div의 전체 div */
+.wrap {
+    width: 100%;
+    min-width: 1200px;
+}
+
+/* content들이 들어가는 div */
+.inner {
+    width: 1170px;
+    margin: auto;
+    box-sizing: border-box;
+    /* background-color: antiquewhite; */
+}
+
+/* header */
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+
+}
+
+header>.inner {
+    height: 115px;
+    position: relative;
+    /* background-color: aqua; */
+}
+
+header>.inner>h1 {
+    position: absolute;
+    top: 15px;
+    left: 0;
+}
+
+header>.inner>.top-menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header>.inner>.top-menu>li {
+    padding: 10px 20px;
+    position: relative;
+}
+
+header>.inner>nav>ul {
+    display: flex;
+    justify-content: center;
+    height: 79px;
+}
+
+header>.inner>nav>ul>li {
+    margin: 0 40px;
+}
+
+header>.inner>nav>ul>li>a {
+    font-size: large;
+    font-weight: 700;
+    line-height: 79px;
+}
+
+header>.inner>nav>ul>li>a:hover {
+    color: crimson;
+}
+
+/* section 슬라이드 그림 */
+section {
+    display: flex;
+    width: 100%;
+    height: 725px;
+    /* background-color: #0e0e00; */
+    background-image: url(img/슬라이드\ 사진.jpg);
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+section>ul {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* time에 대한 before */
+.before::before {
+    content: " ";
+    background: #797979;
+    width: 1px;
+    height: 13px;
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    margin-top: -6.5px;
+}
+
+/* 아이스링크의 before */
+.before1::before {
+    content: " ";
+    background: #797979;
+    width: 1px;
+    height: 13px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -6.5px;
+}
+
+
+main>.con-box {
+    width: 100%;
+}
+
+main>.con-box>.inner {
+    padding: 120px 0;
+}
+
+/* main */
+/* main>.con1 {
+    background-color: blueviolet;
+} */
+
+main>.con1>.inner {
+    height: 100px;
+    padding: 10px;
+    /* background-color: #26ffe2; */
+}
+
+main>.con1>.inner>a {
+    text-align: center;
+    position: relative;
+}
+
+main>.con1>.inner>a>img {
+    position: absolute;
+    left: 220px;
+    top: 20px;
+}
+
+main>.con1>.inner>a>.time {
+    display: flex;
+    justify-content: center;
+    line-height: 82px;
+}
+
+main>.con1>.inner>a>.time>.ti {
+    display: flex;
+    justify-content: center;
+    /* 시계아이콘과의 여백을 위해 */
+    padding-right: 30px;
+    font-size: 20px;
+    position: relative;
+}
+
+main>.con1>.inner>a>.time>p {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+main>.con1>.inner>a>.time>.ti>p {
+    padding-right: 10px;
+}
+
+/* con2 */
+
+main>.con2 {
+    /* background-color: cadetblue; */
+    background-image: url(img/mainCon1_bg.jpg);
+    background-size: cover;
+    background-position: center;
+
+}
+
+main>.con2>.inner {
+    height: 890px;
+    /* background-color: chocolate; */
+    text-align: center;
+}
+
+main>.con2>.inner>h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: white;
+}
+
+main>.con2>.inner>h3 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    color: white;
+}
+
+main>.con2>.inner>ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+main>.con2>.inner>ul>li .img {
+    width: 574px;
+    height: 420px;
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con2>.inner>ul>li .img1 {
+    background-image: url(img/mainCon1_img1.jpg);
+}
+
+main>.con2>.inner>ul>li .img2 {
+    background-image: url(img/mainCon1_img2.jpg);
+}
+
+main>.con2>.inner>ul>li p {
+    height: 82px;
+    line-height: 82px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+main>.con2>.inner>ul>li {
+    border: 3px solid rgba(0, 0, 0, 0);
+}
+
+main>.con2>.inner>ul>li:hover {
+    border: 3px solid white;
+}
+
+/* con3 */
+
+main>.con3 {
+    background-color: cadetblue;
+    background-image: url(img/mainCon2_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con3>.inner {
+    height: 715px;
+    /* background-color: darkgreen; */
+    text-align: center;
+}
+
+main>.con3>.inner>h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+main>.con3>.inner>p {
+    font-size: 1.5em;
+    margin-bottom: 50px;
+}
+
+main>.con3>.inner>ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+main>.con3>.inner>ul .img {
+    width: 375px;
+    height: 246px;
+}
+
+main>.con3>.inner>ul .textarea {
+    width: 375px;
+    height: 77px;
+}
+
+main>.con3>.inner>ul .textarea p {
+    line-height: 77px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: white;
+}
+
+main>.con3>.inner>ul>li:hover {
+    box-shadow: 10px 10px 20px #6d6868;
+}
+
+main>.con3>.inner>ul>li:hover .textarea p {
+    background-color: #0c5f0c;
+    color: white;
+}
+
+/* con4 */
+
+/* main>.con4 {
+    background-color: darkkhaki;
+} */
+
+main>.con4>.inner {
+    height: 800px;
+    /* background-color: hotpink; */
+    text-align: center;
+}
+
+main>.con4>.inner>h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+
+}
+
+main>.con4>.inner>p {
+    font-size: 1em;
+    margin-bottom: 50px;
+}
+
+/* left */
+
+main>.con4>.inner>.news>.left {
+    float: left;
+    border: 1px solid gray;
+    width: 492px;
+    padding: 40px;
+    text-align: left;
+    position: relative;
+}
+
+main>.con4>.inner>.news>.left>h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+main>.con4>.inner>.news>.left>a {
+    border-bottom: 1px solid gray;
+    display: block;
+    padding-bottom: 20px;
+}
+
+main>.con4>.inner>.news>.left>a>p {
+    font-size: 20px;
+    font-weight: 500;
+    /* text 넘어가는 데이터 ... 처리 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 텍스트 넘어가는거 두줄 처리 안함 */
+    text-wrap: nowrap;
+    margin-bottom: 60px;
+}
+
+main>.con4>.inner>.news>.left>a>span {
+    color: gray;
+}
+
+main>.con4>.inner>.news>.left>ul {
+    margin-top: 27px;
+}
+
+main>.con4>.inner>.news>.left>ul>li {
+    margin: 27px 0 26px 0;
+}
+
+main>.con4>.inner>.news>.left>ul>li>a {
+    display: block;
+    float: left;
+    width: 405px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+main>.con4>.inner>.news>.left>ul>li>span {
+    color: gray;
+}
+
+main>.con4>.inner>.news>.left>.more {
+    width: 20px;
+    background-image: url(img/newsMoreBt_icon.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    border: none;
+}
+
+main>.con4>.inner>.news>.left>.more::before {
+    /* before 에서 포지션 앱솔 하면 
+    자기자신이 기준 (.more가 기준) */
+    position: absolute;
+    content: "더보기";
+    top: 0;
+    right: 25px;
+    width: 50px;
+}
+
+/* right */
+
+main>.con4>.inner>.news>.right {
+    float: right;
+    width: 574px;
+    margin-left: 22px;
+    /* background-color: bisque; */
+}
+
+main>.con4>.inner>.news>.right>.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+main>.con4>.inner>.news>.right>.top>.r1 {
+    background-image: url(img/mainCon3_util1_img1.png);
+    background-size: auto;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    width: 276px;
+    height: 188px;
+    padding: 128px 40px 40px 40px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+main>.con4>.inner>.news>.right>.top>.r2 {
+    background-image: url(img/mainCon3_util1_img2.png);
+    background-size: auto;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    width: 276px;
+    height: 188px;
+    padding: 128px 40px 40px 40px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+main>.con4>.inner>.news>.right>.bt {
+    background-image: url(img/mainCon3_banner.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 574px;
+    height: 192px;
+    margin-top: 18px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+main>.con4>.inner>.news>.right>.bt>p {
+    margin: none;
+    font-size: 30px;
+    color: white;
+    text-align: left;
+}
+
+main>.con4>.inner>.news>.right>.bt>.more {
+    font-size: 17px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+main>.con4>.inner>.news>.right>.bt>.more>a {
+    color: white;
+}
+
+main>.con4>.inner>.news>.right>.bt>.more>a::after {
+    content: url(img/mainCon3_banner_icon.png);
+    margin-left: 10px;
+}
+
+main {
+    position: relative;
+}
+
+main>.top {
+    background-image: url(img/top_btn.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    bottom: -10px;
+    right: 30px;
+}
+
+/* footer */
+
+footer {
+    /* background-color: brown; */
+    border-top: 1px solid gray;
+
+}
+
+footer>.inner {
+    height: 320px;
+    padding: 50px 0;
+    /* background-color: cyan; */
+}
+
+footer>.inner>ul {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid gray;
+}
+
+footer>.inner>ul>li {
+    padding: 10px 20px 30px;
+}
+
+.red {
+    color: red;
+}
+
+footer>.inner>.footerBt {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer>.inner>.footerBt .t {
+    margin: 10px 0;
+}
+
+footer>.inner>.footerBt .t>span {
+    padding: 10px 20px;
+    position: relative;
+    color: gray;
+}
+
+footer>.inner>.footerBt .c {
+    margin: 30px 10px;
+    padding-left: 10px;
+    font-size: small;
+}
+
+footer>.inner>.footerBt>.right>select {
+    width: 210px;
+    height: 45px;
+    padding-left: 20px;
+    border: 1px solid white;
+    appearance: none;
+    background-image: url(img/sel_icon.png);
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+}

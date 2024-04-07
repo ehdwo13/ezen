@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: relative;
+            width: 500px;
+            height: 600px;
+        }
+        .btnbox{    
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%,-20%);
+            width: 400px;
+            height: 300px;
+            box-sizing: border-box;
+            margin: auto 20px;
+        }
+        .box1, .box2, .box3, .box4  {
+            border: 1px solid rgb(197, 197, 197);
+            margin: 5px;
+            outline: none;
+            width: 150px;
+            height: 150px;
+            float: left;
+            border-radius: 100px;
+        }
+        .box1{
+            background-image: url(./image/skt.png);
+            background-position-y:center;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
+        }
+        .box2{
+            background-image: url(./image/kt.png);
+            background-position-y:center;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
+        }
+        .box3{
+            background-image: url(./image/uplus.png);
+            background-position-y:center;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
+        }
+        .box4{
+            background-image: url(./image/알뜰폰.png);
+            background-position-y:center;
+            background-position-x: center;
+            background-repeat: no-repeat;
+            background-size: 80%;
+        }
+        .box1, .box2, .box3, .box4:hover{
+            cursor: pointer;
+        }
+        .box::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .checkbox{
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%,-70%);
+            width: 450px;
+            margin: 30px auto;
+            box-sizing: border-box;
+        }
+        .start{
+            width: 100%;
+            height: 50px;
+            margin: 5px auto;
+        }
+        .footbox{
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%,-90%);
+            width: 450px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="btnbox">
+        <button type="button" class="box1" id="skt"></button>
+        <button type="button" class="box2" id="kt"></button>
+        <button type="button" class="box3" id="lg"></button>
+        <button type="button" class="box4" id="at"></button>
+    </div>
+    <div class="checkbox">
+        <input type="checkbox" class="" id="okAll">전체동의 <br>
+        <input type="checkbox" class="" id="ok1">개인정보이용동의
+        <input type="checkbox" class="" id="ok2">고유식별정보처리동의 <br>
+        <input type="checkbox" class="" id="ok3">서비스이용약관동의
+        <input type="checkbox" class="" id="ok4">통신사이용약관동의 <br>
+    </div>
+    <div class="footbox">
+        <button type="button" class="start" id="footbtn1" disabled="true">PASS로 인증하기</button>
+        <button type="button" class="start" id="footbtn2" disabled="true">문자(SMS)로 인증하기</button>
+    </div>
+    <script>
+        let skt = document.getElementById('skt');
+        let kt = document.getElementById('kt');
+        let lg = document.getElementById('lg');
+        let at = document.getElementById('at');
+        let okAll = document.getElementById('okAll');
+        let ok1 = document.getElementById('ok1');
+        let ok2 = document.getElementById('ok2');
+        let ok3 = document.getElementById('ok3');
+        let ok4 = document.getElementById('ok4');
+        let footbtn1 = document.getElementById('footbtn1');
+        let footbtn2 = document.getElementById('footbtn2');
+        // 버튼 박스의 버튼에 클릭 이벤트 추가
+        let btns = document.querySelectorAll('.btnbox button');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btns.forEach(otherBtn => {
+                    if (otherBtn !== btn) {
+                        otherBtn.style.borderColor = "rgb(197, 197, 197)";
+                    }
+                });
+                btn.style.border = "3px solid rgb(110, 43, 226)";
+                // btn.style.borderColor += "rgb(110, 43, 226)";
+            });
+        });
+        function checkAllChecked() {
+            if (ok1.checked && ok2.checked && ok3.checked && ok4.checked) {
+                console.log("모든 항목이 체크되었습니다.");
+                footbtn1.disabled = false;
+                footbtn2.disabled = false;
+            } else {
+                footbtn1.disabled = true;
+                footbtn2.disabled = true;
+            }
+        }
+        okAll.addEventListener('change', function () {
+            ok1.checked = okAll.checked;
+            ok2.checked = okAll.checked;
+            ok3.checked = okAll.checked;
+            ok4.checked = okAll.checked;
+            checkAllChecked();
+        });
+        ok1.addEventListener('change', checkAllChecked);
+        ok2.addEventListener('change', checkAllChecked);
+        ok3.addEventListener('change', checkAllChecked);
+        ok4.addEventListener('change', checkAllChecked);
+        footbtn1.addEventListener('click', ()=>{
+            alert('PASS 어플을 설치하셔야 합니다. (미기능 구현)');
+        })
+        let myWindow;
+        function openWindow(){
+            myWindow = window.open('./문자인증.html',"myWindow","width=520, height=600");
+        }
+        footbtn2.addEventListener('click', ()=>{
+            openWindow();
+        });
+    </script>
+</body>
+</html>

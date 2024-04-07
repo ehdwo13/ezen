@@ -1,0 +1,6 @@
+---단어장---
+banana:바나나
+eye:눈
+apple:사과
+dad:아빠
+carrot:당근

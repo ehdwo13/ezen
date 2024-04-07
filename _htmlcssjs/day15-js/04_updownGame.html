@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>up down game</h1>
+    <button type="button" onclick="makeRan()">랜덤 숫자 생성 버튼</button>
+    <button type="button" id="re">다시시도</button>
+    <h3 id="print"></h3>
+    <input type="number" id="inputNum" max="99" min="0">
+    <button type="button" id ="result">정답!!</button>
+    <h6 id="list"></h6> 
+    <h3 id="resultPrint"></h3>
+    <script>
+        let count = 0;
+        let comNum = 0;
+        let myNum = 0;
+        let str = "";
+        document.getElementById('re').addEventListener('click', ()=>{
+            window.location.reload(); //새로고침
+        })
+        //랜덤수 생성 함수
+        function ranNum(){
+            return Math.floor(Math.random()*99)+1;
+        }
+        //버튼 클릭시 ranNum함수값을 comNum에 저장
+        function makeRan(){
+            comNum = ranNum();
+            document.getElementById('print').innerHTML=`컴퓨터가 랜덤수(1~99)를 생성했습니다. `;
+            console.log(comNum);// 컴퓨터랜덤값체크용
+        }
+        //정답맞추기
+        document.getElementById('result').addEventListener('click', ()=>{
+            myNum = document.getElementById('inputNum').value;
+            if(comNum > myNum){
+                count++;
+                str = `up`;
+            }else if(comNum < myNum){
+                count++;
+                str = `down`;
+            }else{
+                str = `정답입니다. 컴퓨터 숫자는 ${comNum}였습니다. `;
+                count++;
+            }
+            document.getElementById('list').innerHTML += `내가 입력한 숫자 : ${myNum}<br>`
+            document.getElementById('resultPrint').innerHTML = `시도횟수 ${count} , ${str}`;
+        })
+    </script>
+</body>
+</html>

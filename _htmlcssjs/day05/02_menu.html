@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .round{
+            width: 100%;
+        }
+        .menu-box{
+            width: 200px;
+            /* background-color: red; */
+            float: left;
+        }
+        .menu{
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+            color: black;
+            border-bottom: none;
+        }
+        .menu:nth-last-child(1){
+            border: 1px solid black;
+        }
+        .menu:hover{
+            background-color: beige;
+            color: blue;
+        }
+        .img-box{
+            width: calc(100% - 210px);
+            height: 700px;
+            background-color: beige;
+            float: right;
+            background-image: url(../image/home.jpg);
+            background-repeat: none;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="round">
+        <div class="menu-box">
+            <a href="" class="menu">menu1</a>
+            <a href="" class="menu">menu2</a>
+            <a href="" class="menu">menu3</a>
+            <a href="" class="menu">menu4</a>
+        </div>
+        <div class="img-box"></div>
+    </div>
+
+
+</body>
+
+</html>

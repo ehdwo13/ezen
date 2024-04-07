@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+        p {
+            position: absolute;
+            left: 75%;
+            top: 30px;
+        }
+        .inner {
+            width: 1170px;
+            height: 100px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+        header h1 {
+            padding-left: 40px;
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            margin-left: 50px;
+        }
+        header a {
+            text-decoration: none;
+            color: black;
+        }
+        header>.inner>.top-menu {
+            display: flex;
+            justify-content: flex-end;
+        }
+        header>.inner>.top-menu>li {
+            padding: 10px 20px;
+            position: relative;
+            list-style: none;
+            top: 20px;
+        }
+        header .inner .menu .con:nth-of-type(1){
+            margin-top: 150px;
+        }
+        header .inner .menu .con {
+            width: 100%;
+            height: 30px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 30px;
+            padding-left: 20px;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+        header .inner .menu .con:hover {
+            font-weight: 700;
+            color: aliceblue;
+            text-shadow: 1px 2px 3px blue;
+        }
+        section {
+            background: linear-gradient(45deg, rgba(103, 103, 103, 0.2), rgba(38, 38, 38, 0.6)), url("./image/company.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 700px;
+            position: relative;
+        }
+        section h6{
+            position: absolute;
+            color: white;
+            top: 35%;
+            left: 100px;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            animation: scale 1s 1 forwards;
+            padding-right: 20px;
+        }
+        footer {
+            background-color: rgb(36, 97, 251);
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 1000px;
+            max-width: 0;
+            transition: 0.5s ease;
+            z-index: 1;
+            background-color: #eeeeee;
+            opacity: 0.5;
+        }
+        .burger-icon {
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 50px;
+            right: 20px;
+            user-select: none;
+            width: auto;
+            margin: 0;
+        }
+        .burger-icon .burger-sticks {
+            background: #333;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 18px;
+        }
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+            background: #333;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+        .burger-icon .burger-sticks:before {
+            top: 5px;
+        }
+        .burger-icon .burger-sticks:after {
+            top: -5px;
+        }
+        .burger-check {
+            display: none;
+        }
+        .burger-check:checked~.menu {
+            max-width: 200px;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks {
+            background: transparent;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+            transform: rotate(-45deg);
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+            transform: rotate(45deg);
+        }
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+            top: 0;
+        }
+        #logo {
+            position: absolute;
+            left: 10px;
+            top: -20px;
+        }
+        #logoutBtn {
+            position: absolute;
+            top: 10px;
+            left: -200px;
+        }
+        #loginBtn {
+            position: absolute;
+            right: 100px
+        }
+        #joinBtn {
+            position: absolute;
+            right: 50px;
+        }
+        p{
+            position: absolute;
+            top: 30px;
+            left: 800px;
+            
+        }
+        @keyframes scale {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes smokeAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(30);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="inner">
+                <h1>
+                    <a href=""><img src="./image/logo.png" alt="" width="150px" height="85px" id="logo"></a>
+                </h1>
+                <ul class="top-menu">
+                    <!-- 해당 엘리먼츠를 클릭하면 스크립트에 적힌 링크로 이동 될 수 있어야 함
+                        이 페이지가 부모 페이지, 이동되는 페이지는 자식 페이지로 해서 데이터 교류가 될 수 있게 -->
+                    <li><a href="" class="loginCheck" id="loginBtn" onclick="insertPopup()">LOGIN</a></li>
+                    <li><a href="" class="loginCheck" id="joinBtn" onclick="insertPopup2()">JOIN</a></li>
+                    <li><a href="" class="logout" id="logoutBtn" onclick="logout()">LOGOUT</a></li>
+                </ul>
+                <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon"
+                    for="burger-check"><span class="burger-sticks"></span></label>
+                <div class="menu">
+                    <div style="width: 500px;">
+                        <div class="con">
+                            <a href="./회사소개.html">
+                                회사소개
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./멤버쉽.html">
+                                멤버쉽
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./환율.html">
+                                환율
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./주식.html">
+                                주식
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./대출.html">
+                                대출
+                            </a>
+                        </div>
+                        <div class="con" id="hiddenMenu">
+                            <a href="./계좌.html">
+                                송금
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="full-landing-image">
+            <!-- 스크롤에 반응해서 등장하는 event로 코드 짜기 -->
+            <h6>
+                쉬운 자산 관리의 시작 <br>
+                Easy Bank
+            </h6>
+        </section>
+        <footer>
+        </footer>
+    </div>
+    <script>
+        //Join은 html의 join버튼, login은 html의 login버튼을 통해 이동될 주소
+        function insertPopup() {
+            window.name = "BankMain";
+            window.open(`./로그인.html`, "join");
+        }
+        function insertPopup2() {
+            window.name = "BankMain";
+            window.open(`./회원가입.html`, "join");
+        }
+        // 스크롤 이벤트 발생 시 섹션 등장하는 함수
+        window.addEventListener('scroll', function () {
+            let section = document.querySelector('section');
+            let sectionPosition = section.getBoundingClientRect().top;
+            let screenPosition = window.innerHeight;
+        // 스크롤이 섹션의 top에 닿았을 때
+        if (sectionPosition < screenPosition) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+        });
+        //로그인 로그아웃
+        document.getElementById('logoutBtn').style.visibility = 'hidden';
+        document.getElementById('hiddenMenu').style.visibility = 'hidden';
+        document.addEventListener("DOMContentLoaded", () => {
+            if (sessionStorage.login != null) {
+                let hello = document.createElement('p');
+                hello.innerText = `${sessionStorage.getItem("login")} 님 환영합니다!`;
+                let topMenu = document.querySelector('.top-menu');
+                topMenu.appendChild(hello);
+                let loginCheck = document.querySelector('.loginCheck');
+                loginCheck.innerHTML = "";
+                let joinBtn = document.getElementById('joinBtn');
+                joinBtn.innerHTML = "";
+                document.getElementById('logoutBtn').style.visibility = 'visible';
+                document.getElementById('hiddenMenu').style.visibility = 'visible';
+            }
+        });
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            sessionStorage.clear();
+        })
+        $(".full-landing-image").ripples({
+            resolution: 512, // 렌더링 값이 클수록 잔물결 효과가 느리게 전파
+            perturbance: 0 // 잔물경 굴절 강도. 0은 굴절 없음
+        });
+        function createDB(){
+            const request = indexedDB.open("stockDB");
+            //mrktTotAmt 시가총액 vs 대비 fltRt 등락률 itmsNm 종목명 clpr 종가 srtnCd 종목코드
+            request.onerror = function (event) {
+                console.log("error occurred");
+                console.log(event);
+            };
+            request.onupgradeneeded = function () {
+                const db = request.result;
+                const store = db.createObjectStore("id", { keyPath: "id" });
+                store.createIndex("itmsNm", "itmsNm", { unique: false });
+                store.createIndex("fltRt", "fltRt", { unique: false });
+                store.createIndex("vs", "vs", { unique : false });
+                store.createIndex("clpr", "clpr", { unique : false });
+                store.createIndex("mrktTotAmt" , "mrktTotAmt", { unique : false } )
+            };
+        }
+        createDB();
+    </script>
+</body>
+</html>
