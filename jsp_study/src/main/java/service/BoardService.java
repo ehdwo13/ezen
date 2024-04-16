@@ -10,11 +10,10 @@ public interface BoardService {
 
 	List<BoardVO> getList();
 
-	BoardVO getDetail(int bno);
+	BoardVO detail(int bno);
 
 	int update(BoardVO bvo);
 
 	int delete(int bno);
-
 
 }
