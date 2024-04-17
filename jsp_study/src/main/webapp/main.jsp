@@ -25,6 +25,7 @@
 	<a href="/brd/myList"><button>내가 작성한 글 리스트</button></a>
 	<a href="/mem/detail"><button>회원정보</button></a>
 	<a href="/brd/list"><button>게시판</button></a>
+	<a href="/pro/main"><button>쇼핑몰</button></a>
 	<a href="/mem/logout"><button>로그아웃</button></a>
 </body>
 </html>
