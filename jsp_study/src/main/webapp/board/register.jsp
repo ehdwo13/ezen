@@ -20,6 +20,7 @@
 <body>
 	<h1>글쓰기</h1>
 	<form action="/brd/insert" method="post">
+		<input type="hidden" name="from" value="${param.a }">
 		제목 : <input type="text" name="title"><br> 
 		작성자 : <input type="text" name="writer" value="${ses.id }" readonly="readonly"><br> 
 		내용 : <textarea rows="10" cols="30" name="content"></textarea><br>

@@ -17,3 +17,26 @@ content text,
 regdate datetime default now(),
 moddate datetime default now(),
 primary key(bno));
+
+--2024/04/17
+create table product(
+pnum int auto_increment,
+category varchar(50) not null,
+name varchar(100) not null,
+price int default 0,
+total_amount int default 100,
+sale_amount int default 0,
+regdate datetime default now(),
+primary key(pnum));
+
+create table buy(
+bnum int auto_increment,
+customer varchar(50),
+product_name varchar(100),
+price int default 0,
+amount int default 0,
+buydate datetime default now(),
+primary key(bnum));
+
+alter table buy add foreign key(bnum) references product(pnum);
+alter table buy add foreign key(customer) references member(id);

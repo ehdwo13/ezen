@@ -35,7 +35,6 @@ public class MemberController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/")+1);
-		log.info(path);
 		switch(path){
 			case "join" : 
 				try {

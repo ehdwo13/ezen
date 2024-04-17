@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +55,13 @@ public class BoardController extends HttpServlet {
 					String content = request.getParameter("content");
 					BoardVO bvo = new BoardVO(title, writer, content);
 					int isOk = bsv.register(bvo);
+					String fromPath = request.getParameter("from");
 					if(isOk > 0) {
-						destPage = "list";
+						if(Objects.equals(fromPath, "my")) {
+							destPage = "myList";
+						}else {
+							destPage = "list";
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -101,13 +108,23 @@ public class BoardController extends HttpServlet {
 					int bno = Integer.parseInt(request.getParameter("bno"));
 					int isOk = bsv.delete(bno);
 					if(isOk > 0) {
-						destPage = "list";
-						request.setAttribute("msg_delete", -1);
+							destPage = "list";
+							request.setAttribute("msg_delete", -1);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+				break;
+			case "myList" :
+				try {
+					List<BoardVO> list = bsv.getList();
+					request.setAttribute("list", list);
+					BoardVO bvo = new BoardVO();
+					request.setAttribute("bvo", bvo);
+					destPage = "/board/myList.jsp";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 		}
 		rdp = request.getRequestDispatcher(destPage);

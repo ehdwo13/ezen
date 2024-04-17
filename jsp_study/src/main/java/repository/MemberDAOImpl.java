@@ -1,10 +1,14 @@
 package repository;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import domain.MemberVO;
 import orm.DatabaseBuilder;
 
 public class MemberDAOImpl implements MemberDAO {
+	private static final Logger log = LoggerFactory.getLogger(MemberDAOImpl.class);
 	private SqlSession sql;
 	public MemberDAOImpl() {
 		new DatabaseBuilder();
