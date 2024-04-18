@@ -8,15 +8,15 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/myjspdb"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jspdb"/>
         <property name="username" value="jspUser"/>
         <property name="password" value="mysql"/>
       </dataSource>
     </environment>
   </environments>
   <mappers>
-	<mapper resource="mapper/memberMapper.xml"/>
-	<mapper resource="mapper/boardMapper.xml"/>
-	<mapper resource="mapper/productMapper.xml"/>
+    <mapper resource="mapper/boardMapper.xml"/>
+    <mapper resource="mapper/memberMapper.xml"/>
+    <mapper resource="mapper/commentMapper.xml"/>
   </mappers>
 </configuration>

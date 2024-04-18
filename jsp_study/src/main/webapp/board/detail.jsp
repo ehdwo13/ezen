@@ -3,59 +3,74 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<style>
-	*{
-		margin: 0px;
-		padding: 0px;
-		text-align: center;
-		margin-top: 30px;
-	}
-	h1{
-		margin-top: 10%;
-	}
-	table{
-		margin: auto;
-		margin-top: 50px;
-		font-size: 20px;
-	}
-</style>
 <head>
 <meta charset="UTF-8">
-<title>detail</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>${bvo.bno }번 게시물</h1>
+	<h1>Board detail Page</h1>
+	
 	<table border="1">
 		<tr>
-			<th>번호</th>
+			<th>bno</th>
 			<td>${bvo.bno }</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<th>title</th>
 			<td>${bvo.title }</td>
 		</tr>
 		<tr>
-			<th>작성자</th>
+			<th>writer</th>
 			<td>${bvo.writer }</td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<th>content</th>
 			<td>${bvo.content }</td>
 		</tr>
 		<tr>
-			<th>등록일</th>
+			<th>regdate</th>
 			<td>${bvo.regdate }</td>
 		</tr>
 		<tr>
-			<th>수정일</th>
+			<th>moddate</th>
 			<td>${bvo.moddate }</td>
 		</tr>
+
 	</table>
 	<c:if test="${bvo.writer eq ses.id }">
-	<a href="/brd/modify?bno=${bvo.bno }"><button>수정</button></a>
-	<a href="/brd/remove?bno=${bvo.bno }"><button>삭제</button></a>
+	<a href="/brd/modify?bno=${bvo.bno }"><button>modify</button></a>
+	<a href="/brd/remove?bno=${bvo.bno }"><button>remove</button></a>
 	</c:if>
-	<a href="/brd/list"><button type="button">돌아가기</button></a>
+	<a href="/brd/list"><button>list</button></a>
 	
+<!-- comment line -->
+<hr>
+<div>
+comment line<br>
+<input type="text" id="cmtWriter" value="${ses.id }" readonly="readonly"><br>
+<input type="text" id="cmtText" placeholder="Add Comment">
+<button type="button" id="cmtAddBtn">comment post</button>
+</div>
+<br>
+<hr>
+
+<!-- 댓글 출력 -->
+<div id="commentLine">
+	<div>
+		<div>cno, bno, writer, regdate</div>
+		<div>
+			<button>수정</button> <button>삭제</button><br>
+			<input type="text" value="content">
+		</div>
+	</div>
+</div>
+ <script type="text/javascript">
+ 	const bnoVal = `<c:out value="${bvo.bno}" />`;
+ </script>
+<script type="text/javascript" src="/resources/board_detail.js">
+</script>
+<script type="text/javascript">
+	printCommentList(bnoVal);
+</script>
 </body>
 </html>
