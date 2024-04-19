@@ -40,4 +40,13 @@ public class CommentDAOImpl implements CommentDAO {
 		}
 		return isOk;
 	}
+
+	@Override
+	public int update(CommentVO cvo) {
+		int isOk = sql.update("CommentMapper.upd", cvo);
+		if(isOk > 0) {
+			sql.commit();
+		}
+		return isOk;
+	}
 }

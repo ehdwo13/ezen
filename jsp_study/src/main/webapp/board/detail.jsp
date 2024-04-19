@@ -59,13 +59,16 @@ comment line<br>
 	<div>
 		<div>cno, bno, writer, regdate</div>
 		<div>
+		<c:if test="${bvo.writer eq ses.id }">
 			<button>수정</button> <button>삭제</button><br>
 			<input type="text" value="content">
+		</c:if>
 		</div>
 	</div>
 </div>
  <script type="text/javascript">
  	const bnoVal = `<c:out value="${bvo.bno}" />`;
+ 	const logVal = `<c:out value="${ses.id}" />`;
  </script>
 <script type="text/javascript" src="/resources/board_detail.js">
 </script>

@@ -12,4 +12,7 @@
   	<delete id="del">
   		delete from comment where cno = #{cno}
   	</delete>
+  	<update id="upd">
+  		update comment set content = #{content} where cno = #{cno}
+  	</update>
   </mapper>

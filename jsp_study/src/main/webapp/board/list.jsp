@@ -14,6 +14,25 @@
 <div class="container-sm">
 	<h1>Board List Page</h1>
 	
+	<!-- Search Line -->
+	<div>
+	<form action="/brd/list" method="get">
+	<div>
+		<select name="type">
+			<option ${ph.pgvo.type eq null ? 'selected':''}>Choose</option>
+			<option value='t' ${ph.pgvo.type eq 't' ? 'selected':''}>title</option>
+			<option value='w' ${ph.pgvo.type eq 'w' ? 'selected':''}>writer</option>
+			<option value='c' ${ph.pgvo.type eq 'c' ? 'selected':''}>content</option>
+		</select>
+		<input type="text" name="keyword" placeholder="Search" value="${ph.pgvo.keyword }">
+		<input type="hidden" name="pageNo" value="1">
+		<input type="hidden" name="qty" value="${ph.pgvo.qty }">
+		<button type="submit">Search</button>
+		<span>totalCount : ${ph.totalCount }</span>
+	</div>
+	</form>
+	</div>
+	
 	<table class="table table-dark table-striped">
 		<tr>
 			<th>bno</th>
@@ -32,6 +51,23 @@
 		</c:forEach>
 	</table>
 	<a href="../index.jsp"><button type="button" class="btn btn-primary">index</button></a> 
+	
+	<!-- Paging Line  -->
+	<div>
+		
+	<!-- prev  -->
+	<c:if test="${ph.prev }">
+	<a href="/brd/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty }&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">⇦</a> 
+	</c:if>
+	<!-- paging -->
+	<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+		<a href="/brd/list?pageNo=${i }&qty=${ph.pgvo.qty }&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a> 
+	</c:forEach>
+	<!-- next -->
+	<c:if test="${ph.next }">
+	<a href="/brd/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty }&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">⇨</a>
+	</c:if>
+	</div>
 </div>
 </body>
 </html>

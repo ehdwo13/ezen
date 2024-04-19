@@ -1,5 +1,3 @@
-console.log("board_detail.js in");
-console.log(bnoVal);
 
 document.getElementById('cmtAddBtn').addEventListener('click', ()=>{
     const cmtWriter = document.getElementById('cmtWriter').value;
@@ -54,9 +52,11 @@ function spreadCommentList(result){     //result = 댓글 리스트
         let html = `<div>`;
         html += `<div>${result[i].cno}, ${result[i].bno}, ${result[i].writer}, ${result[i].regdate}</div>`;
         html += `<div>`;
-        html += `<input type="text" value="${result[i].content}" id="modI">`;
-        html += `<button type="button" data-cno=${result[i].cno} class="cmtModBtn">수정</button>`;
+        html += `<input type="text" class="cmtText" value="${result[i].content}" >`;
+        if(logVal == result[i].writer){
+        html += `<button type="button" data-cno=${result[i].cno} class="cmtModBtn" id="cmtModBtn">수정</button>`;
         html += `<button type="button" data-cno=${result[i].cno} class="cmtDelBtn">삭제</button>`;
+        }
         html += `</div></div><hr>`;
         div.innerHTML += html;
     }
@@ -82,7 +82,6 @@ function printCommentList(bno){
         }
     })
 }
-//수정 : cno, content => result isOk => post처럼
 document.addEventListener('click', (e)=>{
     if(e.target.classList.contains("cmtDelBtn")){
         let cnoVal = e.target.dataset.cno;
@@ -93,16 +92,29 @@ document.addEventListener('click', (e)=>{
                 printCommentList(bnoVal);
             }
         })
-    
-    }else if(e.target.classList.contains("cmtModBtn")){
+    }
+    if(e.target.classList.contains("cmtModBtn")){
         let cnoVal = e.target.dataset.cno;
-        let modI = e.target.id.modI.value;
-        console.log(modI);
+        //내 타겟을 기준으로 가장 가까운 div 찾기
+        let div = e.target.closest('div');
+        console.log(div);
+        let cmtText = div.querySelector('.cmtText').value;
+        console.log(cmtText);
+        let cmtData = {
+            cno : cnoVal,
+            content : cmtText
+        }
+        updateCommentFromServer(cmtData).then(result => {
+            if(result === '1'){
+                alert("댓글 수정 성공")
+                printCommentList(bnoVal);
+            }
+        })
     }
 
     
 });
-
+//수정 : cno, content => result isOk => post처럼
 async function updateCommentFromServer(cmtData){
     try {
         const url = "/cmt/modify";
@@ -131,3 +143,4 @@ async function removeCommentFromServer(cnoVal){
         console.log(error);
     }
 }
+
