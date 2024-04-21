@@ -8,10 +8,10 @@ public interface CommentDAO {
 
 	int insert(CommentVO cvo);
 
-	List<CommentVO> getList(int bno);
+	List<CommentVO> list(int bno);
 
-	int delete(int cno);
+	int remove(int cno);
 
-	int update(CommentVO cvo);
+	int modify(CommentVO cvo);
 
 }

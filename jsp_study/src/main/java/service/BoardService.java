@@ -3,21 +3,17 @@ package service;
 import java.util.List;
 
 import domain.BoardVO;
-import domain.PagingVO;
 
 public interface BoardService {
 
 	int register(BoardVO bvo);
 
-	List<BoardVO> getList(PagingVO pgvo);
+	List<BoardVO> getList();
 
-	BoardVO getDetail(int bno);
+	BoardVO detail(int bno);
 
 	int update(BoardVO bvo);
 
 	int delete(int bno);
-
-	int getTotal(PagingVO pgvo);
-
 
 }

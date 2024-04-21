@@ -3,59 +3,69 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+		margin-top: 30px;
+	}
+	h1{
+		margin-top: 10%;
+	}
+	table{
+		margin: auto;
+		margin-top: 50px;
+		font-size: 20px;
+	}
+</style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>detail</title>
 </head>
 <body>
-	<h1>Board detail Page</h1>
-	
+	<h1>${bvo.bno }번 게시물</h1>
 	<table border="1">
 		<tr>
-			<th>bno</th>
+			<th>번호</th>
 			<td>${bvo.bno }</td>
 		</tr>
 		<tr>
-			<th>title</th>
+			<th>제목</th>
 			<td>${bvo.title }</td>
 		</tr>
 		<tr>
-			<th>writer</th>
+			<th>작성자</th>
 			<td>${bvo.writer }</td>
 		</tr>
 		<tr>
-			<th>content</th>
+			<th>내용</th>
 			<td>${bvo.content }</td>
 		</tr>
 		<tr>
-			<th>regdate</th>
+			<th>등록일</th>
 			<td>${bvo.regdate }</td>
 		</tr>
 		<tr>
-			<th>moddate</th>
+			<th>수정일</th>
 			<td>${bvo.moddate }</td>
 		</tr>
-
 	</table>
 	<c:if test="${bvo.writer eq ses.id }">
-	<a href="/brd/modify?bno=${bvo.bno }"><button>modify</button></a>
-	<a href="/brd/remove?bno=${bvo.bno }"><button>remove</button></a>
+	<a href="/brd/modify?bno=${bvo.bno }"><button>수정</button></a>
+	<a href="/brd/remove?bno=${bvo.bno }"><button>삭제</button></a>
 	</c:if>
-	<a href="/brd/list"><button>list</button></a>
+	<a href="/brd/list"><button type="button">돌아가기</button></a>
 	
-<!-- comment line -->
-<hr>
-<div>
-comment line<br>
-<input type="text" id="cmtWriter" value="${ses.id }" readonly="readonly"><br>
-<input type="text" id="cmtText" placeholder="Add Comment">
-<button type="button" id="cmtAddBtn">comment post</button>
-</div>
-<br>
-<hr>
-
-<!-- 댓글 출력 -->
-<div id="commentLine">
+	
+	<hr>
+	<div>
+	<input type="text" id="cmtWriter" value="${ses.id }" readonly="readonly">
+	<input type="text" id="cmtText" placeholder="댓글을 입력해주세요...">
+	<button type="button" id="cmtAddBtn">댓글 달기</button>
+	</div>
+	<hr>
+	<div id="commentLine">
 	<div>
 		<div>cno, bno, writer, regdate</div>
 		<div>
@@ -65,15 +75,14 @@ comment line<br>
 		</c:if>
 		</div>
 	</div>
-</div>
- <script type="text/javascript">
- 	const bnoVal = `<c:out value="${bvo.bno}" />`;
- 	const logVal = `<c:out value="${ses.id}" />`;
- </script>
-<script type="text/javascript" src="/resources/board_detail.js">
-</script>
-<script type="text/javascript">
-	printCommentList(bnoVal);
-</script>
+	</div>
+	<script type="text/javascript">
+		const bnoVal = `<c:out value="${bvo.bno}" />`;
+		const logVal = `<c:out value="${ses.id}" />`
+	</script>
+	<script type="text/javascript" src="/resources/board_detail.js"></script>
+	<script type="text/javascript">
+		printCommentList(bnoVal);
+	</script>
 </body>
 </html>

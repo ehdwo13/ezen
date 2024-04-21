@@ -3,22 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="MemberMapper">
-  		<insert id="add" parameterType="domain.MemberVO">
-			insert into member(id, pwd, email, age, phone) values(#{id}, #{pwd}, #{email}, #{age}, #{phone})
-		</insert>
-		<select id="list" resultType="domain.MemberVO">
-			select * from member order by regdate desc
-		</select>
-		<select id="login" resultType="domain.MemberVO">
-			select * from member where id = #{id}
-		</select>
-		<update id="last" parameterType="domain.MemberVO">
-			update member set lastlogin = now() where id=#{id}
-		</update>
-		<update id="update" parameterType="domain.MemberVO">
-			update member set pwd = #{pwd}, email = #{email}, age = #{age}, phone = #{phone} where id = #{id}
-		</update>
-		<delete id="delete" parameterType="domain.MemberVO">
-			delete from member where id = #{id}
-		</delete>
+  	<insert id="new">
+  		insert into member(id, password, email, age) values (#{id}, #{password}, #{email}, #{age})
+  	</insert>
+  	<select id="login" resultType="domain.MemberVO">
+  		select * from member where id = #{id}
+  	</select>
+  	<update id="upd">
+  		update member set password = #{password}, email = #{email}, age = #{age} where id = #{id}
+  	</update>
+  	<update id="ll">
+  		update member set lastlogin = now() where id = #{id}
+  	</update>
+  	<delete id="del">
+  		delete from member where id = #{id}
+  	</delete>
   </mapper>

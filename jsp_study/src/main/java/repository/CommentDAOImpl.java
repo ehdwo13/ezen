@@ -17,10 +17,10 @@ public class CommentDAOImpl implements CommentDAO {
 		new DatabaseBuilder();
 		sql = DatabaseBuilder.getFactory().openSession();
 	}
-
+	
 	@Override
 	public int insert(CommentVO cvo) {
-		int isOk = sql.insert("CommentMapper.add", cvo);
+		int isOk = sql.insert("CommentMapper.in", cvo);
 		if(isOk > 0) {
 			sql.commit();
 		}
@@ -28,12 +28,12 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public List<CommentVO> getList(int bno) {
+	public List<CommentVO> list(int bno) {
 		return sql.selectList("CommentMapper.list", bno);
 	}
 
 	@Override
-	public int delete(int cno) {
+	public int remove(int cno) {
 		int isOk = sql.delete("CommentMapper.del", cno);
 		if(isOk > 0) {
 			sql.commit();
@@ -42,11 +42,12 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public int update(CommentVO cvo) {
+	public int modify(CommentVO cvo) {
 		int isOk = sql.update("CommentMapper.upd", cvo);
 		if(isOk > 0) {
 			sql.commit();
 		}
 		return isOk;
 	}
+
 }

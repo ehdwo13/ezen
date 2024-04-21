@@ -24,16 +24,17 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentVO> getList(int bno) {
-		return cdao.getList(bno);
+		return cdao.list(bno);
 	}
 
 	@Override
 	public int remove(int cno) {
-		return cdao.delete(cno);
+		return cdao.remove(cno);
 	}
 
 	@Override
 	public int modify(CommentVO cvo) {
-		return cdao.update(cvo);
+		return cdao.modify(cvo);
 	}
+	
 }
