@@ -3,12 +3,15 @@ package repository;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import domain.BoardVO;
+import domain.PagingVO;
 import orm.DatabaseBuilder;
 
 public class BoardDAOImpl implements BoardDAO {
-	
+	private static final Logger log = LoggerFactory.getLogger(BoardDAOImpl.class);
 	private SqlSession sql;
 	
 	public BoardDAOImpl() {
@@ -24,12 +27,6 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return isOk;
 	}
-
-	@Override
-	public List<BoardVO> getList() {
-		return sql.selectList("BoardMapper.list");
-	}
-
 	@Override
 	public BoardVO getDetail(int bno) {
 		return sql.selectOne("BoardMapper.one", bno);
@@ -51,5 +48,17 @@ public class BoardDAOImpl implements BoardDAO {
 			sql.commit();
 		}
 		return isOk;
+	}
+
+	@Override
+	public List<BoardVO> getList(PagingVO pgvo) {
+		log.info("test 2");
+		return sql.selectList("BoardMapper.list", pgvo);
+	}
+
+	@Override
+	public int totalCount(PagingVO pgvo) {
+		int total = sql.selectOne("BoardMapper.tot", pgvo);
+		return total;
 	}
 }

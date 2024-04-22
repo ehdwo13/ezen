@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import domain.BoardVO;
+import domain.PagingVO;
+import handler.PagingHandler;
 import service.BoardService;
 import service.BoardServiceImpl;
 
@@ -40,7 +42,21 @@ public class BoardController extends HttpServlet {
 		switch(path) {
 			case "list" : 
 				try {
-					List<BoardVO> list = bsv.getList();
+					PagingVO pgvo = new PagingVO();	
+					if(request.getParameter("pageNo") != null && request.getParameter("qty") != null) {
+						int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+						int qty = Integer.parseInt(request.getParameter("qty"));
+						String type = request.getParameter("type");
+						String keyword = request.getParameter("keyword");
+						pgvo = new PagingVO(pageNo, qty, type, keyword);	
+					}
+					log.info("{}",pgvo);
+					List<BoardVO> list = bsv.getList(pgvo);
+					log.info("{}",list);
+					int totalCount = bsv.getTotal(pgvo);
+					PagingHandler ph = new PagingHandler(pgvo, totalCount);
+					request.setAttribute("ph", ph);
+					log.info("{}",ph);
 					request.setAttribute("list", list);
 					destPage = "/board/list.jsp";
 				} catch (Exception e) {
@@ -116,7 +132,15 @@ public class BoardController extends HttpServlet {
 				break;
 			case "myList" :
 				try {
-					List<BoardVO> list = bsv.getList();
+					PagingVO pgvo = new PagingVO();
+					if(request.getParameter("pageNo") != null && request.getParameter("qty") != null) {
+						int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+						int qty = Integer.parseInt(request.getParameter("qty"));
+						String type = request.getParameter("type");
+						String keyword = request.getParameter("keyword");
+						pgvo = new PagingVO(pageNo, qty, type, keyword);	
+					}
+					List<BoardVO> list = bsv.getList(pgvo);
 					request.setAttribute("list", list);
 					BoardVO bvo = new BoardVO();
 					request.setAttribute("bvo", bvo);
