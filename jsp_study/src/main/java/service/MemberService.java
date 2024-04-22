@@ -1,19 +1,21 @@
 package service;
 
+import java.util.List;
+
 import domain.MemberVO;
 
 public interface MemberService {
 
-	int join(MemberVO mvo);
+	int register(MemberVO mvo);
+
+	List<MemberVO> getList();
 
 	MemberVO login(MemberVO mvo);
 
-	int modify(MemberVO mvo);
-
 	int lastLogin(String id);
 
-	int delete(String id);
+	int update(MemberVO updateMvo);
 
-	
+	int delete(String id);
 
 }

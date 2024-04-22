@@ -9,14 +9,22 @@ public interface BoardDAO {
 
 	int insert(BoardVO bvo);
 
-	List<BoardVO> getList(PagingVO pgvo);
+	List<BoardVO> selectList(PagingVO pgvo);
 
-	BoardVO getDetail(int bno);
+	BoardVO selectOne(int bno);
 
 	int update(BoardVO bvo);
 
 	int delete(int bno);
 
 	int totalCount(PagingVO pgvo);
+
+	String getFilePath(int bno);
+
+
+
+
+
+
 
 }

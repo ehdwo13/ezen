@@ -8,6 +8,7 @@ public class DatabaseBuilder {
 	private static SqlSessionFactory factory;
 	private static final String CONFIG = "orm/mybatisConfig.xml";
 	
+	//초기화 블럭 사용하여 객체 생성 후 초기화
 	static {
 		try {
 			factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader(CONFIG));

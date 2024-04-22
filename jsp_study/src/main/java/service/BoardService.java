@@ -11,12 +11,24 @@ public interface BoardService {
 
 	List<BoardVO> getList(PagingVO pgvo);
 
-	BoardVO detail(int bno);
+	BoardVO getDetail(int bno);
 
 	int update(BoardVO bvo);
 
 	int delete(int bno);
 
 	int getTotal(PagingVO pgvo);
+
+	String getFilePath(int bno);
+
+	int removeComment(int bno);
+
+
+
+
+	
+
+	
+
 
 }

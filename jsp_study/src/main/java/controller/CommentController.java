@@ -21,61 +21,79 @@ import domain.CommentVO;
 import service.CommentService;
 import service.CommentServiceImpl;
 
+
 @WebServlet("/cmt/*")
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(CommentController.class);
+    //비동기는 데이터를 요청한 곳으로 바로 결과를 보내주는 방식
     private CommentService csv;
-    
+   
     public CommentController() {
         csv = new CommentServiceImpl();
     }
-
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");	
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/")+1);
+		log.info(path);
 		switch(path) {
 			case "post" :
 				try {
+					log.info("post case check 1");
+					//js에서 보낸 데이터를 읽어들이는 작업
+					//js('Object') -> controller(String)
+					//'{...}'
 					StringBuffer sb = new StringBuffer();
 					String line = "";
-					BufferedReader br = request.getReader();
+					BufferedReader br = request.getReader(); //댓글 객체
 					while((line = br.readLine()) != null) {
 						sb.append(line);
 					}
 					log.info("{}",sb);
+					//객체로 생성
 					JSONParser parser = new JSONParser();
-					JSONObject jsonObj = (JSONObject) parser.parse(sb.toString());
+					JSONObject jsonObj = (JSONObject)parser.parse(sb.toString());
 					log.info("{}",jsonObj);
+					//key를 이용하여 벨류를 추출
 					int bno = Integer.parseInt(jsonObj.get("bno").toString());
 					String writer = jsonObj.get("writer").toString();
 					String content = jsonObj.get("content").toString();
 					CommentVO cvo = new CommentVO(bno, writer, content);
 					int isOk = csv.register(cvo);
+					//결과데이터 전송 => 화면으로 전송(response 객체의 body에 기록)
 					PrintWriter out = response.getWriter();
 					out.print(isOk);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				break;
+				
 			case "list" :
 				try {
 					int bno = Integer.parseInt(request.getParameter("bno"));
+					log.info("parameter bno"+bno);
 					List<CommentVO> list = csv.getList(bno);
+					log.info("list호출"+list);
+					
+					//list => json 변환 후 보내기
+					// [{...}] [] JSONArray
+					// {...} JSONObject
 					JSONArray jsonObjList = new JSONArray();
 					JSONObject[] jsonObjArr = new JSONObject[list.size()];
+					
 					for(int i=0; i<list.size(); i++) {
-						jsonObjArr[i] = new JSONObject();
-						jsonObjArr[i].put("cno", list.get(i).getCno());
-						jsonObjArr[i].put("bno", list.get(i).getBno());
-						jsonObjArr[i].put("writer", list.get(i).getWriter());
-						jsonObjArr[i].put("content", list.get(i).getContent());
-						jsonObjArr[i].put("regdate", list.get(i).getRegdate());
-						jsonObjList.add(jsonObjArr[i]);
+							jsonObjArr[i] = new JSONObject();
+							jsonObjArr[i].put("cno", list.get(i).getCno());
+							jsonObjArr[i].put("bno", list.get(i).getBno());
+							jsonObjArr[i].put("writer", list.get(i).getWriter());
+							jsonObjArr[i].put("content", list.get(i).getContent());
+							jsonObjArr[i].put("regdate", list.get(i).getRegdate());
+							jsonObjList.add(jsonObjArr[i]);
 					}
+					// '[{...}]' => Obj를 String 변환하여 전송
 					String jsonData = jsonObjList.toJSONString();
 					PrintWriter out = response.getWriter();
 					out.print(jsonData);
@@ -89,6 +107,7 @@ public class CommentController extends HttpServlet {
 					int isOk = csv.remove(cno);
 					PrintWriter out = response.getWriter();
 					out.print(isOk);
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -102,28 +121,25 @@ public class CommentController extends HttpServlet {
 						sb.append(line);
 					}
 					JSONParser parser = new JSONParser();
-					JSONObject jsonObj = (JSONObject) parser.parse(sb.toString());
+					JSONObject jsonObj = (JSONObject)parser.parse(sb.toString());
 					int cno = Integer.parseInt(jsonObj.get("cno").toString());
 					String content = jsonObj.get("content").toString();
 					CommentVO cvo = new CommentVO(cno, content);
-					int isOk = csv.modify(cvo);
+					int isOk = csv.modify(cvo);		
 					PrintWriter out = response.getWriter();
 					out.print(isOk);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				break;
-		
 		}
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		service(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		service(request, response);
 	}
-
 }

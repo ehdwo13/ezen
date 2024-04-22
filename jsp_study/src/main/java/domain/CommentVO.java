@@ -9,18 +9,18 @@ public class CommentVO {
 	
 	public CommentVO() {}
 	
-	//등록
-	public CommentVO(int bno,String writer, String content) {
+	//등록 생성자
+	public CommentVO(int bno, String writer, String content) {
 		this.bno = bno;
 		this.writer = writer;
 		this.content = content;
 	}
-	//수정
+	//수정 생성자
 	public CommentVO(int cno, String content) {
 		this.cno = cno;
 		this.content = content;
 	}
-	//전체출력
+	//전체
 	public CommentVO(int cno, int bno, String writer, String content, String regdate) {
 		this.cno = cno;
 		this.bno = bno;
@@ -68,12 +68,9 @@ public class CommentVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-
 	@Override
 	public String toString() {
 		return "CommentVO [cno=" + cno + ", bno=" + bno + ", writer=" + writer + ", content=" + content + ", regdate="
 				+ regdate + "]";
 	}
-	
 }
-
