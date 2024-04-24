@@ -33,6 +33,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO getDetail(int bno) {
 		log.info("board detail service check");
+		bdao.readCount(bno);
 		return bdao.getDetail(bno);
 	}
 
@@ -43,8 +44,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void remove(BoardVO bvo) {
+	public void remove(int bno) {
 		log.info("board remove service check");
-		bdao.updateIsDel(bvo);
+		bdao.updateIsDel(bno);
 	}
 }

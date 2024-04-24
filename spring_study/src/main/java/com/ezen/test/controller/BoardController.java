@@ -32,7 +32,7 @@ public class BoardController {
 		log.info("bvo > {}",bvo);
 		int isOk = bsv.insert(bvo);
 		log.info("isOk check > {}", isOk);
-		return "/index";
+		return "redirect:/board/list";
 	}
 	@GetMapping("/list")
 	public String list(Model m) {
@@ -58,8 +58,8 @@ public class BoardController {
 		return "redirect:/board/detail?bno="+bvo.getBno();
 	}
 	@GetMapping("remove")
-	public String remove(BoardVO bvo) {
-		bsv.remove(bvo);
+	public String remove(@RequestParam("bno")int bno) {
+		bsv.remove(bno);
 		return "redirect:/board/list";
 	}
 }
