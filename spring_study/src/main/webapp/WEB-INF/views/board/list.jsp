@@ -4,23 +4,31 @@
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 	<h1>Board List Page</h1>
+	<br>
 	<!-- search Line -->
-	<form class="row gy-2 gx-3 align-items-center justify-content-center">
+	<form action="/board/list" method="get" class="row gy-2 gx-3 align-items-center">
    		<div class="col-auto">
-    		<label class="visually-hidden" for="autoSizingSelect">Preference</label>
-    		<select class="form-select" id="autoSizingSelect">
-      			<option selected>Choose...</option>
-      			<option value="1">Title</option>
-      			<option value="2">Writer</option>
-      			<option value="3">Content</option>
+    		<select class="form-select" name="type" id="autoSizingSelect">
+      			<option ${ph.pgvo.type == null ? 'selected' : '' }>Choose...</option>
+      			<option value="t" ${ph.pgvo.type eq 't' ? 'selected' : '' }>Title</option>
+      			<option value="w" ${ph.pgvo.type eq 'w' ? 'selected' : '' }>Writer</option>
+      			<option value="c" ${ph.pgvo.type eq 'c' ? 'selected' : '' }>Content</option>
+      			<option value="tc" ${ph.pgvo.type eq 'tc' ? 'selected' : '' }>Title & Content</option>
+      			<option value="wc" ${ph.pgvo.type eq 'wc' ? 'selected' : '' }>Writer & Content</option>
+      			<option value="tw" ${ph.pgvo.type eq 'tw' ? 'selected' : '' }>Title & Writer</option>
+      			<option value="twc" ${ph.pgvo.type eq 'twc' ? 'selected' : '' }>All</option>
    			</select>
   		</div>
 		<div class="col-auto">
-    		<label class="visually-hidden" for="autoSizingInput">Name</label>
-    		<input type="text" class="form-control" id="autoSizingInput" placeholder="search..">
+    		<input type="text" name="keyword" class="form-control" id="autoSizingInput" placeholder="search.." value="${ph.pgvo.keyword}">
+    		<input type="hidden" name="pageNo" value="1">
+    		<input type="hidden" name="qty" value="10">
   		</div>
   		<div class="col-auto">
     		<button type="submit" class="btn btn-primary">Search</button>
+  		</div>
+  		<div class="col-auto">
+  			<p>totalCount : ${ph.totalCount }</p>
   		</div>
   	</form>
 	<table class="table table-hover">
@@ -48,17 +56,25 @@
 		<!-- paging Line -->
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
+	  	<!-- prev -->
+	  	<c:if test="${ph.prev }">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span></a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	    </c:if>
+	    
+	    <c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+	    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
+	    </c:forEach>
+	  
+	    <!-- next -->
+	    <c:if test="${ph.next }">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span></a>
 	    </li>
+	    </c:if>
 	  </ul>
 	</nav>
 </div>

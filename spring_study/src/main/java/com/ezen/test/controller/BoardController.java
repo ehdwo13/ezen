@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.PagingVO;
+import com.ezen.test.handler.PagingHandler;
 import com.ezen.test.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,11 +37,14 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	@GetMapping("/list")
-	public String list(Model m) {
+	public String list(Model m, PagingVO pgvo) {	//PagingVO 파라미터가 없으면 기본생성자 값이 뜬다.
 		//리턴 타입은 목적지 경로에 대한 타입(destPage가 리턴)
 		//Model 객체 => request.setAttribute 역할을 하는 객체
-		List<BoardVO> list = bsv.getList();
+		int totalCount = bsv.getTotal(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		List<BoardVO> list = bsv.getList(pgvo);
 		m.addAttribute("list", list);
+		m.addAttribute("ph",ph);
 		return "/board/list";
 	}
 	//2개 케이스가 같을 경우
