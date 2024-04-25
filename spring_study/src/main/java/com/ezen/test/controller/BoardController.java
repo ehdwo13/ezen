@@ -31,9 +31,7 @@ public class BoardController {
 	//@RequestParam("name")String name : 파라미터를 받을 때
 	@PostMapping("/insert")
 	public String insert(BoardVO bvo) {
-		log.info("bvo > {}",bvo);
 		int isOk = bsv.insert(bvo);
-		log.info("isOk check > {}", isOk);
 		return "redirect:/board/list";
 	}
 	@GetMapping("/list")
@@ -51,13 +49,11 @@ public class BoardController {
 	//controller로 들어오는 경로와 jsp로 나가는 경로가 일치하면 void처리 할 수 있음.
 	@GetMapping({"/detail","/modify"})
 	public void detail(Model m, @RequestParam("bno")int bno) {
-		log.info("bno > {}",bno);
 		BoardVO bvo = bsv.getDetail(bno);
 		m.addAttribute("bvo", bvo);
 	}
 	@PostMapping("/modify")
 	public String modify(BoardVO bvo) {
-		log.info("modify bvo > {}",bvo);
 		bsv.update(bvo);
 		//새로운 데이터를 가지고 가야 함
 		return "redirect:/board/detail?bno="+bvo.getBno();
