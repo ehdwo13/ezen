@@ -8,4 +8,10 @@ public interface MemberDAO {
 
 	MemberVO getUser(String id);
 
+	void updateLastLogin(String id);
+
+	void update(MemberVO mvo);
+
+	void remove(String id);
+
 }

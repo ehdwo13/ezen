@@ -21,39 +21,38 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int insert(BoardVO bvo) {
-		log.info("board register service check");
+//		log.info("board register service check");
 		return bdao.insert(bvo);
 	}
 
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
-		log.info("board list service check");
-		
+//		log.info("board list service check");
 		return bdao.getList(pgvo);
 	}
 
 	@Override
 	public BoardVO getDetail(int bno) {
-		log.info("board detail service check");
+//		log.info("board detail service check");
 		bdao.readCount(bno);
 		return bdao.getDetail(bno);
 	}
 
 	@Override
 	public void update(BoardVO bvo) {
-		log.info("board modify service check");
+//		log.info("board modify service check");
 		bdao.update(bvo);
 	}
 
 	@Override
 	public void remove(int bno) {
-		log.info("board remove service check");
+//		log.info("board remove service check");
 		bdao.updateIsDel(bno);
 	}
 
 	@Override
 	public int getTotal(PagingVO pgvo) {
-		log.info("board totalCount service check");
+//		log.info("board totalCount service check");
 		return bdao.totalCount(pgvo);
 	}
 }

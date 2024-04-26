@@ -10,7 +10,7 @@
 		</div>
 		<div class="mb-3">
 	  		<label for="p" class="form-label">PW</label>
-	  		<input type="text" class="form-control" name="pw" id="p" placeholder="PW...">
+	  		<input type="password" class="form-control" name="pw" id="p" placeholder="PW...">
 		</div>
 		<div class="mb-3">
 	  		<label for="n" class="form-label">NAME</label>

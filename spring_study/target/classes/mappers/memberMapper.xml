@@ -10,4 +10,13 @@
 		insert into member(id, pw, name, email, home, age) 
 		values(#{id}, #{pw}, #{name}, #{email}, #{home}, #{age})
 	</insert>
+	<update id="updateLastLogin">
+		update member set last_login = now() where id= #{id}
+	</update>
+	<update id="update">
+		update member set pw = #{pw}, name = #{name}, email = #{email}, home = #{home}, age = #{age} where id = #{id}
+	</update>
+	<delete id="remove">
+		delete from member where id=#{id}
+	</delete>
 </mapper>

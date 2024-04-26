@@ -1,5 +1,7 @@
 package com.ezen.test.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	private final MemberDAO mdao;
 	final BCryptPasswordEncoder passwordEncoder;
+	final HttpServletRequest request;
 
 	@Override
 	public int insert(MemberVO mvo) {
@@ -58,5 +61,30 @@ public class MemberServiceImpl implements MemberService{
 			return tempMvo;
 		}
 		return null;
+	}
+
+	@Override
+	public void lastLogin(String id) {
+		mdao.updateLastLogin(id);
+	}
+
+	@Override
+	public void modify(MemberVO mvo) {
+		//	pw여부에 따라 변경사항을 나누어서 처리
+		// 	pw가 없다면 기존값 설정 / 있다면 암호화처리하여 수정
+		if(mvo.getPw() == null || mvo.getPw().length() == 0) {
+			MemberVO sesMvo = (MemberVO)request.getSession().getAttribute("ses");
+			mvo.setPw(sesMvo.getPw());	
+		}else {
+			String setPw = passwordEncoder.encode(mvo.getPw());
+			mvo.setPw(setPw);
+		}
+		log.info("pw 수정 후 mvo > {}", mvo);
+		mdao.update(mvo);
+	}
+
+	@Override
+	public void remove(String id) {
+		mdao.remove(id);
 	}
 }

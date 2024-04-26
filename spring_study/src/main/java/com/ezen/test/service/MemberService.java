@@ -8,4 +8,10 @@ public interface MemberService {
 
 	MemberVO isUser(MemberVO mvo);
 
+	void lastLogin(String id);
+
+	void modify(MemberVO mvo);
+
+	void remove(String id);
+
 }
