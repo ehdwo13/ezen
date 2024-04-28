@@ -2,46 +2,32 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+		margin-top: 30px;
+	}
+	h1{
+		margin-top: 10%;
+	}
+</style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>modify</title>
 </head>
 <body>
-	<h1>Board modify Page</h1>
-	<form action="brd/update" method="post" enctype="multipart/form-data">
-	<table border="1">
-		<tr>
-			<th>bno</th>
-			<td><input type="text" name="bno" value="${bvo.bno }" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<th>title</th>
-			<td><input type="text" name="title" value="${bvo.title }"> </td>
-		</tr>
-		<tr>
-			<th>writer</th>
-			<td><input type="text" name="writer" value="${bvo.writer }" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<th>regdate</th>
-			<td><input type="text" name="regdate" value="${bvo.regdate }" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<th>moddate</th>
-			<td><input type="text" name="moddate" value="${bvo.moddate }" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<th>content</th>
-			<td><textarea rows="10" cols="30" name="content">${bvo.content }</textarea> </td>
-		</tr>
-		<tr>
-			<th>image</th>
-			<td> <input type="hidden" name="imageFile" value="${bvo.imageFile }"> <input type="file" name="newFile"></td>
-		</tr>
-	</table>
-	<img alt="" src="/_fileUpload/${bvo.imageFile }" width="300px" height="300px"><br>
-	<button type="submit">modify</button>
+	<h1>게시글 수정</h1>
+	<form action="/brd/update" method="post" enctype="multipart/form-data">
+		글번호 : <input type="text" name="bno" value="${bvo.bno }" readonly="readonly"><br> 
+		제목 : <input type="text" name="title" value="${bvo.title }"><br> 
+		작성자 : <input type="text" name="writer" value="${bvo.writer }" readonly="readonly"><br> 
+		내용 : <textarea rows="10" cols="30" name="content" >${bvo.content }</textarea><br>
+		이미지 <input type="hidden" name="imageFile" value="${bvo.imageFile }"><input type="file" name="newFile">
+		<button type="submit">수정</button>
 	</form>
-	<a href="/brd/list"><button>list</button></a>
+	<img alt="" src="/_fileUpload/${bvo.imageFile }" width="300px" height="300px"><br>
+	<a href="/brd/list"><button>돌아가기</button></a>
 </body>
 </html>

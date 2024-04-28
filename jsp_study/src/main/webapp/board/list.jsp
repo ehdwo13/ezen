@@ -1,20 +1,43 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+		margin-top: 30px;
+	}
+	h1{
+		margin-top: 10%;
+	}
+	table{
+		margin: auto;
+		margin-top: 50px;
+		font-size: 20px;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	.th1{
+		width: 100px;
+	}
+	.th2{
+		width: 150px;	
+	}
+	.th3{
+		width: 300px;	
+	}
+</style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<title>Board</title>
 </head>
 <body>
-<div class="container-sm">
-	<h1>Board List Page</h1>
-	
-	<!-- Search Line -->
+	<h1>게시판 리스트</h1>
 	<div>
 	<form action="/brd/list" method="get">
 	<div>
@@ -32,31 +55,25 @@
 	</div>
 	</form>
 	</div>
-	
-	<table class="table table-dark table-striped">
+	<table>
 		<tr>
-			<th>bno</th>
-			<th>title</th>
-			<th>writer</th>
-			<th>regdate</th>
-			<th>readCount</th>
+			<th class="th1">번호</th>
+			<th class="th1">제목</th>
+			<th class="th2">작성자</th>
+			<th class="th3">등록일</th>
+			<th class="th3">조회수</th>
 		</tr>
-		<!-- DB에서 가져온 리스트를 c:foreach를 통해 반복 출력 -->
-		<c:forEach items="${list }" var="bvo">
+		<c:forEach items="${list}" var="bvo">
 		<tr>
 			<td>${bvo.bno}</td>
-			<td><a href="/brd/detail?bno=${bvo.bno }">${bvo.title}  <img alt="" src="/_fileUpload/_th_${bvo.imageFile }"></a> </td>
+			<td><a href="/brd/detail?bno=${bvo.bno }">${bvo.title}<img alt="" src="/_fileUpload/_th_${bvo.imageFile }"></a></td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.regdate}</td>
 			<td>${bvo.readCount}</td>
 		</tr>
 		</c:forEach>
 	</table>
-	<a href="../index.jsp"><button type="button" class="btn btn-primary">index</button></a> 
-	
-	<!-- Paging Line  -->
 	<div>
-		
 	<!-- prev  -->
 	<c:if test="${ph.prev }">
 	<a href="/brd/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty }&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">⇦</a> 
@@ -70,6 +87,17 @@
 	<a href="/brd/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty }&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">⇨</a>
 	</c:if>
 	</div>
-</div>
+	<a href="/board/register.jsp"><button>게시글 작성</button></a>
+	<a href="/main.jsp"><button>돌아가기</button></a>
+	<script type="text/javascript">
+	const msg_update = `<c:out value="${msg_update}"></c:out>`;
+		if (msg_update === '-1'){
+			alert("수정 완료")
+		}
+	const msg_delete = `<c:out value="${msg_delete}"></c:out>`;
+		if (msg_delete === '-1'){
+			alert("삭제 완료")
+		}
+	</script>
 </body>
 </html>

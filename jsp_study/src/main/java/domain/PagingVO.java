@@ -2,13 +2,12 @@ package domain;
 
 public class PagingVO {
 	
-	private int pageNo;	//현재 페이지번호
-	private int qty; 	//한 페이지에 보여줄 게시글 수 (10)
+	private int pageNo;
+	private int qty;
 	private String type;
 	private String keyword;
 	
 	public PagingVO() {
-		//페이지 번호를 클릭하기 전의 기본값
 		this.pageNo = 1;
 		this.qty = 10;
 	}
@@ -18,8 +17,7 @@ public class PagingVO {
 		this.type = type;
 		this.keyword = keyword;
 	}
-	public int getPageStart() {	//db에서 사용되는 시작번지 값을 결정
-		//1=>0 2=>10 3=>20
+	public int getPageStart() {	
 		return (pageNo-1) * qty;
 	}
 	public int getPageNo() {
@@ -50,4 +48,5 @@ public class PagingVO {
 	public String toString() {
 		return "PagingVO [pageNo=" + pageNo + ", qty=" + qty + ", type=" + type + ", keyword=" + keyword + "]";
 	}
+	
 }

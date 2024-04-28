@@ -11,7 +11,7 @@ public interface BoardService {
 
 	List<BoardVO> getList(PagingVO pgvo);
 
-	BoardVO getDetail(int bno);
+	BoardVO detail(int bno);
 
 	int update(BoardVO bvo);
 
@@ -22,13 +22,5 @@ public interface BoardService {
 	String getFilePath(int bno);
 
 	int removeComment(int bno);
-
-
-
-
-	
-
-	
-
 
 }
