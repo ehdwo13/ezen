@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.ezen.test.domain.BoardDTO;
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.FileVO;
 import com.ezen.test.domain.PagingVO;
+import com.ezen.test.handler.FileHandler;
 import com.ezen.test.handler.PagingHandler;
 import com.ezen.test.service.BoardService;
 
@@ -24,14 +28,26 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
 	
 	private final BoardService bsv;
+	private final FileHandler fhd;
 	
 	@GetMapping("/register")
 	public void register() {}
 	
 	//@RequestParam("name")String name : 파라미터를 받을 때
+	//required : 필수여부 false : 파라미터가 없어도 예외발생X
 	@PostMapping("/insert")
-	public String insert(BoardVO bvo) {
-		int isOk = bsv.insert(bvo);
+	public String insert(BoardVO bvo, @RequestParam(name="files", required = false)MultipartFile[] files) {
+		//파일 핸들러 처리
+		//파일 저장처리 => fileList 리턴
+		List<FileVO> flist = null;
+		//파일이 있다면
+		if(files[0].getSize() > 0) {
+			//핸들러 호출
+			flist = fhd.uploadFiles(files);
+			log.info("flist > {}", flist);
+		}
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		int isOk = bsv.insert(bdto);
 		return "redirect:/board/list";
 	}
 	@GetMapping("/list")
@@ -49,8 +65,9 @@ public class BoardController {
 	//controller로 들어오는 경로와 jsp로 나가는 경로가 일치하면 void처리 할 수 있음.
 	@GetMapping({"/detail","/modify"})
 	public void detail(Model m, @RequestParam("bno")int bno) {
-		BoardVO bvo = bsv.getDetail(bno);
-		m.addAttribute("bvo", bvo);
+		BoardDTO bdto = bsv.getDetail(bno);
+//		log.info("bdto > {}",bdto);
+		m.addAttribute("bdto", bdto);
 	}
 	@PostMapping("/modify")
 	public String modify(BoardVO bvo) {

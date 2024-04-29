@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
-		<h1>Board Modify Page</h1>
+	<h1>Board Modify Page</h1>
+	<c:set value="${bdto.bvo }" var="bvo"></c:set>
 	<form action="/board/modify" method="post">
 		<div class="mb-3">
 	  		<label for="n" class="form-label">bno</label>

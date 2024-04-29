@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ezen.test.domain.BoardDTO;
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.FileVO;
 import com.ezen.test.domain.PagingVO;
 import com.ezen.test.repository.BoardDAO;
+import com.ezen.test.repository.FileDAO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +21,28 @@ public class BoardServiceImpl implements BoardService {
 	
 
 	private final BoardDAO bdao;
+	private final FileDAO fdao;
 
 	@Override
-	public int insert(BoardVO bvo) {
+	public int insert(BoardDTO bdto) {
 //		log.info("board register service check");
-		return bdao.insert(bvo);
+		int isOk = bdao.insert(bdto.getBvo());
+		//file 처리 
+		if(bdto.getFlist() == null) {
+			return isOk;
+		}else {
+			//파일 저장
+			if(isOk > 0 && bdto.getFlist().size() > 0) {
+				//bno는 아직 없음. insert를 통해 자동생성 => DB에가서 검색해오기
+				int bno = bdao.selectBno();
+				for(FileVO fvo : bdto.getFlist()) {
+					fvo.setBno(bno);
+					//파일저장
+					isOk *= fdao.insertFile(fvo);
+				}
+			}
+		}
+		return isOk; 
 	}
 
 	@Override
@@ -32,10 +52,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO getDetail(int bno) {
+	public BoardDTO getDetail(int bno) {
 //		log.info("board detail service check");
 		bdao.readCount(bno);
-		return bdao.getDetail(bno);
+		BoardDTO bdto = new BoardDTO();
+		BoardVO bvo = bdao.getDetail(bno); //기존에 처리된 bvo 객체
+		bdto.setBvo(bvo);
+		bdto.setFlist(fdao.getFileList(bno));
+		return bdto;
 	}
 
 	@Override

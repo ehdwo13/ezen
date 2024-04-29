@@ -59,12 +59,12 @@ function spreadCommentList(bno){
                 let add = `<div class="accordion-item">`;
                 add += `<h2 class="accordion-header">`;
                 add += `<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">`;
-                add += `no.${result[i].cno} / ${result[i].writer} / [ ${result[i].reg_date} ]`;
+                add += `no.${result[i].cno} / ${result[i].writer} / ${result[i].reg_date} `;
                 add += `</button></h2>`;
                 add += `<div id="collapse${i}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">`;
                 add += `<div class="accordion-body">`;
                 add += `<input type="text" class="form-control cmtText" value="${result[i].content}">`;
-                if(logVal == `${result[i].writer}`){
+                if(logVal == result[i].writer){
                     add += `<button type="button" data-cno="${result[i].cno}" class="btn btn-danger btn-sm cmtModBtn">수정</button>`;
                     add += `<button type="button" data-cno="${result[i].cno}" class="btn btn-warning btn-sm cmtDelBtn">삭제</button>`;
                 };

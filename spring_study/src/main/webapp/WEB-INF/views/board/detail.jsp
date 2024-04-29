@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
-		<h1>Board Register Page</h1>
+		<h1>Board Detail Page</h1>
+		<c:set value="${bdto.bvo }" var="bvo"></c:set>
 		<div class="mb-3">
 	  		<label for="n" class="form-label">bno</label>
 	  		<input type="text" class="form-control" name="bno" id="n" value="${bvo.bno }" readonly="readonly">
@@ -24,6 +25,39 @@
   			<label for="c" class="form-label">content</label>
   			<textarea class="form-control" id="c" name="content" aria-label="With textarea" readonly="readonly">${bvo.content }</textarea>
 		</div>
+		<!-- fileUpload 표시라인 -->
+		<c:set value="${bdto.flist }" var="flist"></c:set>
+		<div class="mb-3">
+			<ul class="list-group list-group-flush">
+			<!-- 파일개수만큼 li 반복하여 타입이 1인경우만 표시-->
+			<!-- li => div => img -->
+			<!--    => div => 파일이름, 작성일, span size -->
+			<c:forEach items="${flist }" var="fvo">
+  				<li class="list-group-item">
+  				<c:choose>
+  					<c:when test="${fvo.file_type > 0 }">
+  					<div>
+  						<img alt="" src="/upload/${fvo.save_dir }/${fvo.uuid}_${fvo.file_name}">
+  					</div>
+  					</c:when>
+  					<c:otherwise>
+  						<div>
+  						<!-- 파일 타입이 0인경우 아이콘 모양 하나 가져와서 넣기 -->
+  						</div>
+  					</c:otherwise>
+  				</c:choose>
+  				<div>
+  					<!-- 파일 이름 작성일 사이즈 -->
+  					<div>${fvo.file_name }</div>
+  					${fvo.reg_date }
+  					<span class="badge text-bg-warning">${fvo.file_size }Byte</span>
+  				</div>
+  				</li>			
+			</c:forEach>
+  			</ul>
+		</div>
+		
+		<br>
 		<hr>
 		<!-- Comment Line -->
 		<!-- 댓글 등록 라인 -->
