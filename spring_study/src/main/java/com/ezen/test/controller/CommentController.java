@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.test.domain.CommentVO;
+import com.ezen.test.service.BoardService;
 import com.ezen.test.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CommentController {
 	
 	private final CommentService csv;
+	private final BoardService bsv;
 	
 	//ResponseEntity 객체 사용 : body내용 + httpStatus 상태
 	//@RequestBody : body 값 추출
@@ -54,9 +56,10 @@ public class CommentController {
 		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 						: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@DeleteMapping(value = "/{cno}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> remove(@PathVariable("cno")int cno){
+	@DeleteMapping(value = "/{cno}/{bno}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> remove(@PathVariable("cno")int cno, @PathVariable("bno")int bno){
 		int isOk = csv.remove(cno);
+		
 		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK)
 						: new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR) ;
 		

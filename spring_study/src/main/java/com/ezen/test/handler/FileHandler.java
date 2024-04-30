@@ -86,4 +86,24 @@ public class FileHandler {
 		return mimeType.startsWith("image")? true : false;
 	}
 	
+	
+	public int deleteFile(String savePath, String uuid, String name) {
+		boolean isDel = false;
+		File fileDir = new File(UP_DIR);
+		File removeFile = new File(fileDir+File.separator+savePath+File.separator+uuid+"_"+name);
+		File removeThumbFile = new File(fileDir+File.separator+savePath+File.separator+uuid+"_th_"+name);
+		log.info("test2");
+		if(removeFile.exists() || removeThumbFile.exists()) {
+			log.info("test3");
+			isDel = removeFile.delete();
+			log.info("fileRemove > {}",isDel);
+			if(isDel) {
+				isDel = removeThumbFile.delete();
+				log.info("fileThumbRemove > {}",isDel);
+			}
+		}
+		
+		return isDel? 1 : 0;
+	}
+	
 }

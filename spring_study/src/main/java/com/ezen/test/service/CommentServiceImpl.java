@@ -36,4 +36,10 @@ public class CommentServiceImpl implements CommentService{
 	public int remove(int cno) {
 		return cdao.remove(cno);
 	}
+
+	@Override
+	public void removeAll(int bno) {
+		cdao.removeAll(bno);
+		
+	}
 }

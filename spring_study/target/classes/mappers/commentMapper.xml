@@ -15,4 +15,7 @@
 	<delete id="remove">
 		delete from comment where cno = #{cno}
 	</delete>
+	<delete id="removeAll">
+		delete from comment where bno = #{bno}
+	</delete>
 </mapper>

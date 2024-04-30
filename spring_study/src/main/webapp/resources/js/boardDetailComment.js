@@ -107,7 +107,7 @@ document.addEventListener('click', (e)=>{
 async function getCommentListFromServer(bno){
     try {
         const resp = await fetch("/comment/"+bno);
-        const result = await resp.json();
+        const result = resp.json();
         return result;
     } catch (error) {
         console.log(error);
@@ -135,12 +135,12 @@ async function updateCommentToServer(cmtData){
 
 async function removeCommentFromServer(cno){
     try {
-        const url = "/comment/"+cno;
+        const url = "/comment/"+cno+"/"+bnoVal;
         const config = {
             method : "delete"
         }
         const resp = await fetch(url,config);
-        const result = await resp.text();
+        const result = resp.text();
         return result;
     } catch (error) {
         console.log(error);

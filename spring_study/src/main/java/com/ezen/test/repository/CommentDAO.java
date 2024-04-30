@@ -14,4 +14,6 @@ public interface CommentDAO {
 
 	int remove(int cno);
 
+	void removeAll(int bno);
+
 }

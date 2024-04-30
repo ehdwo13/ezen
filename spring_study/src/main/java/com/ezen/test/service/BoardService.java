@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ezen.test.domain.BoardDTO;
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.FileVO;
 import com.ezen.test.domain.PagingVO;
 
 
@@ -15,10 +16,22 @@ public interface BoardService {
 
 	BoardDTO getDetail(int bno);
 
-	void update(BoardVO bvo);
+	void update(BoardDTO bdto);
 
 	void remove(int bno);
 
 	int getTotal(PagingVO pgvo);
+
+	int removeFile(String uuid);
+
+	void fileCmt(int bno);
+
+	void cmtCnt(int bno);
+
+	List<FileVO> getPath(int bno);
+
+	List<FileVO> getPathByU(String uuid);
+
+
 
 }

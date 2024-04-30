@@ -40,3 +40,7 @@ bno int,
 file_size int,
 reg_date datetime default now(),
 primary key(uuid));
+
+--2024-04-30
+alter table board add cmt_qty int default 0;
+alter table board add has_file int default 0;

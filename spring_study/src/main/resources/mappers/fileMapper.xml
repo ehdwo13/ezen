@@ -10,4 +10,16 @@
 	<select id="getFileList" resultType="com.ezen.test.domain.FileVO">
 		select * from file where bno = #{bno}
 	</select>
+	<delete id="removeOne">
+		delete from file where uuid = #{uuid}
+	</delete>
+	<delete id="removeAll">
+		delete from file where bno = #{bno}
+	</delete>
+	<select id="getPathList" resultType="com.ezen.test.domain.FileVO">
+		select * from file where bno = #{bno}
+	</select>
+	<select id="getPathListByU" resultType="com.ezen.test.domain.FileVO">
+		select * from file where uuid = #{uuid}
+	</select>
 </mapper>

@@ -13,7 +13,7 @@ public interface BoardDAO {
 
 	BoardVO getDetail(int bno);
 
-	void update(BoardVO bvo);
+	int update(BoardVO bvo);
 
 	void remove(BoardVO bvo);
 
@@ -24,5 +24,11 @@ public interface BoardDAO {
 	int totalCount(PagingVO pgvo);
 
 	int selectBno();
+
+	void fileCmt(int bno);
+
+	void cmtCnt(int bno);
+
+
 
 }

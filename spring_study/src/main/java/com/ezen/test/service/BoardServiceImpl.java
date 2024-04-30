@@ -27,6 +27,7 @@ public class BoardServiceImpl implements BoardService {
 	public int insert(BoardDTO bdto) {
 //		log.info("board register service check");
 		int isOk = bdao.insert(bdto.getBvo());
+
 		//file 처리 
 		if(bdto.getFlist() == null) {
 			return isOk;
@@ -44,7 +45,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return isOk; 
 	}
-
 	@Override
 	public List<BoardVO> getList(PagingVO pgvo) {
 //		log.info("board list service check");
@@ -63,15 +63,25 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void update(BoardVO bvo) {
-//		log.info("board modify service check");
-		bdao.update(bvo);
+	public void update(BoardDTO bdto) {
+//		log.info("board modify service check");		
+		int isOk = bdao.update(bdto.getBvo());
+		if(bdto.getFlist() == null) {
+			return;
+		}
+		if(isOk > 0 && bdto.getFlist().size() > 0) {
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk *= fdao.insertFile(fvo);
+			}
+		}
 	}
 
 	@Override
 	public void remove(int bno) {
 //		log.info("board remove service check");
 		bdao.updateIsDel(bno);
+		fdao.removeAll(bno);
 	}
 
 	@Override
@@ -79,4 +89,27 @@ public class BoardServiceImpl implements BoardService {
 //		log.info("board totalCount service check");
 		return bdao.totalCount(pgvo);
 	}
+
+	@Override
+	public int removeFile(String uuid) {
+		return fdao.removeOne(uuid);
+	}
+	@Override
+	public void fileCmt(int bno) {
+		bdao.fileCmt(bno);
+	}
+	@Override
+	public void cmtCnt(int bno) {
+		bdao.cmtCnt(bno);
+		
+	}
+	@Override
+	public List<FileVO> getPath(int bno) {
+		return fdao.getPathList(bno);
+	}
+	@Override
+	public List<FileVO> getPathByU(String uuid) {
+		return fdao.getPathListByU(uuid);
+	}
+
 }

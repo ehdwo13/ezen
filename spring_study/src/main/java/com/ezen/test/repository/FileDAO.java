@@ -10,4 +10,12 @@ public interface FileDAO {
 
 	List<FileVO> getFileList(int bno);
 
+	int removeOne(String uuid);
+
+	void removeAll(int bno);
+
+	List<FileVO> getPathList(int bno);
+
+	List<FileVO> getPathListByU(String uuid);
+
 }

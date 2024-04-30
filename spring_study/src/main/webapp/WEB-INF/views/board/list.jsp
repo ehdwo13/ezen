@@ -39,16 +39,23 @@
 	  		<th>writer</th>
 	  		<th>reg_date</th>
 	  		<th>read_count</th>
+	  		<th>has_file</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
+	  
 	  <c:forEach items="${list }" var="bvo">
 	  	<tr>
 			<td>${bvo.bno}</td>
-			<td><a href="/board/detail?bno=${bvo.bno }">${bvo.title}</a></td>
+			<td><a href="/board/detail?bno=${bvo.bno }">${bvo.title}</a>
+			<c:if test="${bvo.cmt_qty ne 0 }">
+			[${bvo.cmt_qty }]
+			</c:if>
+			</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.reg_date}</td>
 			<td>${bvo.read_count}</td>
+			<td>${bvo.has_file}</td>
 		</tr>
 	  </c:forEach>
 	  </tbody>

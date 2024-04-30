@@ -33,7 +33,7 @@
 			<!-- li => div => img -->
 			<!--    => div => 파일이름, 작성일, span size -->
 			<c:forEach items="${flist }" var="fvo">
-  				<li class="list-group-item">
+  				<li class="list-group-item" id="${fvo.uuid }list">
   				<c:choose>
   					<c:when test="${fvo.file_type > 0 }">
   					<div>

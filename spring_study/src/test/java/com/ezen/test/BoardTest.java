@@ -22,11 +22,11 @@ public class BoardTest {
 	@Test
 	public void insertBoard() {
 		log.info("Test Insert in");
-		for(int i=10; i<300; i++) {
+		for(int i=1; i<=3000; i++) {
 			BoardVO bvo = new BoardVO();
-			bvo.setTitle("테스트"+i);
-			bvo.setWriter("테스트"+i);
-			bvo.setContent("테스트"+i);
+			bvo.setTitle("test"+i);
+			bvo.setWriter("test1");
+			bvo.setContent("test"+i);
 			bdao.insert(bvo);
 		}
 	}
