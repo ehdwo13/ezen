@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.BoardVO;
 import com.ezen.www.service.BoardService;
@@ -42,9 +43,10 @@ public class BoardController {
 		m.addAttribute("bvo", bvo);
 	}
 	@PostMapping("/modify")
-	public String modify(BoardVO bvo) {
+	public String modify(BoardVO bvo, RedirectAttributes re) {
 		bsv.update(bvo);
-		return "redirect:/board/detail?bno="+bvo.getBno();
+		re.addAttribute("bno", bvo.getBno());
+		return "redirect:/board/detail";
 	}
 	@GetMapping("/remove")
 	public String remove(@RequestParam("bno")int bno) {
