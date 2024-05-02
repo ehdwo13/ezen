@@ -29,3 +29,79 @@
 5월 01, 2024 17:44:10.125 [13800:5908:0501/174410.125:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 01, 2024 17:44:10.126 [13800:5908:0501/174410.125:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 01, 2024 17:44:11.639 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 02, 2024 11:04:26.814 NEW SESSION
+5월 02, 2024 11:04:26.814 [5764:3632:0502/110426.812:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 11:04:26.824 [5764:3632:0502/110426.812:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 11:04:28.495 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 11:06:59.990 [5764:13292:0502/110659.990:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 11:06:59.991 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 11:06:59.991 ERROR: Time is after notAfter
+5월 02, 2024 11:06:59.991 
+5월 02, 2024 11:06:59.991 
+5월 02, 2024 11:12:23.189 [15684:17740:0502/111223.189:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 11:12:23.190 [15684:17740:0502/111223.189:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 11:12:24.183 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 11:16:08.924 [15684:10576:0502/111608.923:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 11:16:08.924 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 11:16:08.924 ERROR: Time is after notAfter
+5월 02, 2024 11:16:08.925 
+5월 02, 2024 11:16:08.925 
+5월 02, 2024 11:16:20.969 [15684:10576:0502/111620.969:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 11:16:20.970 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 11:16:20.970 ERROR: Time is after notAfter
+5월 02, 2024 11:16:20.971 
+5월 02, 2024 11:16:20.971 
+5월 02, 2024 11:52:10.666 [15684:10576:0502/115210.665:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 11:52:10.666 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 11:52:10.666 ERROR: Time is after notAfter
+5월 02, 2024 11:52:10.666 
+5월 02, 2024 11:52:10.667 
+5월 02, 2024 11:55:23.590 [12276:5192:0502/115523.589:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 11:55:23.590 [12276:5192:0502/115523.589:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 11:55:24.444 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 11:55:27.555 [12276:15432:0502/115527.555:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 11:55:27.555 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 11:55:27.556 ERROR: Time is after notAfter
+5월 02, 2024 11:55:27.556 
+5월 02, 2024 11:55:27.556 
+5월 02, 2024 12:08:20.717 [12276:5192:0502/120820.717:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+5월 02, 2024 12:15:56.139 [12276:15432:0502/121556.139:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 12:15:56.140 ----- Certificate i=0 (CN=sni.cloudflaressl.com,O=Cloudflare\, Inc.,L=San Francisco,ST=California,C=US) -----
+5월 02, 2024 12:15:56.140 ERROR: Time is after notAfter
+5월 02, 2024 12:15:56.140 
+5월 02, 2024 12:15:56.140 
+5월 02, 2024 12:19:11.922 [12276:15432:0502/121911.921:ERROR:cert_issuer_source_aia.cc(136)] AiaRequest::OnFetchCompleted got error -379
+5월 02, 2024 12:19:12.12 [12276:15432:0502/121912.011:ERROR:cert_issuer_source_aia.cc(136)] AiaRequest::OnFetchCompleted got error -379
+5월 02, 2024 12:19:12.12 [12276:15432:0502/121912.011:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 12:19:12.12 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+5월 02, 2024 12:19:12.12 ERROR: Time is after notAfter
+5월 02, 2024 12:19:12.13 
+5월 02, 2024 12:19:12.13 
+5월 02, 2024 12:59:24.78 [12276:15432:0502/125924.078:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 12:59:24.79 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+5월 02, 2024 12:59:24.79 ERROR: Time is after notAfter
+5월 02, 2024 12:59:24.79 
+5월 02, 2024 12:59:24.79 
+
+5월 02, 2024 14:59:02.29 NEW SESSION
+5월 02, 2024 14:59:02.29 [15644:17692:0502/145902.028:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 14:59:02.30 [15644:17692:0502/145902.028:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 14:59:03.389 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 15:10:32.16 [15644:14608:0502/151032.016:ERROR:cert_verify_proc_builtin.cc(1052)] CertVerifyProcBuiltin for cdn.jsdelivr.net failed:
+5월 02, 2024 15:10:32.17 ----- Certificate i=0 (CN=ssl363648.cloudflaressl.com) -----
+5월 02, 2024 15:10:32.17 ERROR: Time is after notAfter
+5월 02, 2024 15:10:32.17 
+5월 02, 2024 15:10:32.18 
+5월 02, 2024 16:14:46.942 [1400:4496:0502/161446.941:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 16:14:46.942 [1400:4496:0502/161446.942:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 16:14:47.987 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 16:17:10.19 [11348:9452:0502/161710.018:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 16:17:10.20 [11348:9452:0502/161710.018:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 16:17:10.854 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 16:52:09.981 [17388:18172:0502/165209.980:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 16:52:09.981 [17388:18172:0502/165209.981:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 16:52:10.930 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 02, 2024 16:54:10.224 [16300:7788:0502/165410.224:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 02, 2024 16:54:10.225 [16300:7788:0502/165410.224:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 02, 2024 16:54:11.363 Created TensorFlow Lite XNNPACK delegate for CPU.

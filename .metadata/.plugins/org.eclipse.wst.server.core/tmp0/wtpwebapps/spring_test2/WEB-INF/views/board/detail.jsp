@@ -56,48 +56,65 @@
 			</c:forEach>
   			</ul>
 		</div>
-		
 		<br>
 		<hr>
+		--%>
 		<!-- Comment Line -->
 		<!-- 댓글 등록 라인 -->
 		<div class="input-group mb-3">
-  			<span class="input-group-text" id="cmtWriter">${ses.id }</span>
+  			<span class="input-group-text" id="cmtWriter">Tester</span>
   			<input type="text" id="cmtText" class="form-control" placeholder="Add Comment.." aria-label="Username" aria-describedby="basic-addon1">
   			<button type="button" id="cmtAddBtn" class="btn btn-secondary">POST</button>
 		</div>
 		<br>
 		<!-- 댓글 출력 라인 -->
-		<div class="accordion" id="accordionExample">
-  			<div class="accordion-item">
-    			<h2 class="accordion-header">
-      				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        				cno, writer, reg_date
-      				</button>
-    			</h2>
-    			<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      				<div class="accordion-body">
-        				<strong>댓글 내용 표시</strong>
-      				</div>
-    			</div>
-  			</div>
-  		</div>
+		<ul class="list-group list-group-flush" id="cmtListArea">
+		  <li class="list-group-item">
+		  	<div class="input-group mb-3">
+		  		<div class="fw-bold">Writer</div>
+		  		content
+		  	</div>
+		  	<span class="badge rounded-pill text-bg-warning">regDate</span>
+		  </li>
+		</ul>
+		<!-- 댓글 더보기 버튼 -->
+		<div>
+			<button type="button" class="btn btn-dark" style="visibility:hidden" id="test"> MORE + </button>
+		</div>
+		<!-- 모달창 라인 -->
+		<div class="modal" id="myModal" tabindex="-1">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Writer</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <input type="text" class="form-control" id="">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+		        <button type="button" class="btn btn-primary" id="cmtModBtn">modify</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
 		<br>
 		<hr>
-		--%>
 		
 		<a href="/board/modify?bno=${bvo.bno }"><button type="button" class="btn btn-warning">수정</button></a>
 		<a href="/board/remove?bno=${bvo.bno }"><button type="button" class="btn btn-danger">삭제</button></a>
 		<a href="/board/list"><button type="button" class="btn btn-primary">리스트</button></a>
 		<br><br><br><br><br><br>
 </div>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	const bnoVal = `<c:out value="${bvo.bno}" />`;
-	const logVal = `<c:out value="${ses.id}" />`;
+	/* const logVal = `<c:out value="${ses.id}" />`; */
 </script>
 <script type="text/javascript" src="/resources/js/boardDetailComment.js">
 </script>
 <script type="text/javascript">
-	spreadCommentList(bnoVal);
-</script> -->
+	spreadList(bnoVal);
+</script>
 <jsp:include page="../layout/footer.jsp" />

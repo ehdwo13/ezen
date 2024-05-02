@@ -6,7 +6,7 @@
 	<h1>Board List Page</h1>
 	<br>
 	<!-- search Line -->
-	<%-- <form action="/board/list" method="get" class="row gy-2 gx-3 align-items-center">
+	<form action="/board/list" method="get" class="row gy-2 gx-3 align-items-center">
    		<div class="col-auto">
     		<select class="form-select" name="type" id="autoSizingSelect">
       			<option ${ph.pgvo.type == null ? 'selected' : '' }>Choose...</option>
@@ -30,7 +30,7 @@
   		<div class="col-auto">
   			<p>totalCount : ${ph.totalCount }</p>
   		</div>
-  	</form> --%>
+  	</form>
 	<table class="table table-hover">
 	  <thead>
 	  	<tr>
@@ -60,29 +60,23 @@
 	  </c:forEach>
 	  </tbody>
 	</table>
-	<%-- 	<!-- paging Line -->
+	<!-- paging Line -->
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	  	<!-- prev -->
-	  	<c:if test="${ph.prev }">
-	    <li class="page-item">
+	    <li class="page-item ${ph.prev eq false ? 'disabled' : ''}">
 	      <a class="page-link" href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span></a>
 	    </li>
-	    </c:if>
-	    
 	    <c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
-	    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
+	    <li class="page-item ${i eq ph.pgvo.pageNo ? 'active' : ''}"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
 	    </c:forEach>
-	  
 	    <!-- next -->
-	    <c:if test="${ph.next }">
-	    <li class="page-item">
+	    <li class="page-item ${ph.next eq false ? 'disabled' : ''}">
 	      <a class="page-link" href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span></a>
 	    </li>
-	    </c:if>
 	  </ul>
-	</nav> --%>
+	</nav>
 </div>
 <jsp:include page="../layout/footer.jsp" />

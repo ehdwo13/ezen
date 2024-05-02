@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.BoardVO;
+import com.ezen.www.domain.PagingVO;
+import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,9 +34,13 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	@GetMapping("/list")
-	public String list(Model m) {
-		List<BoardVO> list = bsv.getList();
+	public String list(Model m, PagingVO pgvo) {
+		List<BoardVO> list = bsv.getList(pgvo);
+		//totalCount
+		int totalCount = bsv.getTotal(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
 		m.addAttribute("list", list);
+		m.addAttribute("ph",ph);
 		return "/board/list";
 	}
 	@GetMapping({"/detail", "/modify"})
