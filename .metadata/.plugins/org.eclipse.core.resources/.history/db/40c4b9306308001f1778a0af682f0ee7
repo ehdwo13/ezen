@@ -1,0 +1,12 @@
+package com.ezen.www.repository;
+
+import com.ezen.www.domain.CommentVO;
+import com.ezen.www.handler.PagingHandler;
+
+public interface CommentDAO {
+
+	int post(CommentVO cvo);
+
+	PagingHandler getList(int bno);
+
+}
