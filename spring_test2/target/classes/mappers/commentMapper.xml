@@ -8,5 +8,16 @@
 	</insert>
 	<select id="getList" resultType="com.ezen.www.domain.CommentVO">
 		select * from comment where bno = #{bno}
+		order by cno desc
+		limit #{pgvo.pageStart}, #{pgvo.qty} 
 	</select>
+	<select id="getSelectOneBnoTotalCount" resultType="int">
+		select count(cno) from comment where bno = #{bno}
+	</select>
+	<update id="update">
+		update comment set content=#{content} where cno = #{cno}
+	</update>
+	<delete id="del">
+		delete from comment where cno=#{cno}
+	</delete>
 </mapper>

@@ -1,5 +1,8 @@
 package com.ezen.www.handler;
 
+import java.util.List;
+
+import com.ezen.www.domain.CommentVO;
 import com.ezen.www.domain.PagingVO;
 
 import lombok.Getter;
@@ -18,6 +21,8 @@ public class PagingHandler {
 	private int totalCount;
 	private PagingVO pgvo;
 	private int realEndPage;
+	
+	private List<CommentVO> cmtList;
 	
 	//생성자에서 모든 값들이 계산되어 설정되어야 함.
 	public PagingHandler(PagingVO pgvo, int totalCount) {
@@ -38,5 +43,10 @@ public class PagingHandler {
 		}
 		this.prev = this.startPage > 1;
 		this.next = this.endPage < this.realEndPage;
+	}
+	
+	public PagingHandler(PagingVO pgvo, int totalCount, List<CommentVO>cmtList) {
+		this(pgvo, totalCount);
+		this.cmtList = cmtList;
 	}
 }

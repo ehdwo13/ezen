@@ -4,10 +4,11 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="IN"/>
+		<item key="selection" value="어"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="-"/>
 			<item value="mybat"/>
 		</list>
 		<list key="replacehistory">

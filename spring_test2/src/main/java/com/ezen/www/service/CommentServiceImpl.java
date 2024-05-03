@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ezen.www.domain.CommentVO;
+import com.ezen.www.domain.PagingVO;
+import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.repository.CommentDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,21 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public List<CommentVO> getList(int bno) {
-		return cdao.getList(bno);
+	public PagingHandler getList(int bno, PagingVO pgvo) {
+		List<CommentVO> list = cdao.getList(bno, pgvo);
+		//totalCount 구해오기
+		int totalCount = cdao.getSelectOneBnoTotalCount(bno);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount, list);
+		return ph;
+	}
+
+	@Override
+	public int update(CommentVO cvo) {
+		return cdao.update(cvo);
+	}
+
+	@Override
+	public int delete(int cno) {
+		return cdao.del(cno);
 	}
 }

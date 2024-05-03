@@ -3,8 +3,6 @@ document.getElementById('cmtAddBtn').addEventListener('click', () => {
     // const cmtWriter = document.getElementById('cmtWriter').value;
     let cmtWriter = "Tester";
     let cmtText = document.getElementById('cmtText').value;
-    console.log(cmtWriter);
-    console.log(cmtText);
 
     if(cmtText == null || cmtText == ''){
         alert("댓글을 입력해주세요. ")
@@ -44,14 +42,16 @@ async function postCommentToServer(cmtData){
     }
 };
 
-function spreadList(bno){
-    getCommentListFromServer(bno).then(result =>{
+function spreadList(bno, page=1){
+    getCommentListFromServer(bno, page).then(result =>{
         const ul = document.getElementById('cmtListArea');
-        if(result.length > 0){
-            ul.innerHTML = "";
-            for(let cvo of result){
-                let add = `<li class="list-group-item">`;
-                add+= `<div class="input-group mb-3">`;
+        if(result.cmtList.length > 0){
+            if(page==1){
+                ul.innerHTML = "";
+            }
+            for(let cvo of result.cmtList){
+                let add = `<li class="list-group-item" data-cno="${cvo.cno}">`;
+                add+= `<div class="mb-3"> no. ${cvo.cno}`;
                 add+= `<div class="fw-bold">${cvo.writer}</div>`;
                 add+= `${cvo.content}`;
                 add+= `</div>`;
@@ -62,15 +62,26 @@ function spreadList(bno){
                 add+= `</li>`;
                 ul.innerHTML += add;
             }
+            let moreBtn = document.getElementById('moreBtn');
+            //moreBtn 표시되는 조건
+            //pgvo.pageNo = 1 / realEndPage = 3
+            //realEndPage 보다 현재 내 페이지가 작으면 표시
+            if(result.pgvo.pageNo < result.realEndPage){
+                moreBtn.style.visibility = "visible";
+                moreBtn.dataset.page = page + 1;
+            }else{
+                moreBtn.style.visibility = "hidden";
+            }
+
         }else{
             ul.innerHTML = `<li class="list-group-item"> Comment List Empty </li>`
         }
     })
 }
 
-async function getCommentListFromServer(bno){
+async function getCommentListFromServer(bno, page){
     try {
-        const resp = await fetch("/comment/"+bno);
+        const resp = await fetch("/comment/"+bno+"/"+page);
         const result = await resp.json();
         return result;
     } catch (error) {
@@ -78,5 +89,72 @@ async function getCommentListFromServer(bno){
     }
 }
 
+document.addEventListener('click', (e)=>{
+    console.log(e.target.classList);
+    if(e.target.id == 'moreBtn'){
+        let page = parseInt(e.target.dataset.page);
+        spreadList(bnoVal, page);
+    }else if(e.target.classList.contains('mod')){
+        let li = e.target.closest('li');
+        //nextSibling : 한 부모 안에서 다음형제를 찾기
+        let cmtText = li.querySelector('.fw-bold').nextSibling;
+        console.log(cmtText);
+        document.getElementById('cmtTextMod').value = cmtText.nodeValue;
+        //수정 => cno dataset으로 달기 cno, content
+        document.getElementById('cmtModBtn').setAttribute("data-cno", li.dataset.cno);
+    }else if(e.target.id == 'cmtModBtn'){
+        let cmtModData = {
+            cno : e.target.dataset.cno,
+            content : document.getElementById('cmtTextMod').value
+        };
+        console.log(cmtModData);
+        commentModDataToServer(cmtModData).then(result =>{
+            if(result === "1"){
+                alert("댓글 수정 성공");
+                spreadList(bnoVal);
+            }
+        })
+    }else if(e.target.classList.contains('del')){
+        let li = e.target.closest('li');
+        let cno = li.dataset.cno;
+        console.log(cno);
+        commentDeleteFromServer(cno).then(result =>{
+            if(result === "1"){
+                alert("댓글 삭제 성공");
+                spreadList(bnoVal);
+            }
+        })
+    }
+})
 
-
+//수정시 모달창을 통해 댓글 입력받기
+async function commentModDataToServer(cmtModData){
+    try {
+        const url = '/comment/update';
+        const config = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+        body: JSON.stringify(cmtModData)
+    };
+    const resp = await fetch(url, config);
+    const result = await resp.text();
+    return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function commentDeleteFromServer(cno){
+    try {
+        const url = '/comment/'+cno;
+        const config = {
+            method: 'DELETE'
+        };
+        const resp = await fetch(url, config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}

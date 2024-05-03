@@ -79,7 +79,7 @@
 		</ul>
 		<!-- 댓글 더보기 버튼 -->
 		<div>
-			<button type="button" class="btn btn-dark" style="visibility:hidden" id="test"> MORE + </button>
+			<button type="button" id="moreBtn" class="btn btn-dark" data-page="1" style="visibility:hidden"> MORE + </button>
 		</div>
 		<!-- 모달창 라인 -->
 		<div class="modal" id="myModal" tabindex="-1">
@@ -90,11 +90,11 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        <input type="text" class="form-control" id="">
+		        <input type="text" class="form-control" id="cmtTextMod">
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-		        <button type="button" class="btn btn-primary" id="cmtModBtn">modify</button>
+		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="cmtModBtn">modify</button>
 		      </div>
 		    </div>
 		  </div>
