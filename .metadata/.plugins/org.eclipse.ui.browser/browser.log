@@ -143,3 +143,15 @@
 5월 07, 2024 09:43:54.567 [8320:7684:0507/094354.565:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 07, 2024 09:43:54.567 [8320:7684:0507/094354.565:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 07, 2024 09:43:55.417 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 07, 2024 17:47:23.541 [23316:23844:0507/174723.540:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 07, 2024 17:47:23.541 [23316:23844:0507/174723.540:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 07, 2024 17:47:25.314 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 07, 2024 17:52:45.406 [16552:24612:0507/175245.406:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 07, 2024 17:52:45.406 [16552:24612:0507/175245.406:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 07, 2024 17:52:47.521 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 07, 2024 17:57:30.177 [4952:16284:0507/175730.177:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 07, 2024 17:57:30.177 [4952:16284:0507/175730.177:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 07, 2024 17:57:31.209 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 07, 2024 18:01:02.590 [7752:13508:0507/180102.589:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 07, 2024 18:01:02.590 [7752:13508:0507/180102.590:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 07, 2024 18:01:03.649 Created TensorFlow Lite XNNPACK delegate for CPU.
