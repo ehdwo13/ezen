@@ -45,13 +45,27 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> getList(PagingVO pgvo) {
 		return bdao.getList(pgvo);
 	}
+	@Transactional
 	@Override
-	public BoardVO getDetail(int bno) {
-		return bdao.getDetail(bno);
+	public BoardDTO getDetail(int bno) {
+		BoardVO bvo = bdao.getDetail(bno);
+		List<FileVO>flist = fdao.getList(bno);
+		BoardDTO bdto = new BoardDTO(bvo,flist);
+		return bdto;
 	}
+	@Transactional
 	@Override
-	public void update(BoardVO bvo) {
-		bdao.update(bvo);
+	public void update(BoardDTO bdto) {
+		int isOk = bdao.update(bdto.getBvo());
+		if(bdto.getFlist() == null) {
+			return;
+		}
+		if(isOk > 0 && bdto.getFlist().size()>0) {
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk *= fdao.insertFile(fvo);
+			}
+		}
 	}
 	@Override
 	public void remove(int bno) {
@@ -60,5 +74,9 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int getTotal(PagingVO pgvo) {
 		return bdao.getTotal(pgvo);
+	}
+	@Override
+	public int deleteFile(String uuid) {
+		return fdao.deleteFile(uuid);
 	}
 }

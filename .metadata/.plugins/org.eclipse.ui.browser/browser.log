@@ -138,3 +138,8 @@
 5월 03, 2024 15:40:05.192 [17852:11972:0503/154005.192:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 03, 2024 15:40:05.193 [17852:11972:0503/154005.192:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 03, 2024 15:40:06.96 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 07, 2024 09:43:54.567 NEW SESSION
+5월 07, 2024 09:43:54.567 [8320:7684:0507/094354.565:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 07, 2024 09:43:54.567 [8320:7684:0507/094354.565:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 07, 2024 09:43:55.417 Created TensorFlow Lite XNNPACK delegate for CPU.

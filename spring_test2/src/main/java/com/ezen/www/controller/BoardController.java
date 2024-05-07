@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -55,18 +58,29 @@ public class BoardController {
 	}
 	@GetMapping({"/detail", "/modify"})
 	public void detail(Model m, @RequestParam("bno")int bno) {
-		BoardVO bvo = bsv.getDetail(bno);
-		m.addAttribute("bvo", bvo);
+		BoardDTO bdto = bsv.getDetail(bno);
+		m.addAttribute("bdto", bdto);
 	}
 	@PostMapping("/modify")
-	public String modify(BoardVO bvo, RedirectAttributes re) {
-		bsv.update(bvo);
-		re.addAttribute("bno", bvo.getBno());
+	public String modify(BoardVO bvo, RedirectAttributes re, @RequestParam(name="files", required = false)MultipartFile[] files) {
+		List<FileVO> flist = null;
+		if(files[0].getSize() > 0) {
+			flist = fh.uploadFiles(files);
+		}
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		bsv.update(bdto);
+		re.addAttribute("bno", bvo.getBno());	
 		return "redirect:/board/detail";
 	}
 	@GetMapping("/remove")
 	public String remove(@RequestParam("bno")int bno) {
 		bsv.remove(bno);
 		return "redirect:/board/list";
+	}
+	@ResponseBody
+	@DeleteMapping("/{uuid}")
+	public String removeFile(@PathVariable("uuid")String uuid) {
+		int isOk = bsv.deleteFile(uuid);
+		return isOk > 0 ? "1" : "0";
 	}
 }

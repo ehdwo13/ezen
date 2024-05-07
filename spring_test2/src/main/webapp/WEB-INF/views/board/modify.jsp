@@ -4,8 +4,8 @@
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 	<h1>Board Modify Page</h1>
-	<c:set value="${bvo }" var="bvo"></c:set>
-	<form action="/board/modify" method="post">
+	<c:set value="${bdto.bvo }" var="bvo"></c:set>
+	<form action="/board/modify" method="post" enctype="multipart/form-data">
 		<div class="mb-3">
 	  		<label for="n" class="form-label">bno</label>
 	  		<input type="text" class="form-control" name="bno" id="n" value="${bvo.bno }" readonly="readonly">
@@ -27,15 +27,15 @@
   			<textarea class="form-control" id="c" name="content" aria-label="With textarea">${bvo.content }</textarea>
 		</div>
 		
-		<%-- <c:set value="${bdto.flist }" var="flist"></c:set>
+		<c:set value="${bdto.flist }" var="flist"></c:set>
 		<div class="mb-3">
 			<ul class="list-group list-group-flush">
 			<c:forEach items="${flist }" var="fvo">
   				<li class="list-group-item">
   				<c:choose>
-  					<c:when test="${fvo.file_type > 0 }">
+  					<c:when test="${fvo.fileType > 0 }">
   					<div>
-  						<img alt="" src="/upload/${fvo.save_dir }/${fvo.uuid}_${fvo.file_name}">
+  						<img alt="" src="/upload/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}">
   					</div>
   					</c:when>
   					<c:otherwise>
@@ -45,16 +45,16 @@
   					</c:otherwise>
   				</c:choose>
   				<div>
-  					<div>${fvo.file_name }</div>
-  					${fvo.reg_date }
-  					<span class="badge text-bg-warning">${fvo.file_size }Byte</span>
+  					<div>${fvo.fileName }</div>
+  					${fvo.regDate }
+  					<span class="badge text-bg-warning">${fvo.fileSize }Byte</span>
   					<button type="button" data-uuid="${fvo.uuid }" class="btn btn-outline-danger btn-sm file-x">x</button>
   				</div>
   				</li>			
 			</c:forEach>
   			</ul>
 		</div>
-		<!-- <!-- 파일추가 -->
+		<!-- 파일추가 -->
 		<div class="mb-3">
 			<label for="file" class="form-label">files...</label>
 	  		<input type="file" class="form-control" name="files" id="file" 
@@ -63,11 +63,11 @@
 		</div>
 		<div class="mb-3" id="fileZone">
 			
-		</div> --> --%>
+		</div>
 		<button type="submit" class="btn btn-warning" id="regBtn">수정</button>
 	<a href="/board/list"><button type="button" class="btn btn-primary">리스트</button></a>
 	</form>
 </div>
-<!-- <script type="text/javascript" src="/resources/js/boardModify.js"></script>
-<script type="text/javascript" src="/resources/js/boardRegister.js"></script> -->
+<script type="text/javascript" src="/resources/js/boardModify.js"></script>
+<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
 <jsp:include page="../layout/footer.jsp" />
