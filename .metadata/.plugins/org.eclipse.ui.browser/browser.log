@@ -155,3 +155,25 @@
 5월 07, 2024 18:01:02.590 [7752:13508:0507/180102.589:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 07, 2024 18:01:02.590 [7752:13508:0507/180102.590:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 07, 2024 18:01:03.649 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 08, 2024 10:02:45.139 NEW SESSION
+5월 08, 2024 10:02:45.139 [8320:15232:0508/100245.137:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 10:02:45.140 [8320:15232:0508/100245.138:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 10:02:46.111 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 10:09:35.439 [8320:15232:0508/100935.439:ERROR:interface_endpoint_client.cc(707)] Message 1 rejected by interface blink.mojom.WidgetHost
+5월 08, 2024 11:22:02.610 [14692:15952:0508/112202.610:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 11:22:02.611 [14692:15952:0508/112202.611:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 11:22:04.267 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 11:23:02.568 [13064:7348:0508/112302.568:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 11:23:02.569 [13064:7348:0508/112302.568:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 11:23:03.756 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 11:43:57.743 [13064:7348:0508/114357.742:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+5월 08, 2024 12:17:04.118 [10388:16004:0508/121704.118:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 12:17:04.118 [10388:16004:0508/121704.118:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 12:17:05.272 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 12:17:26.33 [10388:2304:0508/121726.033:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 08, 2024 12:18:16.425 [10388:2304:0508/121816.425:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 08, 2024 12:19:18.923 [10388:2304:0508/121918.923:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 08, 2024 12:40:32.671 [12540:15032:0508/124032.671:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 12:40:32.671 [12540:15032:0508/124032.671:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 12:40:34.708 Created TensorFlow Lite XNNPACK delegate for CPU.

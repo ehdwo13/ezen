@@ -14,6 +14,7 @@ import lombok.ToString;
 @Setter
 @Getter
 public class UserVO {
+	
 	private String email;
 	private String pwd;
 	private String nickName;
