@@ -20,7 +20,6 @@ public class AuthUser extends User {
 
 	public AuthUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
-		// TODO Auto-generated constructor stub
 	}
 	public AuthUser(UserVO uvo) {
 		super(uvo.getEmail(), uvo.getPwd(),

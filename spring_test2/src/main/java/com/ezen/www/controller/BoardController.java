@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,11 +18,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.BoardDTO;
 import com.ezen.www.domain.BoardVO;
+import com.ezen.www.domain.CommentVO;
 import com.ezen.www.domain.FileVO;
 import com.ezen.www.domain.PagingVO;
 import com.ezen.www.handler.FileHandler;
 import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.service.BoardService;
+import com.ezen.www.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class BoardController {
 	private final BoardService bsv;
+	private final CommentService csv;
 	private final FileHandler fh;
 	
 	@GetMapping("/register")
@@ -52,6 +57,10 @@ public class BoardController {
 		//totalCount
 		int totalCount = bsv.getTotal(pgvo);
 		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		for(BoardVO blist : list) {
+			bsv.fileCmt(blist.getBno());
+			bsv.cmtCnt(blist.getBno());
+		}
 		m.addAttribute("list", list);
 		m.addAttribute("ph",ph);
 		return "/board/list";
@@ -82,5 +91,6 @@ public class BoardController {
 	public String removeFile(@PathVariable("uuid")String uuid) {
 		int isOk = bsv.deleteFile(uuid);
 		return isOk > 0 ? "1" : "0";
+	
 	}
 }

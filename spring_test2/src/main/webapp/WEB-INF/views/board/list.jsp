@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 	<h1>Board List Page</h1>
 	<br>
 	<!-- search Line -->
+	<sec:authentication property="principal.uvo.nickName" var="authNick"/>
 	<form action="/board/list" method="get" class="row gy-2 gx-3 align-items-center">
    		<div class="col-auto">
     		<select class="form-select" name="type" id="autoSizingSelect">
@@ -25,7 +27,7 @@
     		<input type="hidden" name="qty" value="10">
   		</div>
   		<div class="col-auto">
-    		<button type="submit" class="btn btn-primary">Search</button>
+    		<button type="submit" class="btn btn-primary" id="search">Search</button>
   		</div>
   		<div class="col-auto">
   			<p>totalCount : ${ph.totalCount }</p>
@@ -48,9 +50,9 @@
 	  	<tr>
 			<td>${bvo.bno}</td>
 			<td><a href="/board/detail?bno=${bvo.bno }">${bvo.title}</a>
-			<%-- <c:if test="${bvo.cmt_qty ne 0 }">
-			[${bvo.cmt_qty }]
-			</c:if> --%>
+			<c:if test="${bvo.cmtQty ne 0 }">
+			[${bvo.cmtQty }]
+			</c:if>
 			</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.regDate}</td>
@@ -61,6 +63,7 @@
 	  </tbody>
 	</table>
 	<!-- paging Line -->
+	<button type="button" id="myList">myList</button>
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	  	<!-- prev -->
@@ -79,4 +82,8 @@
 	  </ul>
 	</nav>
 </div>
+<script type="text/javascript">
+	const authNick = `${authNick}`;
+</script>
+<script type="text/javascript" src="/resources/js/list.js"></script>
 <jsp:include page="../layout/footer.jsp" />

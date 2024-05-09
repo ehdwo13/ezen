@@ -20,4 +20,10 @@ public interface BoardDAO {
 
 	int selectOneBno();
 
+	void fileCmt(int bno);
+
+	void cmtCnt(int bno);
+
+	void readCount(int bno);
+
 }

@@ -22,4 +22,10 @@ public interface BoardService {
 
 	int deleteFile(String uuid);
 
+	void fileCmt(int bno);
+
+	void cmtCnt(int bno);
+
+	
+
 }

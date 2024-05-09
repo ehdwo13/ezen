@@ -1,8 +1,11 @@
 package com.ezen.www.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ezen.www.domain.AuthVO;
 import com.ezen.www.domain.UserVO;
 import com.ezen.www.repository.UserDAO;
 
@@ -21,6 +24,40 @@ public class UserServiceImpl implements UserService{
 		udao.insert(uvo);
 		//권한 추가
 		udao.insertAuthInit(uvo.getEmail());
+	}
+
+	@Override
+	public List<UserVO> getAllList() {
+		List<UserVO> ulist = udao.getAllList();
+		for(int i=0; i<ulist.size(); i++) {
+			String email = ulist.get(i).getEmail();
+			List<AuthVO>authList = udao.selectAuths(email);
+//			log.info("권한리스트 로그 {}", authList);
+			ulist.get(i).setAuthList(authList);
+		}
+		return ulist;
+	}
+
+
+	@Override
+	public void updateUser(UserVO uvo) {
+		udao.updateUser(uvo);
+	}
+	@Transactional
+	@Override
+	public void delete(String email) {
+		udao.deleteAuth(email);
+		udao.delete(email);
+	}
+
+	@Override
+	public void updatePW(UserVO uvo) {
+		udao.updatePW(uvo);
+	}
+
+	@Override
+	public int checkEmail(String email) {
+		return udao.checkEmail(email);
 	}
 
 }

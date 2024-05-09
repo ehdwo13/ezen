@@ -1,15 +1,31 @@
 package com.ezen.www.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.UserVO;
+import com.ezen.www.security.AuthUser;
 import com.ezen.www.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -40,10 +56,48 @@ public class UserController {
 	public String loginPost(HttpServletRequest request, RedirectAttributes re) {
 		//로그인 실패시 다시 로그인 페이지로 돌아와 오류 메시지 전송
 		//다시 로그인 유도
-		log.info("에러메세지 {}", request.getAttribute("errMsg").toString());
+//		log.info("에러메세지 {}", request.getAttribute("errMsg").toString());
 		re.addAttribute("email", request.getAttribute("email"));
 		re.addAttribute("errMsg", request.getAttribute("errMsg"));
 		return "redirect:/user/login";
 	}
+	@GetMapping("/list")
+	public void list(Model m) {
+		List<UserVO> ulist = usv.getAllList();
+		m.addAttribute("list", ulist);
+	}
 	
+	private void logout(HttpServletRequest request, HttpServletResponse response) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		new SecurityContextLogoutHandler().logout(request, response, authentication);
+	}
+	@GetMapping("/modify")
+	public void modify() {}
+	
+	@PostMapping("/modify")
+	public String modify(UserVO uvo, HttpServletRequest request, HttpServletResponse response) {
+		log.info("객체 로그 {}",uvo);
+		String pwd = uvo.getPwd();
+		if(pwd == null || pwd == "") {
+			usv.updateUser(uvo);
+		}else {
+			uvo.setPwd(bcEncoder.encode(pwd));
+			usv.updatePW(uvo);
+		}
+		logout(request, response);
+		return "redirect:/";
+	}
+	@GetMapping("/remove")
+	public String remove(@RequestParam("email")String email) {
+		log.info("email확인 {}",email);
+		usv.delete(email);
+		return "redirect:/user/logout";
+	}
+	@ResponseBody
+	@PostMapping(value = "/check", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String check(@RequestBody String email) {
+		log.info("이메일 로그 {}", email);
+		int isOk = usv.checkEmail(email);
+		return isOk > 0 ? "1" : "0";
+	}
 }

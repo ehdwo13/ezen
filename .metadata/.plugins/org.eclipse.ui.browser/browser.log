@@ -177,3 +177,100 @@
 5월 08, 2024 12:40:32.671 [12540:15032:0508/124032.671:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
 5월 08, 2024 12:40:32.671 [12540:15032:0508/124032.671:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
 5월 08, 2024 12:40:34.708 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 08, 2024 14:46:39.543 NEW SESSION
+5월 08, 2024 14:46:39.543 [8144:14588:0508/144639.541:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 14:46:39.543 [8144:14588:0508/144639.541:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 14:46:41.636 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 15:18:34.883 [3848:8080:0508/151834.883:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 15:18:34.885 [3848:8080:0508/151834.885:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 15:18:36.254 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 15:35:40.448 [3848:8080:0508/153540.447:ERROR:CONSOLE(0)] "ResizeObserver loop completed with undelivered notifications.", source: devtools://devtools/bundled/devtools_app.html?remoteBase=https://chrome-devtools-frontend.appspot.com/serve_file/@815c2f826541d726696cd5a89d01a945cb3aed1c/&can_dock=true&targetType=tab&veLogging=true (0)
+5월 08, 2024 16:18:33.119 [3848:8080:0508/161833.119:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+5월 08, 2024 16:19:32.250 [20260:17540:0508/161932.250:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 16:19:32.250 [20260:17540:0508/161932.250:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 16:19:33.527 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 17:51:54.702 [20436:15820:0508/175154.702:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 17:51:54.703 [20436:15820:0508/175154.702:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 17:51:55.885 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 17:55:22.542 [9900:7776:0508/175522.542:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 17:55:22.543 [9900:7776:0508/175522.542:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 17:55:23.464 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 17:58:44.673 [10996:9088:0508/175844.673:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 17:58:44.674 [10996:9088:0508/175844.673:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 17:58:45.879 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 08, 2024 18:22:45.882 [12796:15060:0508/182245.882:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 08, 2024 18:22:45.883 [12796:15060:0508/182245.882:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 08, 2024 18:22:47.147 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 09, 2024 09:42:49.553 NEW SESSION
+5월 09, 2024 09:42:49.553 [14856:14980:0509/094249.541:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 09:42:49.554 [14856:14980:0509/094249.541:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 09:42:51.419 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 09:43:12.458 [14856:13876:0509/094312.458:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 09, 2024 09:43:55.845 [14856:13876:0509/094355.845:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 09, 2024 09:45:15.649 [14856:13876:0509/094515.648:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 09, 2024 09:57:54.671 [14856:13876:0509/095754.671:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+5월 09, 2024 10:17:30.651 [12256:12444:0509/101730.650:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:17:30.651 [12256:12444:0509/101730.650:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:17:36.857 [13008:17716:0509/101736.856:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+5월 09, 2024 10:17:37.381 [13008:17716:0509/101737.381:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:17:37.382 [13008:17716:0509/101737.381:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:17:37.607 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:17:54.118 [8088:4608:0509/101754.117:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:17:54.118 [8088:4608:0509/101754.118:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:17:54.297 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:18:05.858 [8088:4608:0509/101805.858:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+5월 09, 2024 10:18:10.625 [8088:4608:0509/101810.624:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+5월 09, 2024 10:18:49.15 [19076:19164:0509/101849.015:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:18:49.16 [19076:19164:0509/101849.015:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:18:50.148 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:55:59.00 기존 브라우저 세션에서 여는 중입니다.
+5월 09, 2024 10:56:00.529 [15084:10208:0509/105600.529:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:56:00.530 [15084:10208:0509/105600.529:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:56:01.758 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:58:27.817 [19308:5744:0509/105827.817:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+5월 09, 2024 10:58:28.406 [19308:5744:0509/105828.406:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:58:28.407 [19308:5744:0509/105828.406:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:58:28.567 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 10:58:48.256 [18736:17184:0509/105848.256:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 10:58:48.257 [18736:17184:0509/105848.256:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 10:58:49.167 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 11:11:24.451 [19360:5880:0509/111124.451:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 11:11:24.452 [19360:5880:0509/111124.451:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 11:11:25.361 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 11:17:24.39 [17728:18680:0509/111724.038:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 11:17:24.39 [17728:18680:0509/111724.038:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 11:17:25.205 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 11:17:46.258 [17728:17796:0509/111746.258:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 09, 2024 11:18:34.43 [17728:17796:0509/111834.043:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -118
+5월 09, 2024 12:06:37.998 [18876:16840:0509/120637.998:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:06:37.999 [18876:16840:0509/120637.998:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:06:38.744 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:11:59.973 [20512:1892:0509/121159.973:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:11:59.974 [20512:1892:0509/121159.973:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:12:00.785 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:31:39.203 [8452:6764:0509/123139.203:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:31:39.204 [8452:6764:0509/123139.203:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:31:40.132 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:34:49.291 [20308:18044:0509/123449.291:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:34:49.291 [20308:18044:0509/123449.291:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:34:50.554 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:41:07.930 [15532:17532:0509/124107.929:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:41:07.931 [15532:17532:0509/124107.930:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:41:09.300 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 12:58:21.33 [17032:13604:0509/125821.032:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 12:58:21.33 [17032:13604:0509/125821.032:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 12:58:22.220 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 13:28:25.452 [17032:9808:0509/132825.451:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+5월 09, 2024 13:28:26.383 [17032:9808:0509/132826.382:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+5월 09, 2024 14:08:11.721 [17032:9808:0509/140811.720:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+5월 09, 2024 14:08:11.791 [17032:6348:0509/140811.791:ERROR:get_updates_processor.cc(263)] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_INTERNET_DISCONNECTED)
+5월 09, 2024 14:08:12.55 [17032:13604:0509/140812.053:ERROR:device_event_log_impl.cc(195)] [14:08:12.053] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: �슂�냼媛� �뾾�뒿�땲�떎. (0x490)
+5월 09, 2024 14:08:14.62 [17032:9808:0509/140814.062:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+5월 09, 2024 14:09:23.801 [2532:18652:0509/140923.800:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 14:09:23.802 [2532:18652:0509/140923.800:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 14:09:24.582 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 09, 2024 14:33:15.354 [16920:864:0509/143315.353:ERROR:sync_metadata_store_change_list.cc(34)] History datatype error was encountered: Failed to update ModelTypeState.
+5월 09, 2024 14:33:15.354 [16920:864:0509/143315.353:ERROR:data_type_manager_impl.cc(381)] History datatype error was encountered: Preexisting controller error on configuration
+5월 09, 2024 14:33:16.381 Created TensorFlow Lite XNNPACK delegate for CPU.

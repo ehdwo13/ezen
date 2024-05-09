@@ -1,7 +1,7 @@
 //cmtAddBtn 버튼을 클릭하면 bno, writer, content를 비동기로 DB에 넣기
 document.getElementById('cmtAddBtn').addEventListener('click', () => {
     // const cmtWriter = document.getElementById('cmtWriter').value;
-    let cmtWriter = "Tester";
+    let cmtWriter = authNick;
     let cmtText = document.getElementById('cmtText').value;
 
     if(cmtText == null || cmtText == ''){
@@ -57,8 +57,10 @@ function spreadList(bno, page=1){
                 add+= `</div>`;
                 add+= `<span class="badge rounded-pill text-bg-warning">${cvo.regDate}</span><br>`;
                 //수정, 삭제 버튼
-                add += `<button type="button" class="btn btn-outline-warning btn-sm mod" data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
-                add += `<button type="button" class="btn btn-outline-danger btn-sm del">삭제</button>`;
+                if(cvo.writer == authNick){
+                    add += `<button type="button" class="btn btn-outline-warning btn-sm mod" data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+                    add += `<button type="button" class="btn btn-outline-danger btn-sm del">삭제</button>`;
+                }
                 add+= `</li>`;
                 ul.innerHTML += add;
             }

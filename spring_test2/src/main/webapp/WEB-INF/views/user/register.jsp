@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 		<h1>User Register Page</h1>
@@ -7,6 +8,7 @@
 		<div class="mb-3">
 	  		<label for="e" class="form-label">E-MAIL</label>
 	  		<input type="email" class="form-control" name="email" id="e" placeholder="example@test.com...">
+			<button type="button" class="btn btn-info" id="checkEmail">중복체크</button>
 		</div>
 		<div class="mb-3">
 	  		<label for="p" class="form-label">PassWord</label>
@@ -15,8 +17,10 @@
 		<div class="mb-3">
 	  		<label for="n" class="form-label">nick_Name</label>
 	  		<input type="text" class="form-control" name="nickName" id="n" placeholder="NickName...">
+	  		<button type="button" class="btn btn-info" id="checkNick">중복체크</button>
 		</div>
 		<button type="submit" class="btn btn-primary">JOIN</button>
 	</form>
 </div>
+<script type="text/javascript" src="/resources/js/userRegister.js"></script>
 <jsp:include page="../layout/footer.jsp" />

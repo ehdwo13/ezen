@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 		<h1>Board Detail Page</h1>
@@ -67,8 +68,9 @@
 		
 		<!-- Comment Line -->
 		<!-- 댓글 등록 라인 -->
+		<sec:authentication property="principal.uvo.nickName" var="authNick"/>
 		<div class="input-group mb-3">
-  			<span class="input-group-text" id="cmtWriter">Tester</span>
+  			<span class="input-group-text" id="cmtWriter">${authNick }</span>
   			<input type="text" id="cmtText" class="form-control" placeholder="Add Comment.." aria-label="Username" aria-describedby="basic-addon1">
   			<button type="button" id="cmtAddBtn" class="btn btn-secondary">POST</button>
 		</div>
@@ -108,15 +110,17 @@
 		
 		<br>
 		<hr>
-		
+		<c:if test="${bvo.writer eq authNick}">
 		<a href="/board/modify?bno=${bvo.bno }"><button type="button" class="btn btn-warning">수정</button></a>
 		<a href="/board/remove?bno=${bvo.bno }"><button type="button" class="btn btn-danger">삭제</button></a>
+		</c:if>
 		<a href="/board/list"><button type="button" class="btn btn-primary">리스트</button></a>
 		<br><br><br><br><br><br>
 </div>
 <script type="text/javascript">
 	const bnoVal = `<c:out value="${bvo.bno}" />`;
-	/* const logVal = `<c:out value="${ses.id}" />`; */
+	const authNick = `${authNick}`;
+	
 </script>
 <script type="text/javascript" src="/resources/js/boardDetailComment.js">
 </script>

@@ -48,6 +48,7 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional
 	@Override
 	public BoardDTO getDetail(int bno) {
+		bdao.readCount(bno);
 		BoardVO bvo = bdao.getDetail(bno);
 		List<FileVO>flist = fdao.getList(bno);
 		BoardDTO bdto = new BoardDTO(bvo,flist);
@@ -78,5 +79,14 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int deleteFile(String uuid) {
 		return fdao.deleteFile(uuid);
+	}
+	@Override
+	public void fileCmt(int bno) {
+		bdao.fileCmt(bno);
+	}
+	
+	@Override
+	public void cmtCnt(int bno) {
+		bdao.cmtCnt(bno);
 	}
 }

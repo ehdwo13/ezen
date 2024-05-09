@@ -1,6 +1,7 @@
 package com.ezen.www.service;
 
 
+
 import com.ezen.www.domain.CommentVO;
 import com.ezen.www.domain.PagingVO;
 import com.ezen.www.handler.PagingHandler;
@@ -14,5 +15,6 @@ public interface CommentService {
 	int update(CommentVO cvo);
 
 	int delete(int cno);
+
 
 }

@@ -1,43 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../layout/header.jsp" />
+		<sec:authentication property="principal.uvo.email" var="authEmail"/>
+		<sec:authentication property="principal.uvo.pwd" var="authPwd"/>
+        <sec:authentication property="principal.uvo.nickName" var="authNick"/>
 <div class="container-md">
-		<h1>Member Modify Page</h1>
-		<form action="/member/modify" method="post">
-		<div class="mb-3">
-	  		<label for="i" class="form-label">ID</label>
-	  		<input type="text" class="form-control" name="id" id="i" value="${ses.id }" readonly="readonly">
-		</div>
-		<div class="mb-3">
-	  		<label for="r" class="form-label">Reg_Date</label>
-	  		<input type="text" class="form-control" name="reg_date" id="r" value="${ses.reg_date }" readonly="readonly">
-		</div>
-		<div class="mb-3">
-	  		<label for="l" class="form-label">Last_Login</label>
-	  		<input type="text" class="form-control" name="last_login" id="l" value="${ses.last_login }" readonly="readonly">
-		</div>
-		<div class="mb-3">
-	  		<label for="p" class="form-label">PW</label>
-	  		<input type="password" class="form-control" name="pw" id="p">
-		</div>
-		<div class="mb-3">
-	  		<label for="n" class="form-label">NAME</label>
-	  		<input type="text" class="form-control" name="name" id="n" value="${ses.name }">
-		</div>
+		<h1>User Modify Page</h1>
+		<form action="/user/modify" method="post">
 		<div class="mb-3">
 	  		<label for="e" class="form-label">E-MAIL</label>
-	  		<input type="email" class="form-control" name="email" id="e" value="${ses.email }">
+	  		<input type="email" class="form-control" name="email" id="e" value="${authEmail }" readonly="readonly">
 		</div>
 		<div class="mb-3">
-	  		<label for="h" class="form-label">HOME</label>
-	  		<input type="text" class="form-control" name="home" id="h" value="${ses.home }">
+	  		<label for="p" class="form-label">PassWord</label>
+	  		<input type="text" class="form-control" name="pwd" id="p">
 		</div>
 		<div class="mb-3">
-	  		<label for="a" class="form-label">AGE</label>
-	  		<input type="number" class="form-control" name="age" id="a" value="${ses.age }">
+	  		<label for="n" class="form-label">nick_Name</label>
+	  		<input type="text" class="form-control" name="nickName" id="n" value="${authNick }">
 		</div>
 		<button type="submit" class="btn btn-primary">MODIFY</button>
-		<a href="/member/remove"><button type="button" class="btn btn-danger">DELETE</button></a>
+		<a href="/user/remove?email=${authEmail }"><button type="button" class="btn btn-danger">DELETE</button></a>
 	</form>
 </div>
+
 <jsp:include page="../layout/footer.jsp" />
