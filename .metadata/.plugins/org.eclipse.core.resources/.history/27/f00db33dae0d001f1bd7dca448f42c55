@@ -1,0 +1,30 @@
+package com.ezen.www.repository;
+
+import java.util.List;
+
+import com.ezen.www.domain.AuthVO;
+import com.ezen.www.domain.UserVO;
+
+public interface UserDAO {
+
+	void insert(UserVO uvo);
+
+	void insertAuthInit(String email);
+
+	UserVO selectEmail(String username);
+
+	List<AuthVO> selectAuths(String username);
+
+	void updateLastLogin(String authEmail);
+
+	List<UserVO> getAllList();
+
+	void updateUser(UserVO uvo);
+
+	void delete(String email);
+
+	void deleteAuth(String email);
+
+	void updatePW(UserVO uvo);
+
+}
