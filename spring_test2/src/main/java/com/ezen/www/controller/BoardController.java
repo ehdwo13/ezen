@@ -86,6 +86,7 @@ public class BoardController {
 		bsv.remove(bno);
 		return "redirect:/board/list";
 	}
+	//ResponseBody
 	@ResponseBody
 	@DeleteMapping("/{uuid}")
 	public String removeFile(@PathVariable("uuid")String uuid) {
