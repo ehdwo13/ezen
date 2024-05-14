@@ -26,7 +26,6 @@ public class BoardController {
     @PostMapping("/register")
     public String register(BoardVO bvo){
         int isOk = bsv.insert(bvo);
-//        log.info("test 1{}",isOk);
      return "index";
     }
     @GetMapping("/list")
@@ -38,7 +37,6 @@ public class BoardController {
 
     @GetMapping("/detail")
     public void detail(Model m, @RequestParam("bno")long bno) {
-//        log.info("bno 값 확인 {}",bno);
         BoardVO bvo = bsv.getDetail(bno);
         m.addAttribute("bvo", bvo);
     }
