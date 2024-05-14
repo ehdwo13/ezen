@@ -11,7 +11,7 @@ public interface BoardService {
 
     List<BoardVO> getList(PagingVO pgvo);
 
-    BoardVO getDetail(long bno);
+    BoardDTO getDetail(long bno);
 
     void update(BoardVO bvo);
 

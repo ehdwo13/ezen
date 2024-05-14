@@ -2,33 +2,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="~{layout :: setFragment(~{this::content})}">
     <th:block th:fragment="content">
-        <div class="container-sm" th:each="bvo, status:${bvo}">
+        <th:block th:with="bvo=${bdto.bvo}">
+        <div class="container-sm">
             <h1>Board Detail Page</h1>
             <form action="/board/modify" method="post" id="modForm">
             <div class="mb-3">
                 <label for="n" class="form-label">bno</label>
-                <input type="text" class="form-control" name="bno" id="n" th:value="${bvo.bno}" readonly="readonly">
+                <input type="text" class="form-control" name="bno" id="n" th:value="${bdto.bvo.bno}" readonly="readonly">
             </div>
             <div class="mb-3">
                 <label for="t" class="form-label">title</label>
-                <input type="text" class="form-control" name="title" id="t" th:value="${bvo.title}" readonly="readonly">
+                <input type="text" class="form-control" name="title" id="t" th:value="${bdto.bvo.title}" readonly="readonly">
             </div>
             <div class="mb-3">
                 <label for="w" class="form-label">writer</label>
-                <input type="text" class="form-control" name="writer" id="w" th:value="${bvo.writer}" readonly="readonly">
+                <input type="text" class="form-control" name="writer" id="w" th:value="${bdto.bvo.writer}" readonly="readonly">
             </div>
             <div class="mb-3">
                 <label for="r" class="form-label">regAt</label>
-                <input type="text" class="form-control" name="regAt" id="r" th:value="${bvo.regAt}" readonly="readonly">
+                <input type="text" class="form-control" name="regAt" id="r" th:value="${bdto.bvo.regAt}" readonly="readonly">
             </div>
             <div class="mb-3">
                 <label for="m" class="form-label">modAt</label>
-                <input type="text" class="form-control" name="modAt" id="m" th:value="${bvo.modAt}" readonly="readonly">
+                <input type="text" class="form-control" name="modAt" id="m" th:value="${bdto.bvo.modAt}" readonly="readonly">
             </div>
             <div class="mb-3">
                 <label for="c" class="form-label">content</label>
-                <textarea class="form-control" id="c" name="content" aria-label="With textarea" readonly="readonly">[[${bvo.content}]]</textarea>
+                <textarea class="form-control" id="c" name="content" aria-label="With textarea" readonly="readonly">[[${bdto.bvo.content}]]</textarea>
             </div>
+
+            <div class="mb-3">
+                <ul class="list-group list-group-flush">
+                    <li th:each="fvo : ${bdto.flist}" class="list-group-item">
+                        <div th:if="${fvo.fileType > 0}" class="ms-2 me-auto">
+                            <img alt="그림없"  th:src="@{|/upload/${fvo.saveDir}/${fvo.uuid}_th_${fvo.fileName}|}">
+                        </div>
+                        <div th:unless="${fvo.fileType > 0}" class="ms-2 me-auto">
+
+                        </div>
+                    <!-- 파일 이름 작성일 사이즈 -->
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">[[${fvo.fileName }]]</div>
+                    [[${fvo.regAt }]]
+                    <span class="badge text-bg-warning">[[${fvo.fileSize }]]Byte</span>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <hr>
             <button type="button" id="listBtn" class="btn btn-outline-primary">List</button>
                 <!-- detail page 에서 modify 상태로 변경하기 위한 버튼 -->
             <button type="button" id="modBtn"  class="btn btn-outline-warning">Modify</button>
@@ -39,6 +61,7 @@
             </form>
         </div>
         <script th:src="@{/js/boardDetail.js}"></script>
+        </th:block>
     </th:block>
 </th:block>
 </html>

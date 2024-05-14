@@ -51,8 +51,9 @@ public class BoardController {
 
     @GetMapping("/detail")
     public void detail(Model m, @RequestParam("bno")long bno) {
-        BoardVO bvo = bsv.getDetail(bno);
-        m.addAttribute("bvo", bvo);
+        BoardDTO bdto = bsv.getDetail(bno);
+        log.info("bdto 체크 {}",bdto);
+        m.addAttribute("bdto", bdto);
     }
 
     @PostMapping("/modify")

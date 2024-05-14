@@ -40,8 +40,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public BoardVO getDetail(long bno) {
-        return boardMapper.getDetail(bno);
+    public BoardDTO getDetail(long bno) {
+        BoardVO bvo = boardMapper.getDetail(bno);
+        List<FileVO>flist = fileMapper.getList(bno);
+        BoardDTO bdto = new BoardDTO(bvo,flist);
+        return bdto;
     }
 
     @Override

@@ -7,4 +7,7 @@
         insert into file(uuid, save_dir, file_name, file_type, bno, file_size)
         values(#{uuid}, #{saveDir}, #{fileName}, #{fileType}, #{bno}, #{fileSize})
     </insert>
+    <select id="getList" resultType="com.ezen.www.domain.FileVO">
+        select * from file where bno = #{bno}
+    </select>
 </mapper>
