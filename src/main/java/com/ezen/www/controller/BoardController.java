@@ -26,6 +26,7 @@ public class BoardController {
     @PostMapping("/register")
     public String register(BoardVO bvo){
         int isOk = bsv.insert(bvo);
+//        log.info("test 1{}",isOk);
      return "index";
     }
     @GetMapping("/list")
