@@ -38,8 +38,7 @@ async function postCommentToServer(cmtData){
     } catch (error) {
         console.log(error);
     }
-};
-
+}
 function spreadList(bno, page=1){
     getCommentListFromServer(bno, page).then(result =>{
         const ul = document.getElementById('cmtListArea');
