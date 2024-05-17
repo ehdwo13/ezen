@@ -93,6 +93,7 @@ document.addEventListener('click', (e)=>{
         let li = e.target.closest('li');
         //nextSibling : 한 부모 안에서 다음형제를 찾기
         let cmtText = li.querySelector('.fw-bold').nextSibling;
+        document.getElementById('modWriter').innerText = li.querySelector('.fw-bold').innerText;
         document.getElementById('cmtTextMod').value = cmtText.nodeValue;
         document.getElementById('cmtModBtn').setAttribute("data-cno", li.dataset.cno);
     }else if(e.target.id === 'cmtModBtn'){
