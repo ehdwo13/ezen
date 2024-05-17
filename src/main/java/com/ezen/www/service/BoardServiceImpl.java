@@ -24,6 +24,9 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public int insert(BoardDTO bdto) {
         int isOk = boardMapper.insert(bdto.getBvo());
+        if(bdto.getFlist() == null) {
+            return isOk;
+        }
         if(isOk > 0 && bdto.getFlist().size()>0){
             long bno = boardMapper.getBno();
             for(FileVO fvo : bdto.getFlist()){

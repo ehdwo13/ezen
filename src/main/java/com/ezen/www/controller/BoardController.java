@@ -31,12 +31,13 @@ public class BoardController {
     public void register(){}
 
     @PostMapping("/register")
-    public String register(BoardVO bvo, @RequestParam("files") MultipartFile[] files){
+    public String register(BoardVO bvo, @RequestParam(name="files", required = false) MultipartFile[] files){
         List<FileVO> flist= null;
         if(files[0].getSize() > 0) {
             flist = fh.uploadFiles(files);
         }
         BoardDTO bdto = new BoardDTO(bvo, flist);
+        log.info("bdto: 값 {}", bdto);
         int isOk = bsv.insert(bdto);
         return "redirect:/board/list";
     }

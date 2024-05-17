@@ -54,10 +54,10 @@ function spreadList(bno, page=1){
                 add+= `</div>`;
                 add+= `<span class="badge rounded-pill text-bg-warning">${cvo.regDate}</span><br>`;
                 //수정, 삭제 버튼
-
-                    add += `<button type="button" class="btn btn-outline-warning btn-sm mod" data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
-                    add += `<button type="button" class="btn btn-outline-danger btn-sm del">삭제</button>`;
-
+                if(cvo.writer === authNickname || admin === true){
+                add += `<button type="button" class="btn btn-outline-warning btn-sm mod" data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+                add += `<button type="button" class="btn btn-outline-danger btn-sm del">삭제</button>`;
+                }
                 add+= `</li>`;
                 ul.innerHTML += add;
             }

@@ -11,7 +11,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="w">Writer</span>
-                    <input type="text" class="form-control" placeholder="Writer" name="Writer" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="Writer" aria-label="Username" aria-describedby="basic-addon1" th:with="auth=${#authentication.getPrincipal()}" th:value="${auth.mvo.nickName}">
                 </div>
                 <div class="input-group">
                     <span class="input-group-text" id="c">Content</span>

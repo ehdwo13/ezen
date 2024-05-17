@@ -44,7 +44,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    //userDetailService : spring에서 만든 클래스와 같은 객체
+    //userDetailService : spring 에서 만든 클래스와 같은 객체
     @Bean
     UserDetailsService userDetailsService(){
         return new CustomUserService();

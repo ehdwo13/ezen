@@ -9,13 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/comment/*")
-@Controller
+@RestController
 public class CommentController {
     private final CommentService csv;
 

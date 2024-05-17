@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:replace="~{layout :: setFragment(~{this::content})}">
     <th:block th:fragment="content">
         <th:block th:with="bvo=${bdto.bvo}">
-        <div class="container-sm">
+            <th:block th:with="auth=${#authentication.getPrincipal()}">
+        <div class="container-sm" >
             <h1>Board Detail Page</h1>
             <form action="/board/modify" method="post" id="modForm">
             <div class="mb-3">
@@ -53,16 +54,20 @@
             <hr>
             <button type="button" id="listBtn" class="btn btn-outline-primary">List</button>
                 <!-- detail page 에서 modify 상태로 변경하기 위한 버튼 -->
+            <th:block th:if="${(auth.mvo.nickName eq bdto.bvo.writer) or #authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
             <button type="button" id="modBtn"  class="btn btn-outline-warning">Modify</button>
             <button type="button" id="delBtn" class="btn btn-outline-danger">Remove</button>
+            </th:block>
             </form>
             <form action="/board/remove" method="post" id="delForm" style="display: none">
                 <input type="hidden" name="bno" th:value="${bvo.bno}">
             </form>
+            <hr>
+            <br>
             <!-- Comment Line -->
             <!-- 댓글 등록 라인 -->
             <div class="input-group mb-3">
-                <input type="text" id="cmtWriter" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="cmtWriter" class="form-control" aria-label="Username" aria-describedby="basic-addon1" th:value="${auth.mvo.nickName}">
                 <input type="text" id="cmtText" class="form-control" placeholder="Add Comment.." aria-label="Username" aria-describedby="basic-addon1">
                 <button type="button" id="cmtAddBtn" class="btn btn-secondary">POST</button>
             </div>
@@ -100,14 +105,18 @@
                 </div>
             </div>
         </div>
-            <script>
+            <script th:inline="javascript">
                 let bnoVal = [[${bdto.bvo.bno}]];
+                let authNickname = [[${auth.mvo.nickName}]]
+                let writer = [[${bdto.bvo.writer}]]
+                let admin = [[${#authorization.expression('hasRole(''ROLE_ADMIN'')')}]]
             </script>
         <script th:src="@{/js/boardDetailComment.js}"></script>
         <script th:src="@{/js/boardDetail.js}"></script>
         <script type="text/javascript">
             spreadList(bnoVal);
         </script>
+            </th:block>
         </th:block>
     </th:block>
 </th:block>
