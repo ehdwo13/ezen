@@ -39,6 +39,7 @@ public class BoardController {
         BoardDTO bdto = new BoardDTO(bvo, flist);
         log.info("bdto: 값 {}", bdto);
         int isOk = bsv.insert(bdto);
+        log.info("게시글 등록 로그 {}",isOk);
         return "redirect:/board/list";
     }
     @GetMapping("/list")
