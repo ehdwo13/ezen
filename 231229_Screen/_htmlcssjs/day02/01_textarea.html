@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        다중라인 입력란
+        input type ="text" : 단일라인 입력
+        textarea : 다중 라인 입력을 지원함.
+        maxlength로 길이 제한 할수있다.
+        readonly, disabled 가능 required(필수)
+        시작태크와 끝태크 상의 빈공간, enter 띄어쓰기 전부 value로 인식
+    -->
+    <form action="">
+        <label for="contents">상세내용</label> <br>
+        <textarea name="contents" id="contents" cols="30" rows="10"maxlength="500"></textarea>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>

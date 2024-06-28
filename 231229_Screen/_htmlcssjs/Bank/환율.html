@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환율을 알아보세요</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            flex-direction: column;
+        }
+        .wrap {
+            width: 1280px;
+            min-width: 1200px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        header {
+            width: 1280px;
+            height: 100px;
+            justify-content: space-between;
+            display: flex;
+        }
+        .inner>.top-menu {
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            top: 40px;
+            left: 750px;
+        }
+        .inner>.top-menu>li {
+            list-style: none;
+        }
+        .inner>.top-menu>li:nth-of-type(2) {
+            margin-left: -250px;
+        }
+        .inner .menu .con {
+            width: 100%;
+            height: 30px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 30px;
+            padding-left: 20px;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+        .inner .menu .con:hover {
+            font-weight: 700;
+            color: aliceblue;
+            text-shadow: 1px 2px 3px blue;
+        }
+        .burger-icon {
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 40px;
+            right: 20px;
+            user-select: none;
+            width: auto;
+            margin: 0;
+        }
+        .burger-icon .burger-sticks {
+            background: #333;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 18px;
+        }
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+            background: #333;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+        .burger-icon .burger-sticks:before {
+            top: 5px;
+        }
+        .burger-icon .burger-sticks:after {
+            top: -5px;
+        }
+        .burger-check {
+            display: none;
+        }
+        .burger-check:checked~.menu {
+            max-width: 200px;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks {
+            background: transparent;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+            transform: rotate(-45deg);
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+            transform: rotate(45deg);
+        }
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+            top: 0;
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            max-width: 0;
+            transition: 0.5s ease;
+            z-index: 1;
+            background-color: #eeeeee;
+            opacity: 0.5;
+        }
+        #loginBtn {
+            position: absolute;
+            left: 150px;
+            width: 80px;
+        }
+        #joinBtn {
+            position: absolute;
+            left: 250px;
+            width: 80px;
+        }
+        #logoutBtn {
+            position: absolute;
+            left: 300px;
+            width: 80px;
+        }
+        #loginPass {
+            position: absolute;
+            left: 100px;
+            width: 200px;
+        }
+        .inner>h1>a>img {
+            height: 100px;
+        }
+        .input-group-text {
+            background-color: white;
+        }
+        select>option {
+            text-align: center;
+        }
+        .inner>div>a>img {
+            height: 100px;
+            margin-left: 100px;
+        }
+        .form-control:focus {
+            border-color: black;
+            /* 클릭 시 테두리 색상 */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            /* 클릭 시 그림자 효과 */
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        * {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+        .foot {
+            display: flex;
+            width: 1000px;
+            height: 200px;
+            justify-content: space-around;
+            padding-top: 100px;
+        }
+        footer p {
+            font-weight: 700;
+            margin: 0;
+            padding: 10px;
+        }
+        .accordion {
+            width: 1000px;
+        }
+        .accordion-item {
+            /* 아코디언을 감싸고 있는 전체 div */
+            border: none;
+        }
+        .accordion-button {
+            /* 버튼색 변경 */
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgba(101, 129, 252, 0.582);
+            ;
+            border-top: none;
+        }
+        .accordion-button:hover {
+            /* 버튼 클릭시 배경색 */
+            background-color: rgba(101, 129, 252, 0.582);
+            border: 1px solid rgba(101, 129, 252, 0.582);
+            border-top: none;
+        }
+        .accordion-button:focus {
+            /* 아코디언선택되면 쉐도우 지움  */
+            box-shadow: none;
+        }
+        .accordion-body {
+            background-color: rgb(255, 255, 255);
+            /* 배경색 변경 */
+            padding: 15px;
+            /* 여백 추가 */
+            border: 1px solid rgba(101, 129, 252, 0.582);
+            /* 테두리 추가 */
+            border-top: none;
+            /* 상단 테두리 제거 */
+            border-radius: 0 0 .25rem .25rem;
+            /* 둥근 모서리를 상단 왼쪽과 오른쪽에만 적용 */
+        }
+        .accordion-body code {
+            background-color: rgb(233, 236, 239);
+            /* 코드 배경색 변경 */
+            padding: 2px 4px;
+            /* 코드 주변 여백 추가 */
+            border-radius: 3px;
+            /* 둥근 모서리 추가 */
+        }
+        .firstaccop {
+            /* 상품안내 금리정보 상품설명서 및 이용약관 색상변경 */
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <div>
+                <a href="./메인.html" id="top"><img src="./image/logo.png" alt=""></a>
+            </div>
+            <ul class="top-menu">
+                <!-- 해당 엘리먼츠를 클릭하면 스크립트에 적힌 링크로 이동 될 수 있어야 함
+                    이 페이지가 부모 페이지, 이동되는 페이지는 자식 페이지로 해서 데이터 교류가 될 수 있게 -->
+                <li><a href="" class="" id="loginBtn" onclick="insertPopup()">LOGIN</a></li>
+                <li><a href="" class="" id="joinBtn" onclick="insertPopup2()">JOIN</a></li>
+                <li id="loginPass"></li>
+                <li><a href="" class="" id="logoutBtn">LOGOUT</a></li>
+            </ul>
+            <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon"
+                for="burger-check"><span class="burger-sticks"></span></label>
+            <div class="menu">
+                <div style="width: 500px;">
+                    <div class="con">
+                        <a href="./회사소개.html">
+                            회사소개
+                        </a>
+                    </div>
+                    <div class="con">
+                        <a href="./멤버쉽.html">
+                            멤버쉽
+                        </a>
+                    </div>
+                    <div class="con">
+                        <a href="./환율.html">
+                            환율
+                        </a>
+                    </div>
+                    <div class="con">
+                        <a href="./주식.html">
+                            주식
+                        </a>
+                    </div>
+                    <div class="con">
+                        <a href="./대출.html">
+                            대출
+                        </a>
+                    </div>
+                    <div class="con" id="hiddenMenu">
+                        <a href="./송금.html">
+                            송금
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrap">
+        <section>
+            <div class="content1">
+                <div class="base">
+                    <div class="input-group mb-3">
+                        <select class="baseCurrency sel" id="baseCurrency">
+                            <option value="KRW" selected>
+                                <p>한국</p>
+                            </option>
+                            <option value="USD">
+                                <p>미국</p>
+                            </option>
+                            <option value="JPY">
+                                <p>일본</p>
+                            </option>
+                            <option value="CNY">
+                                <p>중국</p>
+                            </option>
+                            <option value="EUR">
+                                <p>유럽연합</p>
+                            </option>
+                        </select>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="baseAmount" placeholder="환전할 금액">
+                            <label for="floatingInputGroup1">바꿀돈</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="target">
+                    <div class="input-group mb-3">
+                        <select class="targetCurrency sel" id="targetCurrency">
+                            <option value="KRW">
+                                <p>한국</p>
+                            </option>
+                            <option value="USD" selected>
+                                <p>미국</p>
+                            </option>
+                            <option value="JPY">
+                                <p>일본</p>
+                            </option>
+                            <option value="CNY">
+                                <p>중국</p>
+                            </option>
+                            <option value="EUR">
+                                <p>유럽연합</p>
+                            </option>
+                        </select>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="targetAmount" placeholder="환전된 금액">
+                            <label for="floatingInputGroup1">바뀔돈</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="currentimg">
+                    <img id="pic" src="./image/krwusd.png" alt="사진없음">
+                </div>
+            </div>
+        </section>
+        <div class="bottom">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="border-top: 1px solid rgba(101, 129, 252, 0.582);">
+                            <p class="firstaccop">상품안내</p>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <strong>이지뱅크 대출 서비스관련 안내문구입니다.</strong>
+                            [재직 및 소득 제한없이 서울보증보험의 개인금융신용보험 가입이 가능한 고객]
+                            • 19세 이상 내국인
+                            • 연체, 부도정보 등 신용도판단정보 등재 사실이 없는 고객
+                            • 회생, 파산, 면책 등 신청 사실이 없는 고객
+                            • 당행 연체대출금을 보유 중이거나 손실을 끼친 이력이 없는 고객
+                            • 금융사기 및 기타 금융거래 제한 관련 기록이 없는 고객
+                            • 당행에 비상금대출을 보유하지 않은 고객
+                            <code>.ezen-loan</code>, 더 궁금하신 사항은 고객센터에 문의 주세요.
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                <p class="firstaccop">금리정보</p>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <strong>매월 납부일 기준 미납금액이 발생하면, 연체 이자가 발생합니다.</strong>
+                                ※ 대출금리 = 기준금리+고객별 가산금리
+                                ※ 기준금리가 1년을 주기로 변동되므로, 대출기간 중에는 대출금리가 변경되지 않으며, 만기가 된 경우에도 변동주기가 돌아오게 되므로 해당 시점의 기준금리에
+                                연동되어
+                                대출금리는 변경됩니다.
+                                ※ 고객별 가산금리는 당행 내부 신용등급, 대출기간 등에 따라 차등 적용 됩니다.
+                                ※ 연체금리의 최고율은 연15%이며, 대출금리가 연15% 이상인 경우에는 대출금리 + 연 2%를 적용합니다.
+                                ※ 미납 상태에서 1개월 이상 해당 금액을 상환하지 않으면, 1개월 경과 시점에 대출원금에 대하여 연체이자가 발생하게 됩니다. 자세한 사항은 약관 및
+                                상품설명서에서
+                                확인
+                                가능합니다.
+                                <code>.ezen-loan</code>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                    <p class="firstaccop">상품설명서 및 이용약관</p>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <strong>이용약관 상세</strong>
+                                    개인신용보험 추가약정서(SGI)<br>
+                                    가계대출상품설명서<br>
+                                    대출거래약정서(가계용)<br>
+                                    은행여신거래기본약관(가계용)<br>
+                                    <code>.ezen-loan</code>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="foot">
+                    <div class="bot_info">
+                        <p>
+                            고객센터<br>
+                            전화 : 1661-0000(24시간 연중무휴)<br>
+                            해외전화 : +82-2-0000-0000<br>
+                            이메일 : help@ezenacademy.com<br>
+                            서비스<br>
+                            이지뱅크 이젠뱅킹<br>
+                        </p>
+                    </div>
+                    <div class="bot_info2">
+                        <p>
+                            이지뱅크㈜
+                            사업자 등록번호 : 400-00-01111 | 대표 : 김이젠<br>
+                            01111 인천광역시 남동구 인주대로 593 엔타스빌딩 12층<br>
+                            개인정보 처리방침<br>
+                            보호금융상품등록부<br>
+                            이용자유의사항<br>
+                            공지사항<br>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.getElementById("baseCurrency").addEventListener("change", async function () {
+            await updateConversion();
+            imgchange();
+        });
+        document.getElementById("targetCurrency").addEventListener("change", async function () {
+            await updateConversion();
+            imgchange();
+        });
+        document.getElementById('baseAmount').addEventListener('input', async function () {
+            await updateConversion();
+        });
+        document.getElementById('targetAmount').addEventListener('input', async function () {
+            await reupdateConversion();
+        });
+        async function updateConversion() {
+            const baseCurrency = document.getElementById("baseCurrency").value;
+            const targetCurrency = document.getElementById("targetCurrency").value;
+            const amount = parseFloat(document.getElementById("baseAmount").value);
+            const image = document.getElementById('image');
+            try {
+                const convertedAmount = await convertCurrency(amount, baseCurrency, targetCurrency);
+                document.getElementById("targetAmount").value = convertedAmount;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        async function reupdateConversion() {
+            const baseCurrency = document.getElementById("baseCurrency").value;
+            const targetCurrency = document.getElementById("targetCurrency").value;
+            const targetAmount = parseFloat(document.getElementById("targetAmount").value);
+            try {
+                const { baseRate, targetRate } = await fetchExchangeRate(baseCurrency, targetCurrency);
+                const convertedAmount = parseFloat((targetAmount / targetRate) * baseRate);
+                if (isNaN(convertedAmount)) {
+                    return document.getElementById("baseAmount").value = 0;
+                }
+                document.getElementById("baseAmount").value = convertedAmount.toFixed(2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        async function fetchExchangeRate(baseCurrency, targetCurrency) {
+            // 실행할때 풀기
+            // const apiKey = '3f02add26bb744d7a2da782a5597ed8b';
+            // const url = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${apiKey}&symbols=${baseCurrency},${targetCurrency}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (response.ok) {
+                    const baseRate = data.rates[baseCurrency];
+                    const targetRate = data.rates[targetCurrency];
+                    return { baseRate, targetRate };
+                } else {
+                    throw new Error(data.error.message);
+                }
+            } catch (error) {
+                console.error('Error fetching exchange rate:', error);
+                throw error;
+            }
+        }
+        async function convertCurrency(amount, baseCurrency, targetCurrency) {
+            try {
+                const { baseRate, targetRate } = await fetchExchangeRate(baseCurrency, targetCurrency);
+                const convertedAmount = parseFloat((amount / baseRate) * targetRate);
+                if (isNaN(convertedAmount)) {
+                    return 0;
+                } else {
+                    return convertedAmount.toFixed(2);
+                }
+            } catch (error) {
+                console.error('Error converting currency:', error);
+                throw error;
+            }
+        }
+    </script>
+    <script>
+        //로그인 회원가입
+        function insertPopup() {
+            window.name = "BankMain";
+            window.open(`./로그인.html`, "join");
+        }
+        function insertPopup2() {
+            window.name = "BankMain";
+            window.open(`./회원가입.html`, "join");
+        }
+        document.getElementById('logoutBtn').style.visibility = 'hidden';
+        document.getElementById('hiddenMenu').style.visibility = 'hidden';
+        //로그아웃
+        if (sessionStorage.login != null) {
+            document.getElementById('loginBtn').style.visibility = 'hidden'
+            document.getElementById('joinBtn').style.visibility = 'hidden'
+            document.getElementById('logoutBtn').style.visibility = 'visible';
+            document.getElementById('hiddenMenu').style.visibility = 'visible';
+            let hello = document.getElementById('loginPass')
+            hello.innerHTML = `${sessionStorage.getItem("login")}님 환영합니다.`;
+            let topMenu = document.querySelector('.top-menu');
+            topMenu.appendChild(hello);
+        }
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            document.getElementById('loginBtn').style.visibility = 'visible'
+            document.getElementById('joinBtn').style.visibility = 'visible'
+            sessionStorage.clear();
+            location.reload();
+        })
+        function imgchange() {
+            const testx = document.getElementById('baseCurrency');
+            const testy = document.getElementById('targetCurrency');
+            const image = document.getElementById('pic');
+            const img = testx.value + testy.value;
+            let loimg = img.toLowerCase();
+            console.log(testx.value);
+            console.log(testy.value);
+            console.log(loimg);
+            if (loimg == 'krwkrw') {
+                image.src = `./image/krwusd.png`;
+                return;
+            }
+            image.src = `./image/${loimg}.png`;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

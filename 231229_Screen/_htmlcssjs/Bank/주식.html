@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./stockApi.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+        }
+        .header {
+            height: 60px;
+        }
+        .header>h1 {
+            margin-left: 10px;
+        }
+        .search {
+            position: absolute;
+            top: 50px;
+            left: 230px;
+            width: 150px;
+            border: none;
+            border-bottom: 1px solid rgb(126, 126, 126);
+        }
+        h3 {
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+        .search:focus {
+            outline: none;
+        }
+        .search::placeholder {
+            font-size: 15px;
+            padding-left: 5px;
+            color: rgb(208, 208, 208);
+        }
+        button {
+            border: none;
+            background-color: white;
+        }
+        #btn{
+            position: absolute;
+            top: 48px;
+            left: 395px;
+            margin-left: -35px;
+        }
+        .container {
+            width: 100%;
+            height: 800px;
+            position: relative;
+        }
+        .container>div {
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+            border-bottom: 1px solid black;
+        }
+        .container>div:nth-of-type(1) {
+            width: 30%;
+            height: 400px;
+        }
+        .container>div:nth-of-type(2) {
+            width: 30%;
+            height: 400px;
+            top: 400px;
+        }
+        .container>div:nth-of-type(3) {
+            width: 40%;
+            height: 800px;
+            left: 30%;
+            border: none;
+        }
+        .container>div:nth-of-type(4) {
+            width: 30%;
+            height: 500px;
+            right: 0;
+        }
+        .container>div:nth-of-type(5) {
+            width: 30%;
+            height: 300px;
+            right: 0;
+            top: 500px;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+            width: 350px;
+            height: 20px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container>div>h1 {
+            margin-top: 20px;
+            padding-left: 30px;
+            font-weight: 700;
+        }
+        table {
+            margin-left: 10px;
+        }
+        th {
+            font-weight: 900;
+        }
+        th:nth-child(1) {
+            width: 120px;
+        }
+        th:nth-child(2) {
+            width: 80px;
+        }
+        th:nth-child(3) {
+            width: 70px;
+            padding-left: 10px;
+        }
+        th:nth-child(4) {
+            width: 70px;
+            padding-left: 10px;
+        }
+        td {
+            font-weight: 400;
+            text-align: right;
+        }
+        td:nth-child(1) {
+            color: black;
+            text-align: left;
+        }
+        th,
+        td {
+            padding: 1px;
+        }
+        #totalRanking {
+            margin-top: 5px;
+        }
+        .boardMain {
+            width: 100%;
+            height: 300px;
+            position: absolute;
+            top: 15%;
+        }
+        #writeBtn>a {
+            position: absolute;
+            left: 50%;
+            top: 5%;
+        }
+        #boardMain>table>thead>tr>th {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+        #boardMain>table>thead>tr>th:nth-of-type(1) {
+            width: 30px;
+        }
+        #boardMain>table>thead>tr>th:nth-of-type(2) {
+            width: 180px;
+        }
+        #boardMain>table>thead>tr>th:nth-of-type(3) {
+            width: 100px;
+        }
+        #boardMain>table>thead>tr>th:nth-of-type(4) {
+            width: 100px;
+        }
+        #boardMain>table>thead>tr>th:nth-of-type(5) {
+            width: 50px;
+        }
+        #tbody>tr>td {
+            text-align: center;
+        }
+        #tbody>tr>td>a {
+            all: unset;
+            cursor: pointer;
+        }
+        #totalRanking>tbody>tr>td:nth-child(1) {
+            width: 300px;
+        }
+        #totalRanking>tbody>tr>th:nth-child(1) {
+            width: 300px;
+        }
+        #totalRanking>tbody>tr>th:nth-child(2) {
+            width: 200px;
+        }
+        #totalRanking>tbody>tr>td:nth-child(2) {
+            width: 200px;
+        }
+        #totalRanking>tbody>tr>td:nth-child(3) {
+            text-align: right;
+        }
+        #totalRanking>tbody>tr>td:nth-child(3) {
+            width: 150px;
+        }
+        #red {
+            color: blue;
+        }
+        #blue {
+            color: red;
+        }
+        #blue:nth-of-type(3)::before {
+            content: "▲";
+        }
+        #red:nth-of-type(3)::before {
+            content: "▼";
+        }
+        header a {
+            text-decoration: none;
+            color: black;
+        }
+        .inner>.top-menu {
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            top: 10px;
+            left: 750px;
+        }
+        .inner>.top-menu>li {
+            list-style: none;
+        }
+        .inner>.top-menu>li:nth-of-type(2) {
+            margin-left: -250px;
+        }
+        .inner .menu .con {
+            width: 100%;
+            height: 30px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            line-height: 30px;
+            padding-left: 20px;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+        .inner .menu .con:hover {
+            font-weight: 700;
+            color: aliceblue;
+            text-shadow: 1px 2px 3px blue;
+        }
+        .burger-icon {
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+            padding: 8px 0;
+            top: 40px;
+            right: 20px;
+            user-select: none;
+            width: auto;
+            margin: 0;
+        }
+        .burger-icon .burger-sticks {
+            background: #333;
+            display: block;
+            height: 2px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 18px;
+        }
+        .burger-icon .burger-sticks:before,
+        .burger-icon .burger-sticks:after {
+            background: #333;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+        .burger-icon .burger-sticks:before {
+            top: 5px;
+        }
+        .burger-icon .burger-sticks:after {
+            top: -5px;
+        }
+        .burger-check {
+            display: none;
+        }
+        .burger-check:checked~.menu {
+            max-width: 200px;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks {
+            background: transparent;
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:before {
+            transform: rotate(-45deg);
+        }
+        .burger-check:checked~.burger-icon .burger-sticks:after {
+            transform: rotate(45deg);
+        }
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
+        .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+            top: 0;
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            max-width: 0;
+            transition: 0.5s ease;
+            z-index: 1;
+            background-color: #eeeeee;
+            opacity: 0.5;
+        }
+        #loginBtn{
+            position: absolute;
+            left: 150px;
+            width: 80px;
+        }
+        #joinBtn{
+            position: absolute;
+            left: 250px;
+            width: 80px;
+        }
+        #logoutBtn{
+            position: absolute;
+            left: 300px;
+            width: 80px;
+        }
+        #loginPass{
+            position: absolute;
+            left: 100px;
+            top: 10px;
+            width: 200px;
+        }
+        #logoImage{
+            position: absolute;
+            top: 1%;
+            left: 5%;
+        }
+        #history{
+            width: 500px;
+            height: 100px;
+            font-size: 10px;
+            position: absolute;
+            top: 40px;
+            left: 400px;
+            text-align: left;
+            color: rgb(103, 102, 102);
+        }
+        #history>p>button{
+            margin-left: 5px;
+            color: rgb(103, 102, 102);
+        }
+        #history>p{
+            float: left;
+            margin-left: 20px;
+            border-bottom: 1px solid rgb(103, 102, 102);
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+        }
+        #but{
+            cursor: pointer;
+            text-decoration-line: underline;
+        }
+        #but:hover{
+            color: rgba(87, 117, 250, 0.582);
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="./image/logo.png" alt="" width="150px" height="85px" id="logoImage" onclick="location.href='./메인.html'"><input type="text" class="search" id="search" placeholder="search">
+        <button class="search-icon" id="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi-search" viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </button>
+        <div id="history"></div>
+    </h1>
+    <div class="header">
+        <div class="inner">
+            <ul class="top-menu">
+                <li><a href="" class="" id="loginBtn" onclick="insertPopup()">LOGIN</a></li>
+                <li><a href="" class="" id="joinBtn" onclick="insertPopup2()">JOIN</a></li>
+                <li id="loginPass"></li>
+                <li><a href="" class="" id="logoutBtn">LOGOUT</a></li>
+            </ul>
+            <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon"
+                for="burger-check"><span class="burger-sticks"></span></label>
+                <div class="menu">
+                    <div style="width: 500px;">
+                        <div class="con">
+                            <a href="./회사소개.html">
+                                회사소개
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./멤버쉽.html">
+                                멤버쉽
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./환율.html">
+                                환율
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./주식.html">
+                                주식
+                            </a>
+                        </div>
+                        <div class="con">
+                            <a href="./대출.html">
+                                대출
+                            </a>
+                        </div>
+                        <div class="con" id="hiddenMenu">
+                            <a href="./계좌.html">
+                                송금
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div id="container" class="container">
+        <div class="news">
+            <h1>주요뉴스</h1>
+            <a href="https://n.news.naver.com/mnews/article/015/0004968641" target="_blank">‘6조 현금부자’ 한화에너지…'승계 실탄' 두둑해진 한화家
+                수혜주...목표가 40%↑"</a>
+            <a href="https://n.news.naver.com/mnews/article/421/0007457569" target="_blank">삼성전자, 또 3년만 최고가 경신…SK하이닉스 4% 강세[핫종목]
+                진입"[오전장 백브리핑]</a>
+            <a href="https://n.news.naver.com/mnews/article/009/0005283102" target="_blank">“최근 상승에도 4월 코스피 리스크 관리 필요…인터넷·2차전지 주목” [자이앤트TV]
+                [오전장 백브리핑]</a>
+            <a href="https://n.news.naver.com/mnews/article/215/0001156046" target="_blank">"테슬라 포기할 때 아냐"...돈나무언니, 5년 후 2,000달러 제시
+                내” 증권가의 뼈아픈 지적</a>
+            <a href="https://n.news.naver.com/mnews/article/277/0005401513" target="_blank">파월 발언 후 '금값' 사상 최고치...2300달러 첫 돌파
+                주목…불확실성 대비"</a>
+            <a href="https://n.news.naver.com/mnews/article/366/0000983112" target="_blank">증권사 “대만 지진, 반도체 영향 제한적… 설비 큰 피해 없어”
+                `들썩`</a>
+        </div>
+        <div class="top">
+            <h1>급상승 TOP 종목</h1>
+            <table id="result">
+                <th>종목명</th>
+                <th>종가</th>
+                <th>대비</th>
+                <th>등락률</th>
+            </table>
+        </div>
+        <div class="board">
+            <h1>게시판</h1><button type="button" id="writeBtn" onclick="writeWindow()"><a href="">글쓰기</a></button>
+            <div class="boardMain" id="boardMain">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>글제목</th>
+                            <th>작성자</th>
+                            <th>등록일</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div>
+                <div id="pagination" style="position: absolute; width: 300px;  top: 380px; left: 80px; text-align: center;" ></div>
+        </div>
+        <div class="searchTop">
+            <h3>인기 검색 종목</h3>
+            <table id="searchRanking">
+                <th>종목명</th>
+                <th>종가</th>
+                <th>대비</th>
+                <th>등락률</th>
+            </table>
+            <h3>시총 TOP 종목</h3>
+            <table id="totalRanking">
+                <th>종목명</th>
+                <th>시총</th>
+                <th>등락률</th>
+            </table>
+        </div>
+        <div class="anounce">
+            <h1>공지사항</h1>
+            <a href="">삼일절 (3월 1일) 국내증시 휴장 안내</a>
+            <a href="">설 연휴(1월 23일~24일) 국내증시 휴장 안내</a>
+            <a href="">대학수학능력시험일(11월 16일) 거래시간 변경 안내</a>
+            <a href="">10월 9일 국내증시 휴장 (한글날)</a>
+            <a href="">서비스 영업양수도에 따른 개인정보 이전 및 이용약관 개정 통지</a>
+        </div>
+    </div>
+    <script>
+        const search = document.getElementById('search');
+        const result = document.getElementById('result');
+        const searchRanking = document.getElementById('searchRanking');
+        const totalRanking = document.getElementById('totalRanking');
+        //mrktTotAmt 시가총액 vs 대비 fltRt 등락률 itmsNm 종목명 clpr 종가
+        let code;
+        //검색기능
+        function inputSearch(key) {
+            const request = window.indexedDB.open('stockDB');
+            request.onerror = (e) => console.log(e.target.errorCode);
+            request.onsuccess = (e) => {
+                const db = request.result;
+                const transaction = db.transaction('id');
+                // transaction.onerror = (e) => console.log('fail');
+                // transaction.oncomplete = (e) => console.log('success');
+                const objStore = transaction.objectStore('id');
+                const nameSearch = objStore.index("itmsNm");
+                let objStoreRequest = nameSearch.get(key);
+                objStoreRequest.onsuccess = (e) => {
+                    code = objStoreRequest.result.srtnCd;
+                }
+            }
+        }
+        let searchStr;
+        const historyObj = {
+            searchName : ""
+        }
+        let searchHistoryCount = 0;
+        document.getElementById('btn').addEventListener('click', () => {
+            searchStr = search.value;
+            let c = inputSearch(searchStr);
+            document.getElementById('btn').addEventListener('click', () => {
+                temp(searchStr);
+                let tempArr = new Array();
+            if(localStorage.getItem("searchHistory") !=null){
+                let saveHistory = localStorage.getItem("searchHistory");
+                let parseSaveHistory = JSON.parse(saveHistory);
+                searchStr = search.value;
+                historyObj.searchName = searchStr;
+                parseSaveHistory.push(historyObj);
+                let stringifySaveHistory = JSON.stringify(parseSaveHistory);
+                localStorage.setItem("searchHistory", stringifySaveHistory);
+                let c = inputSearch(searchStr);
+            }else{
+                searchStr = search.value;
+                historyObj.searchName = searchStr;
+                tempArr.push(historyObj);
+                let stringifyTempArr = JSON.stringify(tempArr);
+                localStorage.setItem("searchHistory",stringifyTempArr);
+                let c = inputSearch(searchStr);
+            }
+                location.reload();
+            });
+        });
+        function temp(searchStr1) {
+            inputSearch(searchStr1);
+            let link = `https://finance.naver.com/item/main.naver?code=${code}`
+            window.open(link);
+        }
+        //최근검색어 출력
+        if(localStorage.getItem("searchHistory")!=null){
+            let historyString = localStorage.getItem("searchHistory");
+            let parseHistoryString = JSON.parse(historyString);
+            let historyStr = "";
+            for(let a=0; a<parseHistoryString.length; a++){
+                searchHistoryCount++;
+                historyStr += `<p id="hisP${searchHistoryCount}">${parseHistoryString[a].searchName}<button type="button" id="hisBtn${searchHistoryCount}">x</button></p>`;
+            }
+        document.getElementById('history').innerHTML = historyStr;
+        }
+        
+        //최근검색어 삭제 버튼
+        document.querySelector('#history').addEventListener('click', (e)=>{
+            val = e.target.id;
+            let saveVal = val.slice(-1);
+            let searchData = localStorage.getItem("searchHistory");
+            let parseSearchData = JSON.parse(searchData);
+            console.log(parseSearchData)
+            for(let a=0; a<parseSearchData.length; a++){
+                if(saveVal-1 == a){
+                    parseSearchData.splice(a,1);
+                }
+            }
+            let stringifyData = JSON.stringify(parseSearchData);
+            let saveNewHistory = localStorage.setItem("searchHistory", stringifyData);
+            let historyString = localStorage.getItem("searchHistory");
+            let parseHistoryString = JSON.parse(historyString);
+            let historyStr = "";
+            if(parseHistoryString.length == 0){
+                window.location.reload();
+            }else{
+                for(let a=0; a<parseHistoryString.length; a++){
+                    searchHistoryCount++;
+                    historyStr += `<p id="hisP${searchHistoryCount}">${parseHistoryString[a].searchName}<button type="button" id="hisBtn${searchHistoryCount}">x</button></p>
+                    `;
+                    window.location.reload();
+                }
+            }
+        });
+        //TOP 종목 출력
+        let upRankObj = new Object();
+        function topRank() {
+            const request = window.indexedDB.open('stockDB');
+            request.onerror = (e) => console.log(e.target.errorCode);
+            request.onsuccess = (e) => {
+                const db = request.result;
+                const transaction = db.transaction('id');
+                // transaction.onerror = (e) => console.log('fail');
+                // transaction.oncomplete = (e) => console.log('success');
+                const objStore = transaction.objectStore('id');
+                const vsSearch = objStore.index("vs");
+                let topRequest = vsSearch.getAll();
+                topRequest.onsuccess = (e) => {
+                    for (let i = 0; i < topRequest.result.length; i++) {
+                        upRankObj[topRequest.result[i].id] = Number(topRequest.result[i].vs)
+                    }
+                    let sorted = Object.entries(upRankObj).sort((a, b) => b[1] - a[1]);
+                    for (let count = 0; count < 10; count++) {
+                        Object.keys(upRankObj).forEach(key => {
+                            if (sorted[count][0] == key) {
+                                for (let i = 0; i < topRequest.result.length; i++) {
+                                    let temp = topRequest.result[i].clpr.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;
+                                    if (topRequest.result[i].id == key) {
+                                        result.innerHTML += `<tr><td>${topRequest.result[i].itmsNm}</td>
+                                            <td id="blue">${temp}원</td>
+                                            <td id="blue">${topRequest.result[i].vs}</td>
+                                            <td id="blue">${topRequest.result[i].fltRt}</td></tr>`;
+                                    }
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        topRank();
+        //인기 검색 종목
+        function searchCount(i) {
+            const request = window.indexedDB.open('stockDB');
+            request.onerror = (e) => console.log(e.target.errorCode);
+            request.onsuccess = (e) => {
+                const db = request.result;
+                const transaction = db.transaction('id');
+                // transaction.onerror = (e) => console.log('fail');
+                // transaction.oncomplete = (e) => console.log('success');
+                const objStore = transaction.objectStore('id');
+                const cdSearch = objStore.index("itmsNm");
+                let searchCountRequest = cdSearch.get(i);
+                searchCountRequest.onsuccess = (e) => {
+                    if (searchCountRequest.result.vs > 0) {
+                        searchRanking.innerHTML += `<tr><td>${searchCountRequest.result.itmsNm}</td>
+                    <td id="blue">${searchCountRequest.result.clpr}원</td>
+                    <td id="blue">${searchCountRequest.result.vs}</td>
+                    <td id="blue">${searchCountRequest.result.fltRt}</td></tr>`
+                    } else {
+                        searchRanking.innerHTML += `<tr><td>${searchCountRequest.result.itmsNm}</td>
+                    <td id="red">${searchCountRequest.result.clpr}원</td>
+                    <td id="red">${searchCountRequest.result.vs}</td>
+                    <td id="red">${searchCountRequest.result.fltRt}</td></tr>`;
+                    }
+                }
+            }
+        }
+        searchCount(`삼성전자`);
+        searchCount(`NAVER`);
+        searchCount(`LG디스플레이`);
+        searchCount(`SK하이닉스`);
+        searchCount(`CJ`);
+        //시총 TOP종목
+        let totalRankObj = new Object();
+        function totalRank() {
+            const request = window.indexedDB.open('stockDB');
+            request.onerror = (e) => console.log(e.target.errorCode);
+            request.onsuccess = (e) => {
+                const db = request.result;
+                const transaction = db.transaction('id');
+                const objStore = transaction.objectStore('id');
+                const totalSearch = objStore.index('mrktTotAmt');
+                let totalRequest = totalSearch.getAll();
+                totalRequest.onsuccess = (e) => {
+                    for (let i = 0; i < totalRequest.result.length; i++) {
+                        totalRankObj[totalRequest.result[i].id] = Number(totalRequest.result[i].mrktTotAmt)
+                    }
+                    let sorted = Object.entries(totalRankObj).sort((a, b) => b[1] - a[1]);
+                    for (let count = 0; count < 5; count++) {
+                        Object.keys(totalRankObj).forEach(key => {
+                            if (sorted[count][0] == key) {
+                                for (let i = 0; i < totalRequest.result.length; i++) {
+                                    let temp = totalRequest.result[i].mrktTotAmt.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");;
+                                    if (totalRequest.result[i].id == key) {
+                                        if (totalRequest.result[i].vs < 0) {
+                                            totalRanking.innerHTML += `<tr><td>${totalRequest.result[i].itmsNm}</td>
+                                                <td id="red">${temp}원</td>
+                                                <td id="red">${totalRequest.result[i].fltRt}</td></tr>`;
+                                        } else {
+                                            totalRanking.innerHTML += `<tr><td>${totalRequest.result[i].itmsNm}</td>
+                                                <td id="blue">${temp}원</td>
+                                                <td id="blue">${totalRequest.result[i].fltRt}</td></tr>`;
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        totalRank();
+        //글쓰기팝업
+        function writeWindow() {
+            const options = 'width=700, height=600, top=400, left=500, scrollbars=yes'
+            window.open('./write.html', '_blank', options)
+        }
+        //글내용 localStorage 불러와서 화면출력
+        let boardsStr = localStorage.getItem("boards");
+        if (boardsStr === null) {
+            const listStr = JSON.stringify([]);
+            localStorage.setItem("boards", listStr);
+            boardsStr = listStr;
+        }
+        const boardsObj = JSON.parse(boardsStr);
+        const template = (index, objValue) => {
+            return `
+                    <tr>
+                    <td>${index + 1}</td>
+                    <td><a href="./view.html?index=${objValue.index}" id="view${objValue.index + 1}">${objValue.subject}</a></td>
+                    <td>${objValue.writer}</td>
+                    <td>${objValue.date}</td> 
+                    <td>${objValue.views}</td>
+                    </tr>
+                    `;
+        };
+        const tbody = document.getElementById('tbody');
+        for (let i = 0; i < boardsObj.length; i++) {
+            tbody.innerHTML += template(i, boardsObj[i]);
+        }
+        //조회수 증가기능
+        document.addEventListener('click', (e) => {
+            let val = e.target.id;
+            if (val.includes("view")) {
+                let boardsStr = localStorage.getItem("boards");
+                let boardsObj = JSON.parse(boardsStr);
+                let searchVal = val.slice(-1);
+                let board = boardsObj[searchVal - 1];
+                board.views++;
+                const viewCountStr = JSON.stringify(boardsObj);
+                localStorage.setItem("boards", viewCountStr);
+                window.location.reload();
+            }
+        })
+        //로그인 회원가입
+        function insertPopup() {
+            window.name = "BankMain";
+            window.open(`./로그인.html`, "join");
+        }
+        function insertPopup2() {
+            window.name = "BankMain";
+            window.open(`./회원가입.html`, "join");
+        }
+        document.getElementById('logoutBtn').style.visibility = 'hidden';
+        //로그아웃
+        if (sessionStorage.login != null) {
+            document.getElementById('loginBtn').style.visibility = 'hidden';
+            document.getElementById('joinBtn').style.visibility = 'hidden';
+            document.getElementById('logoutBtn').style.visibility = 'visible';
+            let hello = document.getElementById('loginPass')
+            hello.innerHTML = `${sessionStorage.getItem("login")}님 환영합니다.`;
+            let topMenu = document.querySelector('.top-menu');
+            topMenu.appendChild(hello);
+        }
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            document.getElementById('loginBtn').style.visibility = 'visible'
+            document.getElementById('joinBtn').style.visibility = 'visible'
+            sessionStorage.clear();
+            location.reload();
+        })
+    </script>
+    <script>
+        // 화면이 실행되면 이라는 이벤트 리스너 
+        document.addEventListener("DOMContentLoaded", function () {
+            const itemsPerPage = 5;
+            let currentPage = 1;
+            // 데이터를 가져오는 함수
+            function getData() {
+                // 로컬 스토리지에서 데이터를 가져옵니다.
+                const data = JSON.parse(localStorage.getItem('boards')); // 여기서 'yourDataKey'는 실제 사용하는 키값으로 대체해야 합니다.
+                return data || []; // 데이터가 없을 경우 빈 배열을 반환합니다.
+            }
+            // 페이지별 데이터를 가져오는 함수
+            function getPageData(page) {
+                const allData = getData(); // 전체 데이터를 가져옵니다.
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                return allData.slice(startIndex, endIndex); // 해당 페이지에 해당하는 데이터를 추출합니다.
+            }
+            // 데이터를 화면에 표시하는 함수
+            function displayItems(page) {
+                const tableBody = document.getElementById('tbody');
+                tableBody.innerHTML = ''; // 기존 데이터를 비웁니다.
+                const pageData = getPageData(page); // 해당 페이지에 해당하는 데이터를 가져옵니다.
+                // 가져온 데이터를 화면에 출력합니다.
+                let index = 1;
+                pageData.forEach(objValue => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td><hr>${index++}</td>
+                        <td><hr><a href="/Bank/view.html?index=${objValue.index}" id="view${objValue.index + 1}">${objValue.subject}</a></td>
+                        <td><hr>${objValue.writer}</td>
+                        <td><hr>${objValue.date}</td> 
+                        <td><hr>${objValue.views}</td>`;
+                    tableBody.appendChild(row);
+                });
+            }
+            // 페이지네이션을 생성하는 함수
+            function renderPagination() {
+                const pagination = document.getElementById('pagination');
+                pagination.innerHTML = ''; // 기존 페이지네이션을 비웁니다.
+                const totalItems = getData().length; // 전체 데이터의 개수를 가져옵니다.
+                const totalPages = Math.ceil(totalItems / itemsPerPage); // 전체 페이지 수를 계산합니다.
+                // 페이지네이션 버튼을 생성합니다.
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.id = `but`;
+                    pageButton.textContent = i; // 안에 넣을 문구
+                    pageButton.addEventListener('click', function () {
+                        currentPage = i;
+                        displayItems(currentPage); // 해당 페이지의 데이터를 화면에 표시합니다.
+                    });
+                    pagination.appendChild(pageButton);
+                }
+            }
+            displayItems(currentPage); // 초기 페이지 데이터를 화면에 표시합니다.
+            renderPagination(); // 페이지네이션을 생성합니다.
+        });
+    </script>
+</body>
+</html>

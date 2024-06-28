@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        @keyframes textmove {
+            0%{
+                bottom: 0%
+            }
+            20%{
+                bottom: 10%;
+                color: cadetblue;
+            }
+            40%{
+                bottom: 0%;
+                background-color: burlywood;
+            }
+            60%{
+                bottom: 20%;
+            }
+            100%{
+                bottom: 0%;
+            }
+            
+        }
+        .bebas-neue-regular {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 80px;
+        }
+
+        .hi {
+            position: absolute;
+            bottom: 0%;
+            left: 10px;
+            animation-name: textmove;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="hi bebas-neue-regular">HTML CSS JAVA SQL
+    </p>
+</body>
+
+</html>

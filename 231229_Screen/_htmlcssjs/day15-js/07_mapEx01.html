@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 => 과목, 점수
+        map에 추가
+        출력 => map을 출력 ul => li 형태로 출력
+        결과 => 합계, 평균, 합격여부(60이상이면 합격) => h3
+    -->
+    과목 : <input type="text" id="sub"><br>
+    점수 : <input type="text" id="score"><br>
+    <button type="button" id="addBtn">추가</button>
+    <button type="button" id="printBtn">출력</button>
+    <button type="button" id="resultBtn">결과</button>
+    <p id="addPrint"></p>
+    <ul id="print">
+
+    </ul>
+    <h3 id="result"></h3>
+    <script>
+        let dataMap = new Map();
+        let sub = "";   
+        let score = 0;
+        let totalCount = 0;
+        let sum = 0;
+        let avg = 0;
+        let pass = "";
+        //입력받은 데이터 Map에 저장
+        function saveMap(){
+            sub = document.getElementById('sub').value;
+            score = document.getElementById('score').value;
+            dataMap.set(sub,score);
+            totalCount++;
+        }
+        //추가 버튼 클릭시 맵에저장함수 호출
+        document.getElementById('addBtn').addEventListener('click',()=>{
+            saveMap();
+            document.getElementById('addPrint').innerText = `추가완료`;
+            document.getElementById('sub').value = null;    //입력창 초기화
+            document.getElementById('score').value = null;  //입력창 초기화
+        })
+        //출력 버튼 클릭시 맵에 데이터 호출해서 ul에 li로 출력
+        document.getElementById('printBtn').addEventListener('click',()=>{
+            document.getElementById('addPrint').innerText = null;   //추가완료 텍스트 초기화
+            let str = '';
+            dataMap.keys().forEach(function (v){
+                str += `<li>${v} : ${dataMap.get(v)}</li>`
+            })
+            document.getElementById('print').innerHTML = str;
+        })
+        //합계 평균 구하는 함수
+        function sumCal(){
+            dataMap.keys().forEach(function (v){
+                sum += Number(dataMap.get(v));  //string 값 누적 더해주기위해 정수형 변환
+            })
+            avg = sum / totalCount;
+        }
+        //합격여부 구하는 함수
+        function passCal(avg){
+            if(avg>=60){
+                pass = "합격";
+            }else{
+                pass = "불합격";
+            }
+        }
+        //최종결과 출력 합계함수, 합격여부함수 호출 후 구문출력
+        document.getElementById('resultBtn').addEventListener('click',()=>{
+            sumCal();
+            passCal(avg);
+            document.getElementById('result').innerHTML = `과목의 점수합계 : ${sum}, 평균 : ${avg.toFixed(2)}, 합격여부 : ${pass}`
+        })
+    </script>
+</body>
+</html>

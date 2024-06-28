@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/day04/과제.css">
+</head>
+<style>
+    h1 {
+        border: 5px solid black;
+        text-align: center;
+        width: 300px;
+        margin: 10px auto 30px;
+    }
+
+    .md {
+        width: 300px;
+        margin: 20px auto;
+    }
+
+    div>div {
+        float: left;
+        margin-left: 10px;
+        text-align: center;
+    }
+
+    div::after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 10px;
+        font-weight: 700;
+    }
+
+    div.pic {
+        margin: 20px auto 20px;
+        text-align: center;
+    }
+
+    img {
+        width: 700px;
+        height: 700px;
+    }
+</style>
+
+<body>
+    <h1>Travel</h1>
+    <div class="md">
+        <div>
+            <a href="/day04/home.html">Home</a>
+        </div>
+        <div>
+            <a href="/day04/seoul.html">Seoul</a>
+        </div>
+        <div>
+            <a href="/day04/toyko.html">Tokyo</a>
+        </div>
+        <div>
+            <a href="/day04/paris.html">Paris</a>
+        </div>
+    </div>
+    <div class="pic">
+        <img src="/image/home.jpg" alt="X">
+    </div>
+</body>
+
+</html>

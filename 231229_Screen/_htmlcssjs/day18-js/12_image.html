@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1 {
+        border: 5px solid black;
+        color: black;
+        text-align: center;
+        width: 200px;
+        height: 50px;
+        margin: 10px auto 30px;
+    }
+    .md{
+        width: 500px;
+        margin: 20px auto;
+    }
+    .md>button{
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        margin-left: 50px;
+        cursor: pointer;
+    }
+    .md>button:hover{
+        color: blue;
+        font-weight: 700;
+    }
+    div.pic{
+        text-align: center;
+    }
+    img {
+        width: 1000px;
+        height: 500px;
+        border: 3px solid black;
+    }
+
+</style>
+
+<body id="body">
+    <h1>Travel</h1>
+    <div class="md">
+        <button type="button" id="home">Home</button>
+        <button type="button" id="seoul">Seoul</button>
+        <button type="button" id="tokyo">Tokyo</button>
+        <button type="button" id="paris">Paris</button>
+    </div>
+    <div class="pic">
+        <img src="/image/home.jpg" alt="X" id="img">
+    </div>
+    <script>
+        const img = document.getElementById('img');
+        const body = document.getElementById('body');
+
+        document.querySelector('#body').addEventListener('click',(e)=>{
+            let btnValue = e.target.id;
+            let type = e.target.type;
+            if(type == "button"){
+                img.src = `/image/${btnValue}.jpg`
+            }
+        })
+    </script>
+</body>
+
+</html>
